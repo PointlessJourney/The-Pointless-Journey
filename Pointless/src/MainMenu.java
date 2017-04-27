@@ -1,5 +1,5 @@
 //josh has edited this again
-
+// http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -54,16 +54,9 @@ public class MainMenu extends JFrame {
 	JLabel lblNewLabel = new JLabel("New label");//Background image
 	JLabel lblNewLabel_5 = new JLabel("");//ea
 	JLabel lblNewLabel_1 = new JLabel("");//title
-	int x = 0;
-	//ee
-	int a = 0;
-	int b = 0;
-	int c = 0;
-	int d = 0;
-	//
+	int x = 0;//ee counter
 	JLabel lblNewLabel_2 = new JLabel("");
 	JLabel lblNewLabel_3 = new JLabel("");
-	JLabel lblNewLabel_6 = new JLabel("");
 	//Panel 1 (option button)	
 	JPanel panel_1 = new JPanel();
 	JButton btnMainMenu = new JButton("Main Menu");
@@ -76,9 +69,10 @@ public class MainMenu extends JFrame {
 	JPanel panel_3 = new JPanel();
 	JButton button_1 = new JButton("Main Menu");
 	JLabel label_2 = new JLabel("New label");
-	JLabel lblNewLabel_4 = new JLabel("Sorry only way to exit is\r\n");
+	JLabel lblNewLabel_4 = new JLabel("The only way to exit is\r\n");
+	JLabel lblByBeatingThe = new JLabel("by beating the game");
+	JLabel lblKayabaAkihiko = new JLabel("-Final Boss");
 	
-
 	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(840,535);
@@ -92,7 +86,6 @@ public class MainMenu extends JFrame {
 		//setExtendedState(JFrame.MAXIMIZED_BOTH);
 		//setUndecorated(true);
 		//setAlwaysOnTop(true);
-
 
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -119,8 +112,6 @@ public class MainMenu extends JFrame {
 				btnA.setForeground(Color.WHITE);
 			}
 		});
-
-
 		btnA.setHorizontalAlignment(SwingConstants.LEFT);
 		btnA.setOpaque(false);
 		btnA.setForeground(Color.WHITE);
@@ -130,6 +121,7 @@ public class MainMenu extends JFrame {
 		btnA.setBorderPainted(false);
 		btnA.setBounds(688, 404, 59, 26);
 		panel.add(btnA);
+		
 		btnHelp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -146,8 +138,6 @@ public class MainMenu extends JFrame {
 				btnHelp.setForeground(Color.WHITE);
 			}
 		});
-
-
 		btnHelp.setOpaque(false);
 		btnHelp.setForeground(Color.WHITE);
 		btnHelp.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
@@ -156,6 +146,7 @@ public class MainMenu extends JFrame {
 		btnHelp.setBorderPainted(false);
 		btnHelp.setBounds(543, 404, 116, 26);
 		panel.add(btnHelp);
+		
 		btnOptions.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -172,8 +163,6 @@ public class MainMenu extends JFrame {
 				btnOptions.setForeground(Color.WHITE);
 			}
 		});
-
-
 		btnOptions.setOpaque(false);
 		btnOptions.setForeground(Color.WHITE);
 		btnOptions.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
@@ -182,6 +171,7 @@ public class MainMenu extends JFrame {
 		btnOptions.setBorderPainted(false);
 		btnOptions.setBounds(441, 404, 92, 26);
 		panel.add(btnOptions);
+		
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -196,8 +186,6 @@ public class MainMenu extends JFrame {
 				btnNewGame.setForeground(Color.WHITE);
 			}
 		});
-
-
 		btnNewGame.setOpaque(false);
 		btnNewGame.setForeground(Color.WHITE);
 		btnNewGame.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
@@ -206,6 +194,7 @@ public class MainMenu extends JFrame {
 		btnNewGame.setBorderPainted(false);
 		btnNewGame.setBounds(315, 404, 116, 26);
 		panel.add(btnNewGame);
+		
 		btnContinue.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -220,8 +209,6 @@ public class MainMenu extends JFrame {
 				btnContinue.setForeground(Color.WHITE);
 			}
 		});
-
-
 		btnContinue.setOpaque(false);
 		btnContinue.setForeground(Color.WHITE);
 		btnContinue.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
@@ -239,43 +226,29 @@ public class MainMenu extends JFrame {
 					lblNewLabel_5.setVisible(false);
 				}
 			}
-		});
-		
-		
-		lblNewLabel_5.setIcon(new ImageIcon("G:\\Pictures\\Black-screen_2511_1.jpg"));
+		});		
+		lblNewLabel_5.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\Black-screen_2511_1.jpg"));
 		lblNewLabel_5.setBounds(100, 11, 92, 78);
 		panel.add(lblNewLabel_5);
-		lblNewLabel_2.setIcon(new ImageIcon("G:\\Pictures\\sao_lost_song_logo_2_by_gunsli.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\sao_lost_song_logo_2_by_gunsli.png"));
 		lblNewLabel_2.setBounds(101, 26, 51, 51);
-
 		panel.add(lblNewLabel_2);
-		lblNewLabel_3.setIcon(new ImageIcon("G:\\Pictures\\blankk.jpg"));
-		lblNewLabel_3.setBounds(101, 26, 51, 51);
-
-		panel.add(lblNewLabel_3);
-
 		
-		lblNewLabel_1.setIcon(new ImageIcon("G:\\Pictures\\FinTitle.png"));
+		lblNewLabel_3.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\blankk.jpg"));
+		lblNewLabel_3.setBounds(101, 26, 51, 51);
+		panel.add(lblNewLabel_3);
+	
+		lblNewLabel_1.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\FinTitle.png"));
 		lblNewLabel_1.setBounds(22, -13, 304, 285);
 		panel.add(lblNewLabel_1);
-		lblNewLabel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				//ee 1
-				
-			}
-		});
-
-
-		lblNewLabel.setIcon(new ImageIcon("G:\\Pictures\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		
+		lblNewLabel.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
 		lblNewLabel.setBounds(0, 0, 1014, 497);
 		panel.add(lblNewLabel);
-		lblNewLabel_6.setBounds(768, 11, 46, 14);
-		
-		panel.add(lblNewLabel_6);
 		//Panel 1		
 		contentPane.add(panel_1, "name_1431079614477");
 		panel_1.setLayout(null);
+		
 		btnMainMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -292,18 +265,16 @@ public class MainMenu extends JFrame {
 				btnMainMenu.setForeground(Color.WHITE);
 			}
 		});
-
 		btnMainMenu.setOpaque(false);
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
 		btnMainMenu.setFocusPainted(false);
 		btnMainMenu.setContentAreaFilled(false);
 		btnMainMenu.setBorderPainted(false);
-		btnMainMenu.setBounds(10, 11, 116, 26);
+		btnMainMenu.setBounds(10, 11, 116, 26);		
 		panel_1.add(btnMainMenu);
 
-
-		label.setIcon(new ImageIcon("G:\\Pictures\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
 		label.setBounds(0, 0, 1014, 497);
 		panel_1.add(label);
 
@@ -337,13 +308,11 @@ public class MainMenu extends JFrame {
 		button.setBounds(10, 11, 116, 26);
 		panel_2.add(button);
 
-
-		label_1.setIcon(new ImageIcon("G:\\Pictures\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label_1.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
 		label_1.setBounds(0, 0, 1014, 497);
 		panel_2.add(label_1);
-
-
 		contentPane.add(panel_3, "name_1583552623428");
+		
 		panel_3.setLayout(null);
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -361,8 +330,6 @@ public class MainMenu extends JFrame {
 			}
 
 		});
-
-
 		button_1.setOpaque(false);
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Sakkal Majalla", Font.PLAIN, 20));
@@ -371,29 +338,24 @@ public class MainMenu extends JFrame {
 		button_1.setBorderPainted(false);
 		button_1.setBounds(10, 11, 116, 26);
 		panel_3.add(button_1);
+		
 		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setFont(new Font("MV Boli", Font.PLAIN, 65));
-		lblNewLabel_4.setBounds(20, 91, 783, 90);
-
+		lblNewLabel_4.setFont(new Font("Sakkal Majalla", Font.PLAIN, 65));
+		lblNewLabel_4.setBounds(184, 166, 502, 90);
 		panel_3.add(lblNewLabel_4);
-
-		JLabel lblByBeatingThe = new JLabel("by beating the game");
+	
 		lblByBeatingThe.setForeground(Color.WHITE);
-		lblByBeatingThe.setFont(new Font("MV Boli", Font.PLAIN, 65));
-		lblByBeatingThe.setBounds(100, 185, 783, 90);
+		lblByBeatingThe.setFont(new Font("Sakkal Majalla", Font.PLAIN, 65));
+		lblByBeatingThe.setBounds(211, 253, 437, 90);
 		panel_3.add(lblByBeatingThe);
-
-		JLabel lblKayabaAkihiko = new JLabel("- Kayaba Akihiko");
+		
 		lblKayabaAkihiko.setForeground(Color.WHITE);
-		lblKayabaAkihiko.setFont(new Font("MV Boli", Font.PLAIN, 65));
-		lblKayabaAkihiko.setBounds(153, 275, 783, 90);
+		lblKayabaAkihiko.setFont(new Font("Sakkal Majalla", Font.PLAIN, 65));
+		lblKayabaAkihiko.setBounds(307, 336, 242, 90);
 		panel_3.add(lblKayabaAkihiko);
 
-
-		label_2.setIcon(new ImageIcon("G:\\Pictures\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label_2.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
 		label_2.setBounds(0, 0, 1014, 497);
 		panel_3.add(label_2);
-
-
 	}
 }
