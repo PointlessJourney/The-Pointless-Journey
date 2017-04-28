@@ -2,30 +2,28 @@
 // http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.io.File;
 
-import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
+	public Clip clip;
 
 	/**
 	 * Launch the application.
@@ -42,6 +40,22 @@ public class MainMenu extends JFrame {
 			}
 		});
 	}
+	public void Song() {
+		  try {
+		   File file = new File("BeepBox-Song.wav");
+		   clip = AudioSystem.getClip();
+		   clip.open(AudioSystem.getAudioInputStream(file));
+		   clip.start();
+		   clip.addLineListener(new LineListener(){
+			   public void update(LineEvent update){
+				   if(update.getType().equals(LineEvent.Type.CLOSE))clip.start();
+			   }
+		   });
+		  } catch (Exception e) {
+		   System.err.println(e.getMessage());
+		  }
+		  return;
+		 }
 
 	//Decleration
 	//Panel (Main Menu)
@@ -74,6 +88,7 @@ public class MainMenu extends JFrame {
 	JLabel lblKayabaAkihiko = new JLabel("-Final Boss");
 	
 	public MainMenu() {
+		Song();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(840,535);
 
@@ -227,22 +242,22 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});		
-		lblNewLabel_5.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\Black-screen_2511_1.jpg"));
+		lblNewLabel_5.setIcon(new ImageIcon("Black-screen_2511_1.jpg"));
 		lblNewLabel_5.setBounds(100, 11, 92, 78);
 		panel.add(lblNewLabel_5);
-		lblNewLabel_2.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\sao_lost_song_logo_2_by_gunsli.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("sao_lost_song_logo_2_by_gunsli.png"));
 		lblNewLabel_2.setBounds(101, 26, 51, 51);
 		panel.add(lblNewLabel_2);
 		
-		lblNewLabel_3.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\blankk.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("blankk.jpg"));
 		lblNewLabel_3.setBounds(101, 26, 51, 51);
 		panel.add(lblNewLabel_3);
 	
-		lblNewLabel_1.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\FinTitle.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("FinTitle.png"));
 		lblNewLabel_1.setBounds(22, -13, 304, 285);
 		panel.add(lblNewLabel_1);
 		
-		lblNewLabel.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		lblNewLabel.setIcon(new ImageIcon("92751e0ca5fb8b890839121c472df4f3.gif"));
 		lblNewLabel.setBounds(0, 0, 1014, 497);
 		panel.add(lblNewLabel);
 		//Panel 1		
@@ -274,7 +289,7 @@ public class MainMenu extends JFrame {
 		btnMainMenu.setBounds(10, 11, 116, 26);		
 		panel_1.add(btnMainMenu);
 
-		label.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label.setIcon(new ImageIcon("92751e0ca5fb8b890839121c472df4f3.gif"));
 		label.setBounds(0, 0, 1014, 497);
 		panel_1.add(label);
 
@@ -308,7 +323,7 @@ public class MainMenu extends JFrame {
 		button.setBounds(10, 11, 116, 26);
 		panel_2.add(button);
 
-		label_1.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label_1.setIcon(new ImageIcon("92751e0ca5fb8b890839121c472df4f3.gif"));
 		label_1.setBounds(0, 0, 1014, 497);
 		panel_2.add(label_1);
 		contentPane.add(panel_3, "name_1583552623428");
@@ -354,7 +369,7 @@ public class MainMenu extends JFrame {
 		lblKayabaAkihiko.setBounds(307, 336, 242, 90);
 		panel_3.add(lblKayabaAkihiko);
 
-		label_2.setIcon(new ImageIcon("G:\\git\\Armaan\\Pointless\\92751e0ca5fb8b890839121c472df4f3.gif"));
+		label_2.setIcon(new ImageIcon("92751e0ca5fb8b890839121c472df4f3.gif"));
 		label_2.setBounds(0, 0, 1014, 497);
 		panel_3.add(label_2);
 	}
