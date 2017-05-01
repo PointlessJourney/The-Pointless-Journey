@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -24,6 +26,7 @@ public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
 	public Clip clip;
+	static MainMenu frame;
 
 	/**
 	 * Launch the application.
@@ -32,7 +35,7 @@ public class MainMenu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu frame = new MainMenu();
+					frame = new MainMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -372,5 +375,14 @@ public class MainMenu extends JFrame {
 		label_2.setIcon(new ImageIcon("92751e0ca5fb8b890839121c472df4f3.gif"));
 		label_2.setBounds(0, 0, 1014, 497);
 		panel_3.add(label_2);
+		
+		btnNewGame.addActionListener (new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				OverworldEngine oW = new OverworldEngine();
+			}
+			
+			
+		});
 	}
 }
