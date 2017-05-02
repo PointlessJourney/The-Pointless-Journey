@@ -1,16 +1,14 @@
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 
 public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
+	boolean second = true;
+
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
 		
@@ -20,11 +18,9 @@ public class GGTop extends OverChar {
 		
 		x += velX;
 		y += velY;
-		int z = 0;
 	}
 	
 	public void render(Graphics g) {	// enter character picture and information here
-		// TODO Auto-generated method stub
 		if(id == ID.Player)
 		{
 			if (first)
@@ -36,6 +32,20 @@ public class GGTop extends OverChar {
 			
 			g.setColor(Color.WHITE);
 			g.fillRect(x, y, 4000, 3000); // draw your rectangle
+
+		}
+		if(id == ID.Player)
+		{
+			if (second)
+			{
+				x = 640;
+				y = 370;
+				second = false;
+			}
+			
+			
+			g.setColor(Color.BLUE);
+			g.fillRect(x, y, 24, 24); // draw your rectangle
 
 		}
 		else if (id == ID.Player2)

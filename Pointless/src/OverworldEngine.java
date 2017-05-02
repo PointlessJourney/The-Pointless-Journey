@@ -5,6 +5,10 @@ import java.awt.image.BufferStrategy;
 
 public class OverworldEngine extends Canvas implements Runnable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4112613234084496632L;
 	public static final int width = 1280, height = 720;
 	public Thread thread;
 	private boolean running = false;
@@ -51,7 +55,6 @@ public class OverworldEngine extends Canvas implements Runnable {
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
-		int frames = 0;
 		while(running)
 		{
 			long now = System.nanoTime();
@@ -64,13 +67,11 @@ public class OverworldEngine extends Canvas implements Runnable {
 			}
 			if(running)
 				render();
-			frames++;
 
 			if(System.currentTimeMillis() - timer > 1000)
 			{
 				timer += 1000;
 				//System.out.println("FPS: "+ frames);
-				frames = 0;
 			}
 		}
 		stop();
@@ -100,7 +101,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 		bs.show();
 	}
 	
-	public static void main (String args[])
+	public static void go ()
 	{
 		new OverworldEngine ();
 	}
