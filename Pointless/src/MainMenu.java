@@ -27,6 +27,10 @@ import javax.swing.border.EmptyBorder;
 
 public class MainMenu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
 	static MainMenu frame;
@@ -382,7 +386,7 @@ public class MainMenu extends JFrame {
 		btnNewGame.addActionListener (new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
-				OverworldEngine oW = new OverworldEngine();
+				OverworldEngine.go();
 			}
 			
 			

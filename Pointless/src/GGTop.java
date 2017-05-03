@@ -1,16 +1,19 @@
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
+	boolean second = true;
+
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
 		
@@ -20,24 +23,27 @@ public class GGTop extends OverChar {
 		
 		x += velX;
 		y += velY;
-		int z = 0;
 	}
 	
 	public void render(Graphics g) {	// enter character picture and information here
-		// TODO Auto-generated method stub
 		if(id == ID.Player)
 		{
 			if (first)
 			{
 				x = 576;
-				y = -2578;
+				y = 296;
 				first = false;
 			}
 			
-			g.setColor(Color.WHITE);
-			g.fillRect(x, y, 4000, 3000); // draw your rectangle
+			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
+			BufferedImage map = LoadImage("basemap.png");
+			int size = 100;
+			at.scale(size,size);
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(map, at, null);			
 
 		}
+		
 		else if (id == ID.Player2)
 		{
 			int centerX = 652;
@@ -56,11 +62,24 @@ public class GGTop extends OverChar {
 			g.fillRect(640, 360, 25, 25); // draw your rectangle
 			g2d.rotate(angle, centerX, centerY);
 			g2d.setTransform(transform);
-			
 
 		}
 		
 			
 	}
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+			
+		}
+		return img;
+	}
+	
 
 }
