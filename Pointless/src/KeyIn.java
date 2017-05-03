@@ -18,7 +18,7 @@ public class KeyIn extends KeyAdapter {
 			
 			System.out.println("x:"+x+" y: "+y);
 			
-			int speed = 3;
+			int speed = 4;
 			int back = speed*-1;
 			int down = back;
 			int up = speed;
@@ -27,10 +27,7 @@ public class KeyIn extends KeyAdapter {
 			if (temp.getID() == ID.Player)
 			{		//player movement keys
 				
-				if (x >= 600)left=0;
-				if (x <= -3309)right=0;
-				if (y >= 296)up = 0;
-				if ( y <= -2587)down = 0;
+				
 					
 				if (key == KeyEvent.VK_W)temp.setVelY(up);
 				if (key == KeyEvent.VK_S)temp.setVelY(down);

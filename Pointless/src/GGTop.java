@@ -31,13 +31,14 @@ public class GGTop extends OverChar {
 			if (first)
 			{
 				x = 576;
-				y = -2578;
+				y = 296;
 				first = false;
 			}
 			
 			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
-			BufferedImage map = LoadImage("map(1).png");
-			at.scale(5, 5);
+			BufferedImage map = LoadImage("basemap.png");
+			int size = 100;
+			at.scale(size,size);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);			
 
