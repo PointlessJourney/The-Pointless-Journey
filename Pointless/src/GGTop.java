@@ -3,6 +3,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class GGTop extends OverChar {
 	static int count = 0;
@@ -30,24 +35,14 @@ public class GGTop extends OverChar {
 				first = false;
 			}
 			
-			g.setColor(Color.WHITE);
-			g.fillRect(x, y, 4000, 3000); // draw your rectangle
+			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
+			BufferedImage map = LoadImage("map(1).png");
+			at.scale(5, 5);
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(map, at, null);			
 
 		}
-		if(id == ID.Player)
-		{
-			if (second)
-			{
-				x = 640;
-				y = 370;
-				second = false;
-			}
-			
-			
-			g.setColor(Color.BLUE);
-			g.fillRect(x, y, 24, 24); // draw your rectangle
-
-		}
+		
 		else if (id == ID.Player2)
 		{
 			int centerX = 652;
@@ -66,11 +61,24 @@ public class GGTop extends OverChar {
 			g.fillRect(640, 360, 25, 25); // draw your rectangle
 			g2d.rotate(angle, centerX, centerY);
 			g2d.setTransform(transform);
-			
 
 		}
 		
 			
 	}
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+			
+		}
+		return img;
+	}
+	
 
 }
