@@ -3,17 +3,9 @@
 //Discord Link: https://discord.gg/B2cWfMr
 
 // http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
+
+import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 
 import javax.sound.sampled.AudioSystem;
@@ -107,7 +99,7 @@ public class MainMenu extends JFrame {
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		if((double)(screenSize.getWidth()/screenSize.getHeight())<=(double)(16/9)){
+		if((double)(screenSize.getWidth()/16*9)<=(double)(screenSize.getHeight())){
 			width = (int)(screenSize.getWidth()/16.0)*16;
 			height = width/16*9;
 			offsetx = (int)((screenSize.getWidth()-width)/2);
