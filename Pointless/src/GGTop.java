@@ -37,7 +37,7 @@ public class GGTop extends OverChar {
 			
 			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
 			BufferedImage map = LoadImage("basemap.png");
-			int size = 100;
+			int size = 25;
 			at.scale(size,size);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);			
@@ -46,22 +46,20 @@ public class GGTop extends OverChar {
 		
 		else if (id == ID.Player2)
 		{
-			int centerX = 652;
-			int centerY = 372;
+			int centerX = 576;
+			int centerY = 296;
 			int mouseY = MouseInfo.getPointerInfo().getLocation().y;
 			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-		
+			int shift = 20;
 
 			double angle = Math.atan2(centerY - mouseY, centerX - mouseX) - Math.PI/2;
 
-
-			((Graphics2D)g).rotate(angle, centerX, centerY);
-			Graphics2D g2d = (Graphics2D)g;
-			AffineTransform transform = g2d.getTransform();
-			g.setColor(Color.RED);
-			g.fillRect(640, 360, 25, 25); // draw your rectangle
-			g2d.rotate(angle, centerX, centerY);
-			g2d.setTransform(transform);
+			AffineTransform tat = AffineTransform.getTranslateInstance((1280/2)-shift, (720/2)-shift);
+			BufferedImage map = LoadImage("GGtop.png");
+			tat.scale(2, 2);
+			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(map, tat, null);	
 
 		}
 		
