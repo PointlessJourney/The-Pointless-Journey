@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.io.File;
 
 import javax.sound.sampled.AudioSystem;
@@ -106,7 +107,7 @@ public class MainMenu extends JFrame {
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		if((double)(screenSize.getWidth()/screenSize.getHeight())<=(double)(16/9)){
+		if((double)(screenSize.getWidth()/16*9)<=(double)(screenSize.getHeight())){
 			width = (int)(screenSize.getWidth()/16.0)*16;
 			height = width/16*9;
 			offsetx = (int)((screenSize.getWidth()-width)/2);
