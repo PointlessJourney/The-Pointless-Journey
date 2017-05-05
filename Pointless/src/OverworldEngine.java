@@ -22,7 +22,6 @@ public class OverworldEngine extends Canvas implements Runnable {
 
 		this.addKeyListener(new KeyIn(handler));
 
-		new FrameSetup (width, height, "Pointless Journey", this);
 	}
 
  	public synchronized void start()
@@ -30,6 +29,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
+		this.requestFocus();
 
 	}
 
@@ -101,8 +101,8 @@ public class OverworldEngine extends Canvas implements Runnable {
 		bs.show();
 	}
 	
-	public static void go ()
-	{
-		new OverworldEngine ();
-	}
+	//public static void go ()
+	//{
+	//	new OverworldEngine ();
+	//}
 }
