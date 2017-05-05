@@ -30,8 +30,9 @@ public class GGTop extends OverChar {
 		{
 			if (first)
 			{
-				x = 576;
-				y = 296;
+				x = -112;
+				y = -1120;
+				System.out.println("start");
 				first = false;
 			}
 			
