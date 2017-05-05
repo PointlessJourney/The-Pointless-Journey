@@ -29,7 +29,8 @@ public class MainMenu extends JFrame {
 	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
-	static MainMenu frame;
+	public static MainMenu frame;
+	public OverworldEngine over=new OverworldEngine();
 
 	/**
 	 * Launch the application.
@@ -222,7 +223,9 @@ public class MainMenu extends JFrame {
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//new game action listener
+				over.setVisible(true);
+				over.start();
+				panel.setVisible(false);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -421,14 +424,7 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
+		contentPane.add(over);
 		
-		btnNewGame.addActionListener (new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				frame.setVisible(false);
-				OverworldEngine.go();
-			}
-			
-			
-		});
 	}
 }
