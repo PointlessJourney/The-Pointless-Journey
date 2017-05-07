@@ -8,12 +8,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
 public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
 	boolean second = true;
-
+	private OverworldEngine game;
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
 		
@@ -26,11 +25,15 @@ public class GGTop extends OverChar {
 		if (x <= -4276) x = -4276;
 		if (y >= 156) y = 156;
 		if (y <= -4422) y =-4422;
+		if (x == -4276 && y == -3976)
+		{
+		}
 		
 	}
 	
 	public void render(Graphics g) {	// enter character picture and information here
-		if(id == ID.Player)
+	
+		if(id == ID.Map)		//creates the map
 		{
 			if (first)
 			{
@@ -40,8 +43,8 @@ public class GGTop extends OverChar {
 				first = false;
 			}
 			
-			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
 			BufferedImage map = LoadImage("basemap.png");
+			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
 			int size = 25;
 			at.scale(size,size);
 			Graphics2D g2d = (Graphics2D) g;
@@ -49,7 +52,7 @@ public class GGTop extends OverChar {
 
 		}
 		
-		else if (id == ID.Player2)
+		else if (id == ID.Player) // creates the player
 		{
 			int centerX = 576;
 			int centerY = 296;

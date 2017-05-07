@@ -52,6 +52,9 @@ public class MainMenu extends JFrame {
 		   clip = AudioSystem.getClip();
 		   clip.open(AudioSystem.getAudioInputStream(file));
 		   clip.start();
+		 //************
+		   clip.stop();
+		   //************
 		   clip.addLineListener(new LineListener(){
 			   public void update(LineEvent update){
 				   if(update.getType().equals(LineEvent.Type.CLOSE))clip.start();

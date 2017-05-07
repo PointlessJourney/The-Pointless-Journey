@@ -54,5 +54,6 @@ public abstract class OverChar
 		return velY;
 	}
 	
+	
 
 }

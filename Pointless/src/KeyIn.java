@@ -24,7 +24,7 @@ public class KeyIn extends KeyAdapter {
 			int up = speed;
 			int left = speed;
 			int right = back;
-			if (temp.getID() == ID.Player)
+			if (temp.getID() == ID.Map)
 			{		//player movement keys
 					
 				if (key == KeyEvent.VK_W)temp.setVelY(up);
@@ -42,7 +42,7 @@ public class KeyIn extends KeyAdapter {
 		{
 			OverChar temp = handler.object.get(i);
 			
-			if (temp.getID() == ID.Player)
+			if (temp.getID() == ID.Map)
 			{		//player movement keys
 				if (key == KeyEvent.VK_W)temp.setVelY(0);
 				if (key == KeyEvent.VK_S)temp.setVelY(0);
