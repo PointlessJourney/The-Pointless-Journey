@@ -20,9 +20,13 @@ public class GGTop extends OverChar {
 	}
 
 	public void tick() {
-		
 		x += velX;
 		y += velY;
+		if (x >= 640 - 120) x = 640 - 120;
+		if (x <= -4276) x = -4276;
+		if (y >= 156) y = 156;
+		if (y <= -4422) y =-4422;
+		
 	}
 	
 	public void render(Graphics g) {	// enter character picture and information here
