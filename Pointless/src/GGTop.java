@@ -18,7 +18,8 @@ public class GGTop extends OverChar {
 	int maxY = 156;
 	int maxNegY = -4422;
 	BufferedImage map = LoadImage("basemap.png");
-	public enum STATE {
+	
+	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base
 	};
@@ -31,23 +32,50 @@ public class GGTop extends OverChar {
 	}
 
 	public void tick() {
-		x += velX;
+		x += velX;							// moves the character around
 		y += velY;
 
-		if (x >= maxX) x = maxX;
+		if (x >= maxX) x = maxX;			// boundary detection 
 		if (x <= maxNegX) x = maxNegX;
 		if (y >= maxY) y = maxY;
 		if (y <= maxNegY) y = maxNegY;
 
 		if (mapState == STATE.Base)
 		{
-			if (x == -4276 && y == -3980 )
+			if (x == -4276 && y == -3980 )	// entering the battle field area
 			{
 				mapState = STATE.Field;
+				
+				if (second)
+				{
+					x = 0;
+					y = 0;
+					map = LoadImage("ruckss2.png");
+					second = false;
+					first = true;
+				}
 			}
-			
+
 		}
-		
+		else if (mapState == STATE.Field)
+		{
+			if (x <= -8164 && x >= -8300 && y >= -2654 && y <= -2324)	// returning to the main area
+			{
+				mapState = STATE.Base;
+				
+				if (first)
+				{
+					x = -112;
+					y = -1120;
+					map = LoadImage("basemap.png");
+					System.out.println("start");
+					first = false;
+					second = true;
+				}
+			}
+
+		}
+
 
 
 
@@ -59,17 +87,13 @@ public class GGTop extends OverChar {
 		{
 			if(mapState == STATE.Base)
 			{
-				if (first)
-				{
-					x = -112;
-					y = -1120;
-					map = LoadImage("basemap.png");
-					System.out.println("start");
-					first = false;
-				}
-
+				size = 25;
+				maxX = 520;
+				maxNegX =  -4276;
+				maxY = 156;
+				maxNegY = -4422;
 			}
-			
+
 			if(mapState == STATE.Field)
 			{
 				size = 7;
@@ -77,20 +101,13 @@ public class GGTop extends OverChar {
 				maxNegX =  -8300;
 				maxY =-14;
 				maxNegY = -4664;
-				if (second)
-				{
-				x = 0;
-				y = 0;
-				map = LoadImage("ruckss2.png");
-				second = false;
 				
-				}
 			}
-			
-			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
-			at.scale(size,size);
+
+			AffineTransform at = AffineTransform.getTranslateInstance(x, y);	// moves the picture around
+			at.scale(size,size);			// scales it (multiplied by the size)
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.drawImage(map, at, null);	
+			g2d.drawImage(map, at, null);		// draws it
 
 		}
 
@@ -98,7 +115,7 @@ public class GGTop extends OverChar {
 		{
 			int centerX = 576;
 			int centerY = 296;
-			int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
 			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
 			int shift = 20;
 
