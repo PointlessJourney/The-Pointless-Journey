@@ -18,7 +18,7 @@ public class KeyIn extends KeyAdapter {
 			
 			System.out.println("x:"+x+" y: "+y);
 			
-			int speed = 7;
+			int speed = 10;
 			int back = speed*-1;
 			int down = back;
 			int up = speed;

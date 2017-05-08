@@ -19,6 +19,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 		handler = new Handler();
 		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Map));
 		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player));
+
 		this.addKeyListener(new KeyIn(handler));
 
 		new FrameSetup (width, height, "Pointless Journey", this);

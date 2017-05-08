@@ -12,27 +12,47 @@ public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
 	boolean second = true;
-	private OverworldEngine game;
+	int size = 25;
+	int maxX = 520;
+	int maxNegX =  -4276;
+	int maxY = 156;
+	int maxNegY = -4422;
+	BufferedImage map = LoadImage("basemap.png");
+
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
-		
+
 	}
 
 	public void tick() {
 		x += velX;
 		y += velY;
-		if (x >= 640 - 120) x = 640 - 120;
-		if (x <= -4276) x = -4276;
-		if (y >= 156) y = 156;
-		if (y <= -4422) y =-4422;
-		if (x == -4276 && y == -3976)
+
+		if (x >= maxX) x = maxX;
+		if (x <= maxNegX) x = maxNegX;
+		if (y >= maxY) y = maxY;
+		if (y <= maxNegY) y = maxNegY;
+
+		if (x == -4276 && y == -3980 )
 		{
-		}
+			size = 7;
+			map = LoadImage("ruckss2.png");
+			maxX = -30;
+			maxNegX =  -7556;
+			maxY =-14;
+			maxNegY = -4304;
+			x = 0;
+			y = 0;
 		
+			
+		}
+
+
+
 	}
-	
+
 	public void render(Graphics g) {	// enter character picture and information here
-	
+
 		if(id == ID.Map)		//creates the map
 		{
 			if (first)
@@ -43,15 +63,14 @@ public class GGTop extends OverChar {
 				first = false;
 			}
 			
-			BufferedImage map = LoadImage("basemap.png");
+
 			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
-			int size = 25;
 			at.scale(size,size);
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.drawImage(map, at, null);			
+			g2d.drawImage(map, at, null);	
 
 		}
-		
+
 		else if (id == ID.Player) // creates the player
 		{
 			int centerX = 576;
@@ -70,8 +89,8 @@ public class GGTop extends OverChar {
 			g2d.drawImage(map, tat, null);	
 
 		}
-		
-			
+
+
 	}
 	BufferedImage LoadImage(String FileName)
 	{
@@ -82,10 +101,10 @@ public class GGTop extends OverChar {
 		}
 		catch (IOException e)
 		{
-			
+
 		}
 		return img;
 	}
-	
+
 
 }
