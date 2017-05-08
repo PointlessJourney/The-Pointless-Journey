@@ -17,8 +17,8 @@ public class OverworldEngine extends Canvas implements Runnable {
 	public OverworldEngine()
 	{
 		handler = new Handler();
+		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Map));
 		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player));
-		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player2));
 
 		this.addKeyListener(new KeyIn(handler));
 
