@@ -18,13 +18,13 @@ public class GGTop extends OverChar {
 	int maxY = 156;
 	int maxNegY = -4422;
 	BufferedImage map = LoadImage("basemap.png");
-
-	public enum State {
+	public enum STATE {
 		Field,
 		Base
-	}
-	
-	
+	};
+
+	public STATE mapState = STATE.Base;
+
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
 
@@ -39,19 +39,15 @@ public class GGTop extends OverChar {
 		if (y >= maxY) y = maxY;
 		if (y <= maxNegY) y = maxNegY;
 
-		if (x == -4276 && y == -3980 )
+		if (mapState == STATE.Base)
 		{
-			size = 7;
-			map = LoadImage("ruckss2.png");
-			maxX = -30;
-			maxNegX =  -7556;
-			maxY =-14;
-			maxNegY = -4304;
-			x = 0;
-			y = 0;
-		
+			if (x == -4276 && y == -3980 )
+			{
+				mapState = STATE.Field;
+			}
 			
 		}
+		
 
 
 
@@ -61,15 +57,36 @@ public class GGTop extends OverChar {
 
 		if(id == ID.Map)		//creates the map
 		{
-			if (first)
+			if(mapState == STATE.Base)
 			{
-				x = -112;
-				y = -1120;
-				System.out.println("start");
-				first = false;
+				if (first)
+				{
+					x = -112;
+					y = -1120;
+					map = LoadImage("basemap.png");
+					System.out.println("start");
+					first = false;
+				}
+
 			}
 			
-
+			if(mapState == STATE.Field)
+			{
+				size = 7;
+				maxX = -34;
+				maxNegX =  -8300;
+				maxY =-14;
+				maxNegY = -4664;
+				if (second)
+				{
+				x = 0;
+				y = 0;
+				map = LoadImage("ruckss2.png");
+				second = false;
+				
+				}
+			}
+			
 			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
 			at.scale(size,size);
 			Graphics2D g2d = (Graphics2D) g;
