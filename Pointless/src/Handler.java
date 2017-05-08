@@ -17,8 +17,7 @@ public class Handler {
 	{
 		for(int z = 0; z < object.size(); z++)
 		{
-			OverChar temp = object.get(z);
-			temp.render(g);
+			object.get(z).render(g);
 		}
 	}
 	public void addObject(OverChar object)

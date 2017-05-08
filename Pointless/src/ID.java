@@ -2,5 +2,6 @@
 public enum ID {
 	Map(),
 	Player(),
-	Map2(); 
+	Enemy(); 
+
 }
