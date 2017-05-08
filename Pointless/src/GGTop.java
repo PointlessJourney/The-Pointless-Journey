@@ -112,5 +112,4 @@ public class GGTop extends OverChar {
 		return img;
 	}
 
-
 }
