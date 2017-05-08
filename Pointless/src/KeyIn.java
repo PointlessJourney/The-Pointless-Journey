@@ -18,23 +18,19 @@ public class KeyIn extends KeyAdapter {
 			
 			System.out.println("x:"+x+" y: "+y);
 			
-			int speed = 4;
+			int speed = 10;
 			int back = speed*-1;
 			int down = back;
 			int up = speed;
 			int left = speed;
 			int right = back;
-			if (temp.getID() == ID.Player)
+			if (temp.getID() == ID.Map)
 			{		//player movement keys
-				
-				
 					
 				if (key == KeyEvent.VK_W)temp.setVelY(up);
 				if (key == KeyEvent.VK_S)temp.setVelY(down);
 				if (key == KeyEvent.VK_A)temp.setVelX(left);		
-				if (key == KeyEvent.VK_D) temp.setVelX(right);
-					
-				
+				if (key == KeyEvent.VK_D) temp.setVelX(right);	
 			}
 		}		
 	}
@@ -46,7 +42,7 @@ public class KeyIn extends KeyAdapter {
 		{
 			OverChar temp = handler.object.get(i);
 			
-			if (temp.getID() == ID.Player)
+			if (temp.getID() == ID.Map)
 			{		//player movement keys
 				if (key == KeyEvent.VK_W)temp.setVelY(0);
 				if (key == KeyEvent.VK_S)temp.setVelY(0);
