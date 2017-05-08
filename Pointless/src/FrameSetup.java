@@ -4,7 +4,10 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class FrameSetup extends Canvas {
@@ -14,6 +17,9 @@ public class FrameSetup extends Canvas {
 	public FrameSetup(int width, int height, String title, OverworldEngine game)
 	{
 		JFrame frame = new JFrame(title);
+		
+		frame.setUndecorated(true);
+
 		frame.setPreferredSize(new Dimension (width, height));
 		frame.setMaximumSize(new Dimension (width, height));
 		frame.setMinimumSize(new Dimension (width, height));
@@ -23,18 +29,30 @@ public class FrameSetup extends Canvas {
 		frame.setLocationRelativeTo(null);
 		frame.add(game);
 		frame.setVisible(true);
-		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
-
+		BufferedImage cursorImg = LoadImage("crosshair.png");
 		// Create a new blank cursor.
 		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
 		    cursorImg, new Point(0, 0), "blank cursor");
 
 		// Set the blank cursor to the JFrame.
 
-		frame.getContentPane().setCursor(blankCursor);
-
 		game.start();
+		frame.getContentPane().setCursor(blankCursor);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		
+	}
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+			
+		}
+		return img;
 	}
 }
