@@ -18,6 +18,13 @@ public class GGTop extends OverChar {
 	int maxNegY = -4422;
 	int size = 25;
 	BufferedImage map = LoadImage("basemap.png");
+	
+	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
+		Field,
+		Base
+	};
+
+	public STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
@@ -25,8 +32,9 @@ public class GGTop extends OverChar {
 	}
 
 	public void tick() {
+
 		if(x!=0&&y!=0){
-			x+=Math.sqrt(2)*(velX);
+			x+=Math.sqrt(2)*(velX);// moves the character around
 			y+=Math.sqrt(2)*(velY);
 		}else{
 			x += velX;
@@ -37,22 +45,45 @@ public class GGTop extends OverChar {
 		if (y >= maxY) y = maxY;
 		if (y <= maxNegY) y = maxNegY;
 
-		if (x == -4276 && y <= -3950 && y >=-4010)//map change
+		if (mapState == STATE.Base)
 		{
-			size = 7;
-			map = LoadImage("ruckss2.png");
-			maxX = -30;
-			maxNegX =  -7556;
-			maxY =-14;
-			maxNegY = -4304;
-			x = 0;
-			y = 0;
-			Handler.addObject(new BasicSpawner(50,50,ID.Enemy));//creating spawners
-			
-			
+			if (x == -4276 && y == -3980 )	// entering the battle field area
+			{
+				mapState = STATE.Field;
+				
+				if (second)
+				{
+					x = 0;
+					y = 0;
+					map = LoadImage("ruckss2.png");
+					second = false;
+					first = true;
+				}
+			}
+
+		}
+		else if (mapState == STATE.Field)
+		{
+			if (x <= -8164 && x >= -8300 && y >= -2654 && y <= -2324)	// returning to the main area
+			{
+				mapState = STATE.Base;
+				
+				if (first)
+				{
+					x = -112;
+					y = -1120;
+					map = LoadImage("basemap.png");
+					System.out.println("start");
+					first = false;
+					second = true;
+				}
+			}
+
+
 		}
 		playerX=x;//updating the static references to player location. these should never be changed anywhere else
 		playerY=y;
+
 
 
 
@@ -62,20 +93,33 @@ public class GGTop extends OverChar {
 
 		if(id == ID.Map)		//creates the map
 		{
-			if (first)
+			if(mapState == STATE.Base)
 			{
+				size = 25;
+				maxX = 520;
+				maxNegX =  -4276;
+				maxY = 156;
+				maxNegY = -4422;
 				x = (int)(-112.0/1280.0*MainMenu.width)+MainMenu.offsetx;
 				y = (int)(-1120.0/1280.0*MainMenu.width)+MainMenu.offsety;
-				System.out.println("start");
 				first = false;
 			}
-			
 
-			AffineTransform at = AffineTransform.getTranslateInstance(x, y);
+			if(mapState == STATE.Field)
+			{
+				size = 7;
+				maxX = -34;
+				maxNegX =  -8300;
+				maxY =-14;
+				maxNegY = -4664;
+				
+			}
+
+			AffineTransform at = AffineTransform.getTranslateInstance(x, y);	// moves the picture around
 			at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
 			//at.scale(25, 25);
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.drawImage(map, at, null);	
+			g2d.drawImage(map, at, null);		// draws it
 
 		}
 
@@ -101,6 +145,5 @@ public class GGTop extends OverChar {
 
 	}
 	
-
 
 }
