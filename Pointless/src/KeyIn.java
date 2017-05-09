@@ -2,17 +2,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyIn extends KeyAdapter {
-	private Handler handler;
 	
-	public KeyIn (Handler handler){
-		this.handler = handler;		
+	public KeyIn (){	
 	}
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < handler.object.size(); i++)
+		for (int i = 0; i < Handler.object.size(); i++)
 		{
-			OverChar temp = handler.object.get(i);	
+			OverChar temp = Handler.object.get(i);	
 			int x = temp.getX();
 			int y = temp.getY();
 			
@@ -38,9 +36,9 @@ public class KeyIn extends KeyAdapter {
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < handler.object.size(); i++)
+		for (int i = 0; i < Handler.object.size(); i++)
 		{
-			OverChar temp = handler.object.get(i);
+			OverChar temp = Handler.object.get(i);
 			
 			if (temp.getID() == ID.Map)
 			{		//player movement keys
