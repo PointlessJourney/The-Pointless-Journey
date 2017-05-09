@@ -44,16 +44,7 @@ public class GGTop extends OverChar {
 		{
 			if (x == -4276 && y == -3980 )	// entering the battle field area
 			{
-				mapState = STATE.Field;
-				
-				if (second)
-				{
-					x = 0;
-					y = 0;
-					map = LoadImage("ruckss2.png");
-					second = false;
-					first = true;
-				}
+				mapState = STATE.Field;			
 			}
 
 		}
@@ -61,17 +52,7 @@ public class GGTop extends OverChar {
 		{
 			if (x <= -8164 && x >= -8300 && y >= -2654 && y <= -2324)	// returning to the main area
 			{
-				mapState = STATE.Base;
-				
-				if (first)
-				{
-					x = -112;
-					y = -1120;
-					map = LoadImage("basemap.png");
-					System.out.println("start");
-					first = false;
-					second = true;
-				}
+				mapState = STATE.Base;	
 			}
 
 		}
@@ -92,6 +73,15 @@ public class GGTop extends OverChar {
 				maxNegX =  -4276;
 				maxY = 156;
 				maxNegY = -4422;
+				if (first)
+				{
+					x = -112;
+					y = -1120;
+					map = LoadImage("basemap.png");
+					System.out.println("start");
+					first = false;
+					second = true;
+				}
 			}
 
 			if(mapState == STATE.Field)
@@ -101,7 +91,14 @@ public class GGTop extends OverChar {
 				maxNegX =  -8300;
 				maxY =-14;
 				maxNegY = -4664;
-				
+				if (second)
+				{
+					x = 0;
+					y = 0;
+					map = LoadImage("ruckss2.png");
+					second = false;
+					first = true;
+				}
 			}
 
 			AffineTransform at = AffineTransform.getTranslateInstance(x, y);	// moves the picture around
