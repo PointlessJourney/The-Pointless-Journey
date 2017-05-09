@@ -1,4 +1,9 @@
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public abstract class OverChar
 {
@@ -10,8 +15,11 @@ public abstract class OverChar
 	}
     protected int x, y, velX, velY;  
     protected ID id;
+	public static int playerX=0;//static references to player location allowing all OverChar objects to access this information for rendering and other purposes
+	public static int playerY=0;
 	public abstract void tick();
 	public abstract void render(Graphics g);
+	
     
     
     public void setX(int x)
@@ -52,6 +60,19 @@ public abstract class OverChar
 	public int getVelY()
 	{
 		return velY;
+	}
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+
+		}
+		return img;
 	}
 
 }
