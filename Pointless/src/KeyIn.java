@@ -5,49 +5,57 @@ public class KeyIn extends KeyAdapter {
 	
 	public KeyIn (){	
 	}
+	int speed = (int)(OverChar.playerSpeed/1600.0*MainMenu.width);
+	
+	int back = speed*-1;
+	int down = speed;
+	int up = back;
+	int left = back;
+	int right = speed;
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < Handler.object.size(); i++)
-		{
-			OverChar temp = Handler.object.get(i);	
-			int x = temp.getX();
-			int y = temp.getY();
+		/*if(e.isShiftDown()){//sprint for debug
+			speed = speed*100;
+			 back = speed*-1;
+			 down = speed;
+			 up = back;
+			 left = back;
+			 right = speed;
+		}*/
 			
-			System.out.println("x:"+x+" y: "+y);
 			
-			int speed = 10;
-			int back = speed*-1;
-			int down = back;
-			int up = speed;
-			int left = speed;
-			int right = back;
-			if (temp.getID() == ID.Map)
-			{		//player movement keys
+					//player movement keys
 					
-				if (key == KeyEvent.VK_W)temp.setVelY(up);
-				if (key == KeyEvent.VK_S)temp.setVelY(down);
-				if (key == KeyEvent.VK_A)temp.setVelX(left);		
-				if (key == KeyEvent.VK_D) temp.setVelX(right);	
-			}
-		}		
+				if (key == KeyEvent.VK_W)OverChar.setVelY(up);
+				if (key == KeyEvent.VK_S)OverChar.setVelY(down);
+				if (key == KeyEvent.VK_A)OverChar.setVelX(left);		
+				if (key == KeyEvent.VK_D)OverChar.setVelX(right);
+				if(key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY);
+				
+			//System.out.println(OverChar.playerX);
+				/*if(e.isShiftDown()){
+					speed = (int)(OverChar.playerSpeed/1600.0*MainMenu.width);
+					 back = speed*-1;
+					 down = speed;
+					 up = back;
+					 left = back;
+					 right = speed;
+				}*/
+				
 	}
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		for (int i = 0; i < Handler.object.size(); i++)
-		{
-			OverChar temp = Handler.object.get(i);
+		
+					//player movement keys
+				if (key == KeyEvent.VK_W&&OverChar.getVelY()==up)OverChar.setVelY(0);
+				if (key == KeyEvent.VK_S&&OverChar.getVelY()==down)OverChar.setVelY(0);
+				if (key == KeyEvent.VK_A&&OverChar.getVelX()==left)OverChar.setVelX(0);		
+				if (key == KeyEvent.VK_D&&OverChar.getVelX()==right)OverChar.setVelX(0);	
 			
-			if (temp.getID() == ID.Map)
-			{		//player movement keys
-				if (key == KeyEvent.VK_W)temp.setVelY(0);
-				if (key == KeyEvent.VK_S)temp.setVelY(0);
-				if (key == KeyEvent.VK_A)temp.setVelX(0);		
-				if (key == KeyEvent.VK_D) temp.setVelX(0);	
-			}
-		}				
+						
 	}
 
 }

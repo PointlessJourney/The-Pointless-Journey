@@ -12,11 +12,11 @@ public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
 	boolean second = true;
-	int maxX = 520;
-	int maxNegX =  -4276;
-	int maxY = 156;
-	int maxNegY = -4422;
-	int size = 25;
+	int maxX;
+	int maxNegX;
+	int maxY;
+	int maxNegY;
+	int size;
 	BufferedImage map = LoadImage("basemap.png");
 	
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
@@ -28,63 +28,98 @@ public class GGTop extends OverChar {
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player);
-
+		size = 25;
+		maxX = (int)(-555/1360.0*MainMenu.width);
+		maxNegX =  (int)(3554.0/1360*MainMenu.width);
+		maxY = (int)(-1110.0/1360*MainMenu.width);
+		maxNegY = (int)(2954.0/1360*MainMenu.width);
 	}
 
 	public void tick() {
+		//System.out.println(mapState);
 
-		if(x!=0&&y!=0){
-			x+=Math.sqrt(2)*(velX);// moves the character around
-			y+=Math.sqrt(2)*(velY);
-		}else{
-			x += velX;
-			y += velY;
+		if(id==ID.Player){
+			if(velX!=0&&velY!=0){
+				if(velX>0){
+				OverChar.playerX+=Math.sqrt((velX*velX)/2);// moves the character around
+				}else OverChar.playerX-=Math.sqrt((velX*velX)/2);
+				if(velY>0){	
+				OverChar.playerY+=Math.sqrt((velY*velY)/2);
+				}else OverChar.playerY-=Math.sqrt((velY*velY)/2);
+			}else{
+				OverChar.playerX += velX;
+				OverChar.playerY += velY;
+			}
+			return;
 		}
-		if (x >= maxX) x = maxX;
-		if (x <= maxNegX) x = maxNegX;
-		if (y >= maxY) y = maxY;
-		if (y <= maxNegY) y = maxNegY;
-
 		if (mapState == STATE.Base)
 		{
-			if (x == -4276 && y == -3980 )	// entering the battle field area
+			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
 			{
 				mapState = STATE.Field;
 				
-				if (second)
-				{
-					x = 0;
-					y = 0;
-					map = LoadImage("ruckss2.png");
-					second = false;
-					first = true;
-				}
+				//if (second)
+				//{
+				x = (int)(30.0/1360*MainMenu.width);
+				y = (int)(-871.0/1360*MainMenu.width);
+				map = LoadImage("ruckss2.png");
+				//second = false;
+				//first = true;
+				size = 7;
+				maxX = (int)(-559/1360.0*MainMenu.width);
+				maxNegX =  (int)(7635/1360.0*MainMenu.width);
+				maxY =(int)(-1153/1360.0*MainMenu.width);
+				maxNegY = (int)(3403/1360.0*MainMenu.width);
+				OverChar.playerX=0;
+				OverChar.playerY=0;
+				
+				//}
+
+				
+
 			}
+			if (playerX <= maxX) playerX = maxX;
+			if (playerX >= maxNegX) playerX = maxNegX;
+			if (playerY <= maxY) playerY = maxY;
+			if (playerY >= maxNegY) playerY = maxNegY;
 
 		}
 		else if (mapState == STATE.Field)
 		{
-			if (x <= -8164 && x >= -8300 && y >= -2654 && y <= -2324)	// returning to the main area
+			if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
 			{
 				mapState = STATE.Base;
 				
-				if (first)
-				{
-					x = -112;
-					y = -1120;
+				//if (first)
+				//{
+					x = (int)(30.0/1360*MainMenu.width);
+					y = (int)(-871.0/1360*MainMenu.width);
 					map = LoadImage("basemap.png");
 					System.out.println("start");
-					first = false;
-					second = true;
-				}
+					//first = false;
+					//second = true;
+					size = 25;
+					maxX = (int)(-555/1360.0*MainMenu.width);
+					maxNegX =  (int)(3554.0/1360*MainMenu.width);
+					maxY = (int)(-1110.0/1360*MainMenu.width);
+					maxNegY = (int)(2954.0/1360*MainMenu.width);
+					OverChar.playerX=0;
+					OverChar.playerY=0;
+					
+				//}
+
+				
+
 			}
+			if (playerX <= maxX) playerX = maxX;
+			if (playerX >= maxNegX) playerX = maxNegX;
+			if (playerY <= maxY) playerY = maxY;
+			if (playerY >= maxNegY) playerY = maxNegY;
 
 
 		}
-		playerX=x;//updating the static references to player location. these should never be changed anywhere else
-		playerY=y;
 
-
+		//System.out.println(velX + "   " + velY);
 
 
 	}
@@ -93,30 +128,13 @@ public class GGTop extends OverChar {
 
 		if(id == ID.Map)		//creates the map
 		{
-			if(mapState == STATE.Base)
-			{
-				size = 25;
-				maxX = 520;
-				maxNegX =  -4276;
-				maxY = 156;
-				maxNegY = -4422;
-				x = (int)(-112.0/1280.0*MainMenu.width)+MainMenu.offsetx;
-				y = (int)(-1120.0/1280.0*MainMenu.width)+MainMenu.offsety;
-				first = false;
-			}
+			
 
-			if(mapState == STATE.Field)
-			{
-				size = 7;
-				maxX = -34;
-				maxNegX =  -8300;
-				maxY =-14;
-				maxNegY = -4664;
-				
-			}
-
-			AffineTransform at = AffineTransform.getTranslateInstance(x, y);	// moves the picture around
-			at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
+			
+			
+			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
+			at.scale(size/1600.0*MainMenu.width,size/1600.0*MainMenu.width);
+			
 			//at.scale(25, 25);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);		// draws it
@@ -133,8 +151,9 @@ public class GGTop extends OverChar {
 			
 
 			BufferedImage map = LoadImage("GGtop.png");
-			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()), MainMenu.height/2-map.getHeight());
-			tat.scale(2.0/1280.0*MainMenu.width, 2.0/1280.0*MainMenu.width);
+			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
+			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()+MainMenu.offsetx), MainMenu.height/2-map.getHeight()+MainMenu.offsety);
+			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
 			double angle = Math.atan2(MainMenu.height/2.0 - mouseY, MainMenu.width/2.0 - mouseX) - Math.PI/2;
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
