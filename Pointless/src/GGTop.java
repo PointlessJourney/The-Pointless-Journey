@@ -99,7 +99,7 @@ public class GGTop extends OverChar {
 		}
 		else if (mapState == STATE.Field)
 		{
-			if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
+			if (x <= 8164/1360.0*MainMenu.width && x >= 8300/1360.0*MainMenu.width && y >= 2654/1360.0*MainMenu.width && y <= 2324/1360.0*MainMenu.width)	// returning to the main area
 			{
 //****************************************************************************
 
