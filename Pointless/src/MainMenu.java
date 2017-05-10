@@ -98,10 +98,10 @@ public class MainMenu extends JFrame {
 	JButton button_1 = new JButton("");
 	JLabel label_2 = new JLabel("New label");
 	JLabel lblMessage = new JLabel("");
-	protected static int width;
-	protected static int height;//these three are used for resizing
-	protected static int offsetx = 0;
-	protected static int offsety = 0;
+	int width;
+	int height;//these three are used for resizing
+	int offsetx = 0;
+	int offsety = 0;
 	
 	public MainMenu() {
 		Song();
@@ -436,6 +436,14 @@ public class MainMenu extends JFrame {
 		contentPane.add(over);
 		
 
-		
+		btnNewGame.addActionListener (new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+			 OverworldEngine.go();
+				
+			}
+			
+			
+		});
 	}
 }

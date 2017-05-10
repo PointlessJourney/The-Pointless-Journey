@@ -1,34 +1,31 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Handler {
 
-	static LinkedList<OverChar> object = new LinkedList<OverChar>();
+	LinkedList<OverChar> object = new LinkedList<OverChar>();
 	
-	public static void tick()
+	public void tick()
 	{
-		for(int z = object.size()-1; z > -1; z--)
+		for(int z = 0; z < object.size(); z++)
 		{
 			OverChar temp = object.get(z);	
 			temp.tick();
 		}
 	}
-	public static void render(Graphics g)
+	public void render(Graphics g)
 	{
-		g.setColor(new Color(0x05040b));
-		g.fillRect(-100,-100,MainMenu.width*2,MainMenu.width*2);
-		for(int z = object.size()-1; z > -1; z--)
+		for(int z = 0; z < object.size(); z++)
 		{
 			object.get(z).render(g);
 		}
 	}
-	public static void addObject(OverChar object)
+	public void addObject(OverChar object)
 	{
-		Handler.object.add(object);
+		this.object.add(object);
 	}
 	public void removeObject(OverChar object)
 	{
-		Handler.object.remove(object);
+		this.object.remove(object);
 	}
 }
