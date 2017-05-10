@@ -9,18 +9,20 @@ public class OverworldEngine extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4112613234084496632L;
+	public static final int width = 1280, height = 720;
 	public Thread thread;
 	private boolean running = false;
+	private Handler handler;
 
 	public OverworldEngine()
 	{
-		
-		
-		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Map));
-		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
-		
-		this.addKeyListener(new KeyIn());
+		handler = new Handler();
+		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Map));
+		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player));
 
+		this.addKeyListener(new KeyIn(handler));
+
+		new FrameSetup (width, height, "Pointless Journey", this);
 	}
 
  	public synchronized void start()
@@ -28,7 +30,6 @@ public class OverworldEngine extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
-		this.requestFocus();
 
 	}
 
@@ -79,7 +80,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 	
 	private void tick()
 	{
-		Handler.tick();
+		handler.tick();
 	}
 	
 	private void render()
@@ -93,15 +94,15 @@ public class OverworldEngine extends Canvas implements Runnable {
 		
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(Color.black);
-		g.fillRect(0, 0, MainMenu.width, MainMenu.height);
+		g.fillRect(0, 0, width, height);
 		
-		Handler.render(g);
+		handler.render(g);
 		g.dispose();
 		bs.show();
 	}
 	
-	//public static void go ()
-	//{
-	//	new OverworldEngine ();
-	//}
+	public static void go ()
+	{
+		new OverworldEngine ();
+	}
 }
