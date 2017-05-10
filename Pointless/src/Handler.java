@@ -3,29 +3,29 @@ import java.util.LinkedList;
 
 public class Handler {
 
-	static LinkedList<OverChar> object = new LinkedList<OverChar>();
+	LinkedList<OverChar> object = new LinkedList<OverChar>();
 	
-	public static void tick()
+	public void tick()
 	{
 		for(int z = 0; z < object.size(); z++)
 		{
-
-			object.get(z).tick();
+			OverChar temp = object.get(z);	
+			temp.tick();
 		}
 	}
-	public static void render(Graphics g)
+	public void render(Graphics g)
 	{
 		for(int z = 0; z < object.size(); z++)
 		{
 			object.get(z).render(g);
 		}
 	}
-	public static void addObject(OverChar object)
+	public void addObject(OverChar object)
 	{
-		Handler.object.add(object);
+		this.object.add(object);
 	}
-	public static void removeObject(OverChar object)
+	public void removeObject(OverChar object)
 	{
-		Handler.object.remove(object);
+		this.object.remove(object);
 	}
 }
