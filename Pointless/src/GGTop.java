@@ -107,8 +107,8 @@ public class GGTop extends OverChar {
 			{
 				if (second)
 				{
-					x = 0;
-					y = 0;
+					x = -34;
+					y = -494;
 					map = LoadImage("ruckss2.png");
 					second = false;
 					first = true;
