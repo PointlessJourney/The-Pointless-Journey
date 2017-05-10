@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class Handler {
 
-	LinkedList<OverChar> object = new LinkedList<OverChar>();
+	static LinkedList<OverChar> object = new LinkedList<OverChar>();
 	
-	public void tick()
+	public static void tick()
 	{
 		for(int z = object.size()-1; z > -1; z--)
 		{
@@ -14,7 +14,7 @@ public class Handler {
 			temp.tick();
 		}
 	}
-	public void render(Graphics g)
+	public static void render(Graphics g)
 	{
 		g.setColor(new Color(0x05040b));
 		g.fillRect(-100,-100,MainMenu.width*2,MainMenu.width*2);
@@ -23,12 +23,12 @@ public class Handler {
 			object.get(z).render(g);
 		}
 	}
-	public void addObject(OverChar object)
+	public static void addObject(OverChar object)
 	{
-		this.object.add(object);
+		Handler.object.add(object);
 	}
 	public void removeObject(OverChar object)
 	{
-		this.object.remove(object);
+		Handler.object.remove(object);
 	}
 }
