@@ -9,18 +9,17 @@ public class OverworldEngine extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4112613234084496632L;
-	public static final int width = 1280, height = 720;
 	public Thread thread;
 	private boolean running = false;
 	private Handler handler;
 
 	public OverworldEngine()
 	{
-		handler = new Handler();
-		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Map));
-		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player));
-
-		this.addKeyListener(new KeyIn(handler));
+		
+		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
+		Handler.addObject(new GGTop((int)(30.0/1360*MainMenu.width),(int)(-871.0/1360*MainMenu.width),ID.Map));
+		
+		this.addKeyListener(new KeyIn());
 
 	}
 
@@ -93,8 +92,8 @@ public class OverworldEngine extends Canvas implements Runnable {
 		}
 		
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.black);
-		g.fillRect(0, 0, width, height);
+		g.setColor(new Color( 0x05040b));
+		g.fillRect(-100, -100, MainMenu.width, MainMenu.height);
 		
 		handler.render(g);
 		g.dispose();
