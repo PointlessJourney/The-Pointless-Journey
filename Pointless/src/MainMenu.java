@@ -36,7 +36,7 @@ public class MainMenu extends JFrame {
 	private JPanel contentPane;
 	public Clip clip;
 	public static MainMenu frame;
-	public OverworldEngine over;
+	public OverworldEngine over=new OverworldEngine();
 
 	/**
 	 * Launch the application.
@@ -44,9 +44,11 @@ public class MainMenu extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
 					frame = new MainMenu();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -96,10 +98,10 @@ public class MainMenu extends JFrame {
 	JButton button_1 = new JButton("");
 	JLabel label_2 = new JLabel("New label");
 	JLabel lblMessage = new JLabel("");
-	public static int width;
-	public static int height;//these three are used for resizing
-	public static int offsetx = 0;
-	public static int offsety = 0;
+	int width;
+	int height;//these three are used for resizing
+	int offsetx = 0;
+	int offsety = 0;
 	
 	public MainMenu() {
 		Song();
@@ -430,9 +432,17 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
-		over = new OverworldEngine();
 		contentPane.add(over);
 		
+
+		btnNewGame.addActionListener (new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+			 OverworldEngine.go();
+				
+			}
+			
+			
+		});
 	}
-	
 }

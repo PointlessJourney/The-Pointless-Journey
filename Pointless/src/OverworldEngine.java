@@ -31,8 +31,10 @@ public class OverworldEngine extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4112613234084496632L;
+	public static final int width = 1280, height = 720;
 	public Thread thread;
 	private boolean running = false;
+	private Handler handler;
 
 	public OverworldEngine()
 	{
@@ -70,7 +72,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 
 	public void run()
 	{
-
+		
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -101,7 +103,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 	
 	private void tick()
 	{
-		Handler.tick();
+		handler.tick();
 	}
 	
 	private void render()
@@ -115,9 +117,9 @@ public class OverworldEngine extends Canvas implements Runnable {
 		
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(Color.black);
-		g.fillRect(0, 0, MainMenu.width, MainMenu.height);
+		g.fillRect(0, 0, width, height);
 		
-		Handler.render(g);
+		handler.render(g);
 		g.dispose();
 		bs.show();
 	}

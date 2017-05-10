@@ -19,11 +19,17 @@ public class GGTop extends OverChar {
 	int size;
 	BufferedImage map = LoadImage("basemap.png");
 	
+	
+//****************************************************************************
+
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base
 	};
-
+	
+//******************************************************************************
+	
+	
 	public STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
@@ -36,6 +42,7 @@ public class GGTop extends OverChar {
 	}
 
 	public void tick() {
+
 		//System.out.println(mapState);
 
 		if(id==ID.Player){
@@ -55,7 +62,10 @@ public class GGTop extends OverChar {
 		if (mapState == STATE.Base)
 		{
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
+
 			{
+//*****************************************************************************
+
 				mapState = STATE.Field;
 				
 				//if (second)
@@ -77,6 +87,9 @@ public class GGTop extends OverChar {
 
 				
 
+//****************************************************************************
+				
+				
 			}
 			if (playerX <= maxX) playerX = maxX;
 			if (playerX >= maxNegX) playerX = maxNegX;
@@ -88,6 +101,8 @@ public class GGTop extends OverChar {
 		{
 			if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
 			{
+//****************************************************************************
+
 				mapState = STATE.Base;
 				
 				//if (first)
@@ -116,8 +131,8 @@ public class GGTop extends OverChar {
 			if (playerY <= maxY) playerY = maxY;
 			if (playerY >= maxNegY) playerY = maxNegY;
 
-
 		}
+    
 
 		//System.out.println(velX + "   " + velY);
 
@@ -136,6 +151,7 @@ public class GGTop extends OverChar {
 			at.scale(size/1600.0*MainMenu.width,size/1600.0*MainMenu.width);
 			
 			//at.scale(25, 25);
+
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);		// draws it
 
@@ -143,12 +159,9 @@ public class GGTop extends OverChar {
 
 		else if (id == ID.Player) // creates the player
 		{
-			
-			int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
 			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-			//int shift = 20;
 
-			
 
 			BufferedImage map = LoadImage("GGtop.png");
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
@@ -163,6 +176,5 @@ public class GGTop extends OverChar {
 
 
 	}
-	
 
 }

@@ -34,7 +34,6 @@ public abstract class OverChar
 		
 		
 	}
-	
     
     
     public void setX(int x)
@@ -92,7 +91,6 @@ public abstract class OverChar
 		}
 		return img;
 	}
-	
 	
 
 }

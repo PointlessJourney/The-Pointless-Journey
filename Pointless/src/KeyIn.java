@@ -15,14 +15,7 @@ public class KeyIn extends KeyAdapter {
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
-		/*if(e.isShiftDown()){//sprint for debug
-			speed = speed*100;
-			 back = speed*-1;
-			 down = speed;
-			 up = back;
-			 left = back;
-			 right = speed;
-		}*/
+
 			
 			
 					//player movement keys
@@ -47,13 +40,11 @@ public class KeyIn extends KeyAdapter {
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
-		
-		
-					//player movement keys
 				if (key == KeyEvent.VK_W&&OverChar.getVelY()==up)OverChar.setVelY(0);
 				if (key == KeyEvent.VK_S&&OverChar.getVelY()==down)OverChar.setVelY(0);
 				if (key == KeyEvent.VK_A&&OverChar.getVelX()==left)OverChar.setVelX(0);		
 				if (key == KeyEvent.VK_D&&OverChar.getVelX()==right)OverChar.setVelX(0);	
+
 			
 						
 	}
