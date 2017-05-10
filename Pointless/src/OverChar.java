@@ -1,4 +1,11 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public abstract class OverChar
 {
@@ -8,10 +15,25 @@ public abstract class OverChar
 		this.y = y;
 		this.id = id;
 	}
-    protected int x, y, velX, velY;  
+    protected int x, y;
+    protected static int velX, velY; 
+    protected static double playerSpeed=10.0;
     protected ID id;
+	public static int playerX=0;//static references to player location allowing all OverChar objects to access this information for rendering and other purposes
+	public static int playerY=0;
+	private int size;
+	private BufferedImage map;
 	public abstract void tick();
-	public abstract void render(Graphics g);
+	public void render(Graphics g) {
+		AffineTransform at = AffineTransform.getTranslateInstance(x - playerX, y-playerY);
+		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
+		Graphics2D g2d = (Graphics2D) g;
+		try{
+			g2d.drawImage(map, at, null);	
+		}catch(Exception e){}
+		
+		
+	}
     
     
     public void setX(int x)
@@ -37,21 +59,38 @@ public abstract class OverChar
 	{
 		return id;
 	}
-	public void setVelX(int velX)
+	public static void setVelX(int velX)
 	{
-		this.velX = velX;
+		OverChar.velX = velX;
 	}
-	public int getVelX()
+	public static int getVelX()
 	{
 		return velX;
 	}
-	public void setVelY(int velY)
+	public static void setVelY(int velY)
 	{
-		this.velY = velY;
+		OverChar.velY = velY;
 	}
-	public int getVelY()
+	public static int getVelY()
 	{
 		return velY;
 	}
+	public static void setPlayerSpeed(double playerSpeed){
+		OverChar.playerSpeed=playerSpeed;
+	}
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+
+		}
+		return img;
+	}
+	
 
 }
