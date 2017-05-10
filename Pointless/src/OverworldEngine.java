@@ -1,3 +1,25 @@
+/*
+*
+*												READ THIS
+*
+*						you will see a lot of this scattered around the code:
+*						(int)(100.0/1360.0*MainMenu.width)
+*						this is used for resizing purposes
+*						here's a breakdown:
+*						
+*						(int)
+*						this casts the entire equation as an int, it's not always necessary but is important since the
+*						equation returns a double
+*
+*						100.0/1360.0
+*						this returns a percentage, the first number is the one you change around to move stuff
+*						the second number is Your screen width, which will print out every time you start the program
+*					
+*						MainMenu.width
+*						this multiplies the percentage by the width of whatever machine you're running it on, this
+*						will resize everything according to the resolution used
+*
+*/
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,15 +34,15 @@ public class OverworldEngine extends Canvas implements Runnable {
 	public static final int width = 1280, height = 720;
 	public Thread thread;
 	private boolean running = false;
-	private Handler handler;
 
 	public OverworldEngine()
 	{
-		handler = new Handler();
-		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Map));
-		handler.addObject(new GGTop(width/2-64,height/2-64,ID.Player));
-
-		this.addKeyListener(new KeyIn(handler));
+		
+		
+		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
+		Handler.addObject(new GGTop((int)(30.0/1360*MainMenu.width),(int)(-871.0/1360*MainMenu.width),ID.Map));
+		
+		this.addKeyListener(new KeyIn());
 
 	}
 
@@ -80,7 +102,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 	
 	private void tick()
 	{
-		handler.tick();
+		Handler.tick();
 	}
 	
 	private void render()
@@ -96,7 +118,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, width, height);
 		
-		handler.render(g);
+		Handler.render(g);
 		g.dispose();
 		bs.show();
 	}
