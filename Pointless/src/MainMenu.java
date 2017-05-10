@@ -35,8 +35,7 @@ public class MainMenu extends JFrame {
 	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
-	public static MainMenu frame;
-	public OverworldEngine over;
+	static MainMenu frame;
 
 	/**
 	 * Launch the application.
@@ -96,10 +95,10 @@ public class MainMenu extends JFrame {
 	JButton button_1 = new JButton("");
 	JLabel label_2 = new JLabel("New label");
 	JLabel lblMessage = new JLabel("");
-	public static int width;
-	public static int height;//these three are used for resizing
-	public static int offsetx = 0;
-	public static int offsety = 0;
+	int width;
+	int height;//these three are used for resizing
+	int offsetx = 0;
+	int offsety = 0;
 	
 	public MainMenu() {
 		Song();
@@ -229,9 +228,7 @@ public class MainMenu extends JFrame {
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				over.setVisible(true);
-				over.start();
-				panel.setVisible(false);
+				//new game action listener
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -430,9 +427,14 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
-		over = new OverworldEngine();
-		contentPane.add(over);
 		
+		btnNewGame.addActionListener (new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+				OverworldEngine.go();
+			}
+			
+			
+		});
 	}
-	
 }
