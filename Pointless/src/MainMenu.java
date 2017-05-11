@@ -109,7 +109,7 @@ public class MainMenu extends JFrame {
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		if((double)(screenSize.getWidth()/screenSize.getHeight())<=(double)(16/9)){
+		if(screenSize.getWidth()/16.0<=screenSize.getHeight()/9.0){
 			width = (int)(screenSize.getWidth()/16.0)*16;
 			height = width/16*9;
 			offsetx = (int)((screenSize.getWidth()-width)/2);
