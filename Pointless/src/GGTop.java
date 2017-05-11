@@ -172,6 +172,7 @@ public class GGTop extends OverChar {
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);	
+			
 
 		}
 
