@@ -166,12 +166,12 @@ public class GGTop extends OverChar {
 
 			BufferedImage map = LoadImage("GGtop.png");
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
-			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()+MainMenu.offsetx), MainMenu.height/2-map.getHeight()+MainMenu.offsety);
+			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
-			double angle = Math.atan2(MainMenu.height/2.0 - mouseY, MainMenu.width/2.0 - mouseX) - Math.PI/2;
+			double angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
-			g2d.drawImage(map, tat, null);	
+			g2d.drawImage(map, tat, null);
 
 		}
 
