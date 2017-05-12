@@ -17,8 +17,10 @@ public class GGTop extends OverChar {
 	int maxNegX;
 	int maxY;
 	int maxNegY;
-	int size;
-	BufferedImage map = LoadImage("basemap.png");
+	int delay=0;
+	int ranX;//for random enemy x
+	int ranY;//for random enemy y
+	
 	
 	
 //****************************************************************************
@@ -34,8 +36,7 @@ public class GGTop extends OverChar {
 	public STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
-		super(x, y, player);
-		size = 25;
+		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
 		maxX = (int)(-555/1360.0*MainMenu.width);
 		maxNegX =  (int)(3554.0/1360*MainMenu.width);
 		maxY = (int)(-1110.0/1360*MainMenu.width);
@@ -62,6 +63,8 @@ public class GGTop extends OverChar {
 		}
 		if (mapState == STATE.Base)
 		{
+			
+			
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
@@ -76,7 +79,7 @@ public class GGTop extends OverChar {
 				map = LoadImage("ruckss2.png");
 				//second = false;
 				//first = true;
-				size = 7;
+				size = 7/1600.0*MainMenu.width;
 				maxX = (int)(-559/1360.0*MainMenu.width);
 				maxNegX =  (int)(7635/1360.0*MainMenu.width);
 				maxY =(int)(-1153/1360.0*MainMenu.width);
@@ -100,6 +103,21 @@ public class GGTop extends OverChar {
 		}
 		else if (mapState == STATE.Field)
 		{
+			for (int w = 0; w > 10; w++)
+			{
+			if(delay==0){
+				delay = (int)(Math.random()*1200);
+				//96x96
+				ranX = (int) (Math.random() * MainMenu.width -96);
+				ranY = (int) (Math.random() * MainMenu.height -96);
+				//Spawner(ranX,ranY,Enemy, map, null);
+				
+				
+			}
+			if (delay >0)delay--;
+			}
+			
+			
 			if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
 			{
 //****************************************************************************
@@ -114,7 +132,7 @@ public class GGTop extends OverChar {
 					System.out.println("start");
 					//first = false;
 					//second = true;
-					size = 25;
+					size = 25/1600.0*MainMenu.width;
 					maxX = (int)(-555/1360.0*MainMenu.width);
 					maxNegX =  (int)(3554.0/1360*MainMenu.width);
 					maxY = (int)(-1110.0/1360*MainMenu.width);
@@ -149,7 +167,7 @@ public class GGTop extends OverChar {
 			
 			
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
-			at.scale(size/1600.0*MainMenu.width,size/1600.0*MainMenu.width);
+			at.scale(size,size);
 			
 			//at.scale(25, 25);
 
