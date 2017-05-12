@@ -4,8 +4,12 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import com.pointless.journey.framework.GameObject;
+import com.pointless.journey.framework.KeyInput;
+import com.pointless.journey.framework.ObjectId;
+import com.pointless.journey.objects.Player;
 
 public class Game extends Canvas implements Runnable{
 
@@ -16,8 +20,30 @@ public class Game extends Canvas implements Runnable{
 
 	private boolean running = false;
 	private Thread thread; //instantiate new Thread
+	
+	public static int WIDTH, HEIGHT;
+	
+	Random rand = new Random();//object of type Random, use to get Random Numbers
 
 	GameObject object;
+	
+	//Object
+	Handler handler;
+	
+	//initializer
+	private void init(){
+		//ended here, created the base platform layer, Follow player gravity
+		WIDTH = getWidth();
+		HEIGHT = getHeight();
+		handler = new Handler();
+		
+		handler.addObject(new Player(100, 600, handler, ObjectId.Player));
+		
+		handler.createLevel();
+		
+		this.addKeyListener(new KeyInput(handler));
+		
+	}
 	
 	public Game(){
 		
@@ -37,6 +63,8 @@ public class Game extends Canvas implements Runnable{
 
 	public void run(){
 
+		init();
+		this.requestFocus();
 		System.out.println("Thread has begun");
 
 		long lastTime = System.nanoTime();
@@ -76,6 +104,8 @@ public class Game extends Canvas implements Runnable{
 	
 	public void tick(){
 		
+		handler.tick();//this will tick all the objects
+		
 	}
 	
 	public void render(){
@@ -95,6 +125,7 @@ public class Game extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
+		handler.render(g);//render all objects
 		
 		//////////////////////////////////
 		g.dispose();
