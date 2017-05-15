@@ -110,7 +110,7 @@ public class GGTop extends OverChar {
 				//96x96
 				ranX = (int) (Math.random() * MainMenu.width -96);
 				ranY = (int) (Math.random() * MainMenu.height -96);
-				//Spawner(ranX,ranY,Enemy, map, null);
+				RandomSpawner(ranX,ranY,RandomEnemy,LoadImage("basemap.png") , null);
 				
 				
 			}
