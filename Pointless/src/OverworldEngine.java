@@ -25,7 +25,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-
 public class OverworldEngine extends Canvas implements Runnable {
 
 	/**
@@ -42,11 +41,9 @@ public class OverworldEngine extends Canvas implements Runnable {
 		
 		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
 		Handler.addObject(new GGTop((int)(30.0/1360*MainMenu.width),(int)(-871.0/1360*MainMenu.width),ID.Map));
-		addMouseListener(new Board.Mouse());
+		
 		this.addKeyListener(new KeyIn());
-
-		Board.init();
-
+		
 
 	}
 
