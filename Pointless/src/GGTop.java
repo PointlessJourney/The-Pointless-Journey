@@ -58,6 +58,10 @@ public class GGTop extends OverChar {
 			}else{
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
+				if (playerX <= maxX) playerX = maxX;
+				if (playerX >= maxNegX) playerX = maxNegX;
+				if (playerY <= maxY) playerY = maxY;
+				if (playerY >= maxNegY) playerY = maxNegY;
 			}
 			return;
 		}
@@ -95,10 +99,7 @@ public class GGTop extends OverChar {
 				
 				
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+			
 
 		}
 		else if (mapState == STATE.Field)
@@ -145,10 +146,6 @@ public class GGTop extends OverChar {
 				
 
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
 
 		}
     
