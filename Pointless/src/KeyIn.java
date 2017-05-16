@@ -20,7 +20,7 @@ public class KeyIn extends KeyAdapter {
 			
 			
 					//player movement keys
-					
+
 				if (key == KeyEvent.VK_W)OverChar.setVelY(up);
 				if (key == KeyEvent.VK_S)OverChar.setVelY(down);
 				if (key == KeyEvent.VK_A)OverChar.setVelX(left);		

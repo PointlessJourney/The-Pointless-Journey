@@ -13,6 +13,7 @@ public class Handler {
 			OverChar temp = object.get(z);	
 			temp.tick();
 		}
+		Board.play();
 	}
 	public static void render(Graphics g)
 	{
@@ -24,6 +25,8 @@ public class Handler {
 			object.get(z).render(g);
 		}
 		object.get(0).render(g);
+		Board.paint(g);
+
 	}
 	public static void addObject(OverChar object)
 	{
