@@ -159,10 +159,10 @@ public class GGTop extends OverChar {
 
 		if(id == ID.Map)		//creates the map
 		{
-			
 
-			
-			
+//*************************************************************
+
+				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
 			at.scale(size,size);
 			
@@ -188,6 +188,7 @@ public class GGTop extends OverChar {
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
+
 
 		}
 
