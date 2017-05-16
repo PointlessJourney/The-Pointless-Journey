@@ -72,8 +72,8 @@ public class Board{
       for (int i = 0; i < tmpBs.size(); i++) {
          Bullet tmpB = (Bullet) tmpBs.get(i);
          tmpB.moveForward();
-      if (tmpB.getX() > MainMenu.width || tmpB.getX() < 0
-               || tmpB.getY() > MainMenu.height || tmpB.getY() < 0) {
+      if (tmpB.getX()-OverChar.playerX > MainMenu.width || tmpB.getX()-OverChar.playerX < 0
+               || tmpB.getY()-OverChar.playerY > MainMenu.height || tmpB.getY()-OverChar.playerY < 0) {
             tmpBs.remove(i);
          }
 
