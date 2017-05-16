@@ -59,7 +59,6 @@ public class GGTop extends OverChar {
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
 			}
-
 			if (playerX <= maxX) playerX = maxX;
 			if (playerX >= maxNegX) playerX = maxNegX;
 			if (playerY <= maxY) playerY = maxY;
