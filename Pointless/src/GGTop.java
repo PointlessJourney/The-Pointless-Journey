@@ -58,6 +58,10 @@ public class GGTop extends OverChar {
 			}else{
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
+				if (playerX <= maxX) playerX = maxX;
+				if (playerX >= maxNegX) playerX = maxNegX;
+				if (playerY <= maxY) playerY = maxY;
+				if (playerY >= maxNegY) playerY = maxNegY;
 			}
 			return;
 		}
@@ -95,10 +99,7 @@ public class GGTop extends OverChar {
 				
 				
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+			
 
 		}
 		else if (mapState == STATE.Field)
@@ -145,10 +146,6 @@ public class GGTop extends OverChar {
 				
 
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
 
 		}
     
@@ -162,10 +159,10 @@ public class GGTop extends OverChar {
 
 		if(id == ID.Map)		//creates the map
 		{
-			
 
-			
-			
+//*************************************************************
+
+				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
 			at.scale(size,size);
 			
@@ -187,9 +184,11 @@ public class GGTop extends OverChar {
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
 			double angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
+
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
+
 
 		}
 
