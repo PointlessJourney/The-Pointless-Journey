@@ -26,7 +26,6 @@ public class Handler {
 		}
 		object.get(0).render(g);
 		Board.paint(g);
-
 	}
 	public static void addObject(OverChar object)
 	{

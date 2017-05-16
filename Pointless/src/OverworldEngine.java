@@ -46,6 +46,9 @@ public class OverworldEngine extends Canvas implements Runnable {
 		this.addKeyListener(new KeyIn());
 		Board.init();
 
+		Board.init();
+
+
 	}
 
  	public synchronized void start()
