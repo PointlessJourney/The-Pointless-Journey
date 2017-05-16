@@ -20,19 +20,20 @@ public class GGTop extends OverChar {
 	int delay=0;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
-	
-	
-	
-//****************************************************************************
+
+
+
+
+	//****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base
 	};
-	
-//******************************************************************************
-	
-	
+
+	//******************************************************************************
+
+
 	public STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
@@ -50,10 +51,10 @@ public class GGTop extends OverChar {
 		if(id==ID.Player){
 			if(velX!=0&&velY!=0){
 				if(velX>0){
-				OverChar.playerX+=Math.sqrt((velX*velX)/2);// moves the character around
+					OverChar.playerX+=Math.sqrt((velX*velX)/2);// moves the character around
 				}else OverChar.playerX-=Math.sqrt((velX*velX)/2);
 				if(velY>0){	
-				OverChar.playerY+=Math.sqrt((velY*velY)/2);
+					OverChar.playerY+=Math.sqrt((velY*velY)/2);
 				}else OverChar.playerY-=Math.sqrt((velY*velY)/2);
 			}else{
 				OverChar.playerX += velX;
@@ -63,15 +64,15 @@ public class GGTop extends OverChar {
 		}
 		if (mapState == STATE.Base)
 		{
-			
-			
+
+
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
-//*****************************************************************************
+				//*****************************************************************************
 
 				mapState = STATE.Field;
-				
+
 				//if (second)
 				//{
 				x = (int)(30.0/1360*MainMenu.width);
@@ -86,14 +87,14 @@ public class GGTop extends OverChar {
 				maxNegY = (int)(3403/1360.0*MainMenu.width);
 				OverChar.playerX=0;
 				OverChar.playerY=0;
-				
+
 				//}
 
-				
 
-//****************************************************************************
-				
-				
+
+				//****************************************************************************
+
+
 			}
 			if (playerX <= maxX) playerX = maxX;
 			if (playerX >= maxNegX) playerX = maxNegX;
@@ -102,73 +103,84 @@ public class GGTop extends OverChar {
 
 		}
 		else if (mapState == STATE.Field)
-		{
-			for (int w = 0; w > 10; w++)
+		{		
+			System.out.println("delay" + delay);
+			//
+			if(delay==0)
 			{
-			if(delay==0){
-				delay = (int)(Math.random()*1200);
+				
+				delay = (int)(Math.random() * 1200.0);
 				//96x96
+				for (int w = 0; w > 10; w++)
+				{
 				ranX = (int) (Math.random() * MainMenu.width -96);
 				ranY = (int) (Math.random() * MainMenu.height -96);
-				RandomSpawner(ranX,ranY,RandomEnemy,LoadImage("basemap.png") , null);
-				
-				
+				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
+				System.out.println("Spawned" + ranX + ranY);
+				}
+
 			}
-			if (delay >0)delay--;
-			}
-			
-			
-			if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
+			else
 			{
-//****************************************************************************
-
-				mapState = STATE.Base;
-				
-				//if (first)
-				//{
-					x = (int)(30.0/1360*MainMenu.width);
-					y = (int)(-871.0/1360*MainMenu.width);
-					map = LoadImage("basemap.png");
-					System.out.println("start");
-					//first = false;
-					//second = true;
-					size = 25/1600.0*MainMenu.width;
-					maxX = (int)(-555/1360.0*MainMenu.width);
-					maxNegX =  (int)(3554.0/1360*MainMenu.width);
-					maxY = (int)(-1110.0/1360*MainMenu.width);
-					maxNegY = (int)(2954.0/1360*MainMenu.width);
-					OverChar.playerX=0;
-					OverChar.playerY=0;
-					
-				//}
-
-				
-
+				delay--;
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+		}
+
+
+		if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
+		{
+			//****************************************************************************
+
+			mapState = STATE.Base;
+
+			//if (first)
+			//{
+			x = (int)(30.0/1360*MainMenu.width);
+			y = (int)(-871.0/1360*MainMenu.width);
+			map = LoadImage("basemap.png");
+			System.out.println("start");
+			//first = false;
+			//second = true;
+			size = 25/1600.0*MainMenu.width;
+			maxX = (int)(-555/1360.0*MainMenu.width);
+			maxNegX =  (int)(3554.0/1360*MainMenu.width);
+			maxY = (int)(-1110.0/1360*MainMenu.width);
+			maxNegY = (int)(2954.0/1360*MainMenu.width);
+			OverChar.playerX=0;
+			OverChar.playerY=0;
+
+			//}
+
+
 
 		}
-    
-
-		//System.out.println(velX + "   " + velY);
-
+		if (playerX <= maxX) playerX = maxX;
+		if (playerX >= maxNegX) playerX = maxNegX;
+		if (playerY <= maxY) playerY = maxY;
+		if (playerY >= maxNegY) playerY = maxNegY;
 
 	}
+
+
+	//System.out.println(velX + "   " + velY);
+
+
+
+
+
+
 
 	public void render(Graphics g) {	// enter character picture and information here
 
 		if(id == ID.Map)		//creates the map
 		{
-			
 
-			
-			
+
+
+
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
 			at.scale(size,size);
-			
+
 			//at.scale(25, 25);
 
 			Graphics2D g2d = (Graphics2D) g;
