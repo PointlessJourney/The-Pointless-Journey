@@ -26,10 +26,6 @@ public class Handler {
 		}
 		object.get(0).render(g);
 		Board.paint(g);
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/Josh
 	}
 	public static void addObject(OverChar object)
 	{

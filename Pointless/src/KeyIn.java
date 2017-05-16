@@ -21,19 +21,12 @@ public class KeyIn extends KeyAdapter {
 			
 					//player movement keys
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/Josh
 			if (key == KeyEvent.VK_W)OverChar.setVelY(up);
 			if (key == KeyEvent.VK_S)OverChar.setVelY(down);
 			if (key == KeyEvent.VK_A)OverChar.setVelX(left);		
 			if (key == KeyEvent.VK_D)OverChar.setVelX(right);
 			if(key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  mx:"+MouseInfo.getPointerInfo().getLocation().x+"  my:"+MouseInfo.getPointerInfo().getLocation().y);
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/Josh
 				
 
 			//System.out.println(OverChar.playerX);
