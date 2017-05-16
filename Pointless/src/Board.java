@@ -59,8 +59,8 @@ public class Board{
          } else {
             g2d.setColor(Color.MAGENTA);
          } 
-         g2d.fillRect( (int) tmpB.getX()-15 , (int) tmpB.getY(), 5,
-               5);
+         g2d.fillRect( (int) (tmpB.getX()-(5.0/1360.0*MainMenu.width)-OverChar.playerX), (int) (tmpB.getY()-(5.0/1360.0*MainMenu.width)-OverChar.playerY), (int)(5.0/1360.0*MainMenu.width),
+        		 (int)(5.0/1360.0*MainMenu.width));
       }
 
    }
@@ -72,8 +72,8 @@ public class Board{
       for (int i = 0; i < tmpBs.size(); i++) {
          Bullet tmpB = (Bullet) tmpBs.get(i);
          tmpB.moveForward();
-      if (tmpB.getX() > 1200 || tmpB.getX() < 0
-               || tmpB.getY() > 720 || tmpB.getY() < 0) {
+      if (tmpB.getX() > MainMenu.width || tmpB.getX() < 0
+               || tmpB.getY() > MainMenu.height || tmpB.getY() < 0) {
             tmpBs.remove(i);
          }
 
@@ -87,18 +87,19 @@ public class Board{
 
              for (int i = 0; i < numToShoot; i++) {
                 // setting the bullet
-                Board.bullet.setX(MainMenu.width/2+MainMenu.offsetx);
-                Board.bullet.setY(MainMenu.height/2+MainMenu.offsety);
-                int centerX = 652;
-        		int centerY = 372;
+                Board.bullet.setX(OverChar.playerX+(MainMenu.width/2)+MainMenu.offsetx);
+                Board.bullet.setY(OverChar.playerY+(MainMenu.height/2)+MainMenu.offsety);
+                //int centerX = 652;
+        		//int centerY = 372;
                 int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
     			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-    			 double angle = -Math.toDegrees(Math.atan2( ((mouseX- centerX)), ( (mouseY-centerY))))+90;
-                angle = Math.toRadians(angle);
+    			// double angle = -Math.toDegrees(Math.atan2( ((mouseX- centerX)), ( (mouseY-centerY))))+90;
+                //angle = Math.toRadians(angle);
+    			double angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI;
 
     			 Board.bullet.setA(angle + ((spread * (i - 1)) / 2));
                 // adding the bullet to the array list
-                bullets.add(new Bullet(Board.bullet.getX() + 15,
+                bullets.add(new Bullet(Board.bullet.getX(),
                 		Board.bullet.getY(), Board.bullet.getA()));
              }
              //reset the reload time 

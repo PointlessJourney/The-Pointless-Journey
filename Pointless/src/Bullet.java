@@ -45,8 +45,8 @@ public class Bullet {
 	   // move toward the angle
 	   // //forward
 	   public void moveForward() {
-	      x += Math.cos(a)*5;
-	      y += Math.sin(a)*5;
+	      x += Math.cos(a)*(5.0/1360.0*MainMenu.width);
+	      y += Math.sin(a)*(5.0/1360.0*MainMenu.width);
 	   }
 
 	}
