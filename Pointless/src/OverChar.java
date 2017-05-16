@@ -9,13 +9,11 @@ import javax.imageio.ImageIO;
 
 public abstract class OverChar
 {
-	public OverChar(int x, int y, ID id, BufferedImage map,double size)
+	public OverChar(int x, int y, ID id)
 	{
 		this.x = x;
 		this.y = y;
 		this.id = id;
-		this.map = map;
-		this.size = size;
 	}
     protected int x, y;
     protected static int velX, velY; 
@@ -23,8 +21,8 @@ public abstract class OverChar
     protected ID id;
 	public static int playerX=0;//static references to player location allowing all OverChar objects to access this information for rendering and other purposes
 	public static int playerY=0;
-	public double size;
-	public BufferedImage map;
+	private int size;
+	private BufferedImage map;
 	public abstract void tick();
 	public void render(Graphics g) {
 		AffineTransform at = AffineTransform.getTranslateInstance(x - playerX, y-playerY);
@@ -80,7 +78,7 @@ public abstract class OverChar
 	public static void setPlayerSpeed(double playerSpeed){
 		OverChar.playerSpeed=playerSpeed;
 	}
-	static BufferedImage LoadImage(String FileName)
+	BufferedImage LoadImage(String FileName)
 	{
 		BufferedImage img = null;
 		try
