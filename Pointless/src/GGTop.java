@@ -58,11 +58,12 @@ public class GGTop extends OverChar {
 			}else{
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
-				if (playerX <= maxX) playerX = maxX;
-				if (playerX >= maxNegX) playerX = maxNegX;
-				if (playerY <= maxY) playerY = maxY;
-				if (playerY >= maxNegY) playerY = maxNegY;
 			}
+
+			if (playerX <= maxX) playerX = maxX;
+			if (playerX >= maxNegX) playerX = maxNegX;
+			if (playerY <= maxY) playerY = maxY;
+			if (playerY >= maxNegY) playerY = maxNegY;
 			return;
 		}
 		if (mapState == STATE.Base)
