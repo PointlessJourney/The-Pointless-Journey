@@ -13,15 +13,19 @@ public class Handler {
 			OverChar temp = object.get(z);	
 			temp.tick();
 		}
+		Board.play();
 	}
 	public static void render(Graphics g)
 	{
 		g.setColor(new Color(0x05040b));
 		g.fillRect(-100,-100,MainMenu.width*2,MainMenu.width*2);
-		for(int z = object.size()-1; z > -1; z--)
+		object.get(1).render(g);
+		for(int z = object.size()-1; z > 1; z--)
 		{
 			object.get(z).render(g);
 		}
+		object.get(0).render(g);
+		Board.paint(g);
 	}
 	public static void addObject(OverChar object)
 	{
