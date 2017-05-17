@@ -10,6 +10,7 @@ public class Bullet {
 	      this.y = y;
 	      this.a = a;
 	     
+	      
 	   }
 
 	   // returning all the necessary value of this class
