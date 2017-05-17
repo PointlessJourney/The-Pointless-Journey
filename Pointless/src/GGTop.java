@@ -23,6 +23,7 @@ public class GGTop extends OverChar {
 	
 	
 	
+	
 //****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)

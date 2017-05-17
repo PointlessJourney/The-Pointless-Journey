@@ -50,6 +50,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 
 
 	}
+	
 
  	public synchronized void start()
 	{

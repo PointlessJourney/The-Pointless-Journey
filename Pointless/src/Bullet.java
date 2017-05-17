@@ -1,4 +1,5 @@
 
+
 public class Bullet {
 
 	   private double x, y, a; // x,y and angle

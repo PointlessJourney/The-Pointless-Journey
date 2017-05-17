@@ -27,7 +27,8 @@ public class KeyIn extends KeyAdapter {
 			if (key == KeyEvent.VK_D)OverChar.setVelX(right);
 			if(key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  mx:"+MouseInfo.getPointerInfo().getLocation().x+"  my:"+MouseInfo.getPointerInfo().getLocation().y);
 
-				
+
+			
 
 			//System.out.println(OverChar.playerX);
 				/*if(e.isShiftDown()){
