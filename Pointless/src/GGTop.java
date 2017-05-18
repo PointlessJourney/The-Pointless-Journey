@@ -161,7 +161,7 @@ public class GGTop extends OverChar {
 		}
     
 
-	}
+	
 
 
 	//System.out.println(velX + "   " + velY);
