@@ -437,9 +437,5 @@ public class MainMenu extends JFrame {
 		
 
 	
-<<<<<<< HEAD
-		
-=======
->>>>>>> refs/heads/update/Shavin
 	}
 }
