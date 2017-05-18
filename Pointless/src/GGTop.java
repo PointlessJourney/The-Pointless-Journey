@@ -68,8 +68,6 @@ public class GGTop extends OverChar {
 		}
 		if (mapState == STATE.Base)
 		{
-			
-			
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
@@ -185,7 +183,6 @@ public class GGTop extends OverChar {
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
 			double angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
-
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
