@@ -16,6 +16,7 @@ public abstract class OverChar
 		this.id = id;
 		this.map = map;
 		this.size = size;
+		//l
 	}
     protected int x, y;
     protected static int velX, velY; 
