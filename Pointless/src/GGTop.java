@@ -109,7 +109,7 @@ public class GGTop extends OverChar {
 		}
 		else if (mapState == STATE.Field)
 		{		
-			System.out.println("delay" + delay);
+			//System.out.println("delay" + delay);
 			
 			if(delay==0)
 			{
