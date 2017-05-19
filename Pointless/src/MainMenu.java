@@ -5,9 +5,11 @@
 // http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -427,7 +429,13 @@ public class MainMenu extends JFrame {
 		lblMessage.setBounds((int)(66.0/832.0*width+offsetx), (int)(166.0/468.0*height+offsety)-24, (int)(700.0/832.0*width), (int)(90.0/468.0*height));
 		lblMessage.setIcon(new ImageIcon(new ImageIcon("Message.png").getImage().getScaledInstance(-1, lblMessage.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel_3.add(lblMessage);
-
+		
+		BufferedImage cursorImg = LoadImage("crosshair.png");
+		// Create a new blank cursor.
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		    cursorImg, new Point(0, 0), "blank cursor");
+		contentPane.setCursor(blankCursor);
+		
 		label_2.setIcon(new ImageIcon(new ImageIcon("ezgif.com-crop.gif").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
@@ -437,5 +445,19 @@ public class MainMenu extends JFrame {
 		
 
 	
+	}
+	
+	BufferedImage LoadImage(String FileName)
+	{
+		BufferedImage img = null;
+		try
+		{
+			img = ImageIO.read(new File(FileName));
+		}
+		catch (IOException e)
+		{
+			
+		}
+		return img;
 	}
 }
