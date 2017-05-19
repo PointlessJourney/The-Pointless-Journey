@@ -7,6 +7,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 public class GGTop extends OverChar {
@@ -115,13 +116,13 @@ public class GGTop extends OverChar {
 				
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
-				for (int w = 0; w > 10; w++)
-				{
+				//for (int w = 0; w > 10; w++)
+				//{
 				ranX = (int) (Math.random() * MainMenu.width -96);
 				ranY = (int) (Math.random() * MainMenu.height -96);
 				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
 				System.out.println("Spawned" + ranX + ranY);
-				}
+				//}
 
 			}
 			else
@@ -156,12 +157,11 @@ public class GGTop extends OverChar {
 			//}
 
 
-			}
 
 		}
     
 
-	
+	}
 
 
 	//System.out.println(velX + "   " + velY);
@@ -204,7 +204,6 @@ public class GGTop extends OverChar {
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
-
 
 		}
 
