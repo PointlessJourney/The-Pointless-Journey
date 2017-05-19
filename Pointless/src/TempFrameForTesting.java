@@ -10,6 +10,7 @@ public class TempFrameForTesting extends JFrame {
 
 	private JPanel contentPane;
 	
+	
 
 	/**
 	 * Launch the application.

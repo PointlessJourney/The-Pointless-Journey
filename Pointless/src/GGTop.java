@@ -22,8 +22,10 @@ public class GGTop extends OverChar {
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
 	
-	//Random ranX = new Random();
-	//Random ranY = new Random();
+	
+	
+	
+//****************************************************************************
 
 
 
@@ -64,12 +66,14 @@ public class GGTop extends OverChar {
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
 			}
+			if (playerX <= maxX) playerX = maxX;
+			if (playerX >= maxNegX) playerX = maxNegX;
+			if (playerY <= maxY) playerY = maxY;
+			if (playerY >= maxNegY) playerY = maxNegY;
 			return;
 		}
 		if (mapState == STATE.Base)
 		{
-
-
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
@@ -100,10 +104,7 @@ public class GGTop extends OverChar {
 
 
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+			
 
 		}
 		else if (mapState == STATE.Field)
@@ -158,10 +159,7 @@ public class GGTop extends OverChar {
 
 
 		}
-		if (playerX <= maxX) playerX = maxX;
-		if (playerX >= maxNegX) playerX = maxNegX;
-		if (playerY <= maxY) playerY = maxY;
-		if (playerY >= maxNegY) playerY = maxNegY;
+    
 
 	}
 
@@ -179,9 +177,9 @@ public class GGTop extends OverChar {
 		if(id == ID.Map)		//creates the map
 		{
 
+//*************************************************************
 
-
-
+				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
 			at.scale(size,size);
 
