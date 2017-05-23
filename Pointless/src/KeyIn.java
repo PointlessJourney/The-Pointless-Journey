@@ -29,7 +29,10 @@ public class KeyIn extends KeyAdapter {
 				if (key == KeyEvent.VK_A)OverChar.setVelX(left);		
 				if (key == KeyEvent.VK_D)OverChar.setVelX(right);
 				if (key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  "+MouseInfo.getPointerInfo().getLocation().x+"  "+MouseInfo.getPointerInfo().getLocation().y);
-				
+				if (key == KeyEvent.VK_B)Handler.addObject(new Spawner(OverChar.playerX + 556, OverChar.playerY + 284, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+
+
+
 			//System.out.println(OverChar.playerX);
 				/*if(e.isShiftDown()){
 					speed = (int)(OverChar.playerSpeed/1600.0*MainMenu.width);

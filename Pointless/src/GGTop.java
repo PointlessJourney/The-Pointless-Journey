@@ -60,6 +60,7 @@ public class GGTop extends OverChar {
 			
 			return;
 		}
+		
 		if (mapState == STATE.Base)
 		{
 			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
@@ -68,7 +69,6 @@ public class GGTop extends OverChar {
 				//*****************************************************************************
 
 				mapState = STATE.Field;
-
 				//if (second)
 				//{
 				x = (int)(30.0/1360*MainMenu.width);
@@ -97,9 +97,9 @@ public class GGTop extends OverChar {
 		}
 		else if (mapState == STATE.Field)
 		{		
-			System.out.println("delay" + delay);
+			//System.out.println("delay" + delay);
 			
-			if(delay==0)
+			/*if(delay==0)
 			{	
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
@@ -114,8 +114,21 @@ public class GGTop extends OverChar {
 			else
 			{
 				delay--;
+			}*/
+			int shiftX = 556;
+			int shiftY = 284;
+			if (first)
+			{
+			Handler.addObject(new Spawner(shiftX + 400, shiftY + -939, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 463, shiftY + 276, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 328, shiftY + 2535, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 3322, shiftY + -958, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 7111, shiftY + -1003, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 6357, shiftY + 2736, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 5453, shiftY + 542, ID.Spawner,OverChar.LoadImage("Sp clone.png"), 1.3));
+
+			first = false;
 			}
-		
 
 
 		if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
@@ -159,8 +172,6 @@ public class GGTop extends OverChar {
 		{
 
 //*************************************************************
-
-				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
 			at.scale(size,size);
 
@@ -170,7 +181,8 @@ public class GGTop extends OverChar {
 			g2d.drawImage(map, at, null);		// draws it
 
 		}
-
+		
+		
 		else if (id == ID.Player) // creates the player
 		{
 			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
