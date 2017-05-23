@@ -44,10 +44,10 @@ public class GGTop extends OverChar {
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
-		maxX = (int)(-555/1360.0*MainMenu.width);
-		maxNegX =  (int)(3554.0/1360*MainMenu.width);
-		maxY = (int)(-1110.0/1360*MainMenu.width);
-		maxNegY = (int)(2954.0/1360*MainMenu.width);
+		maxX = (int)(-555000/1360.0*MainMenu.width);
+		maxNegX =  (int)(3554000.0/1360*MainMenu.width);
+		maxY = (int)(-1110000.0/1360*MainMenu.width);
+		maxNegY = (int)(2954000.0/1360*MainMenu.width);
 	}
 
 	public void tick() {
@@ -74,7 +74,7 @@ public class GGTop extends OverChar {
 		}
 		if (mapState == STATE.Base)
 		{
-			if (playerX >= 3544.0/1360.0*MainMenu.width && playerY >= 2375.0/1360.0*MainMenu.width && playerY<= 2500.0/1360.0*MainMenu.width)	// entering the battle field area
+			if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
 				//*****************************************************************************
@@ -83,16 +83,16 @@ public class GGTop extends OverChar {
 
 				//if (second)
 				//{
-				x = (int)(30.0/1360*MainMenu.width);
-				y = (int)(-871.0/1360*MainMenu.width);
+				x = (int)(30000.0/1360*MainMenu.width);
+				y = (int)(-871000.0/1360*MainMenu.width);
 				map = LoadImage("ruckss2.png");
 				//second = false;
 				//first = true;
 				size = 7/1600.0*MainMenu.width;
-				maxX = (int)(-559/1360.0*MainMenu.width);
-				maxNegX =  (int)(7635/1360.0*MainMenu.width);
-				maxY =(int)(-1153/1360.0*MainMenu.width);
-				maxNegY = (int)(3403/1360.0*MainMenu.width);
+				maxX = (int)(-559000/1360.0*MainMenu.width);
+				maxNegX =  (int)(7635000/1360.0*MainMenu.width);
+				maxY =(int)(-1153000/1360.0*MainMenu.width);
+				maxNegY = (int)(3403000/1360.0*MainMenu.width);
 				OverChar.playerX=0;
 				OverChar.playerY=0;
 
@@ -118,8 +118,8 @@ public class GGTop extends OverChar {
 				//96x96
 				//for (int w = 0; w > 10; w++)
 				//{
-				ranX = (int) (Math.random() * MainMenu.width -96);
-				ranY = (int) (Math.random() * MainMenu.height -96);
+				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
 				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
 				System.out.println("Spawned" + ranX + ranY);
 				//}
@@ -132,7 +132,7 @@ public class GGTop extends OverChar {
 		}
 
 
-		if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
+		if (x <= 8164000/1600.0*MainMenu.width && x >= 8300000/1600.0*MainMenu.width && y >= 2654000/1600.0*MainMenu.width && y <= 2324000/1600.0*MainMenu.width)	// returning to the main area
 		{
 			//****************************************************************************
 
@@ -140,17 +140,17 @@ public class GGTop extends OverChar {
 
 			//if (first)
 			//{
-			x = (int)(30.0/1360*MainMenu.width);
-			y = (int)(-871.0/1360*MainMenu.width);
+			x = (int)(30000.0/1360*MainMenu.width);
+			y = (int)(-871000.0/1360*MainMenu.width);
 			map = LoadImage("basemap.png");
 			System.out.println("start");
 			//first = false;
 			//second = true;
 			size = 25/1600.0*MainMenu.width;
-			maxX = (int)(-555/1360.0*MainMenu.width);
-			maxNegX =  (int)(3554.0/1360*MainMenu.width);
-			maxY = (int)(-1110.0/1360*MainMenu.width);
-			maxNegY = (int)(2954.0/1360*MainMenu.width);
+			maxX = (int)(-555000/1360.0*MainMenu.width);
+			maxNegX =  (int)(3554000.0/1360*MainMenu.width);
+			maxY = (int)(-1110000.0/1360*MainMenu.width);
+			maxNegY = (int)(2954000.0/1360*MainMenu.width);
 			OverChar.playerX=0;
 			OverChar.playerY=0;
 
@@ -180,7 +180,7 @@ public class GGTop extends OverChar {
 //*************************************************************
 
 				
-			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX, y-playerY);	// moves the picture around
+			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
 			at.scale(size,size);
 
 			//at.scale(25, 25);

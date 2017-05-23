@@ -20,7 +20,7 @@ public abstract class OverChar
 	}
     protected int x, y;
     protected static int velX, velY; 
-    protected static double playerSpeed=10.0;
+    protected static double playerSpeed=10000.0;
     protected ID id;
 	public static int playerX=0;//static references to player location allowing all OverChar objects to access this information for rendering and other purposes
 	public static int playerY=0;
@@ -28,7 +28,7 @@ public abstract class OverChar
 	public BufferedImage map;
 	public abstract void tick();
 	public void render(Graphics g) {
-		AffineTransform at = AffineTransform.getTranslateInstance(x - playerX, y-playerY);
+		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
 		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
 		Graphics2D g2d = (Graphics2D) g;
 		try{
@@ -36,6 +36,10 @@ public abstract class OverChar
 		}catch(Exception e){}
 		
 		
+	}
+	
+	public boolean Overlap(int x, int y){
+		//if(this.x+map.getWidth()/2>x>this.x-map.getWidth()/2)
 	}
     
     
