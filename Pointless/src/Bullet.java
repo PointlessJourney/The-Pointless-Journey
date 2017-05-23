@@ -4,7 +4,7 @@ public class Bullet {
 
 	   private double x, y, a; // x,y and angle
 	   private int w, h; //width and height 
-	   public int count = 500;
+	   public int count = 50;
 	   // constructor
 	   public Bullet(double x, double y, double a) {
 

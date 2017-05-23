@@ -30,7 +30,8 @@ public class KeyIn extends KeyAdapter {
 				if (key == KeyEvent.VK_D)OverChar.setVelX(right);
 				if (key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  "+MouseInfo.getPointerInfo().getLocation().x+"  "+MouseInfo.getPointerInfo().getLocation().y);
 				if (key==KeyEvent.VK_9)Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-100,ID.Enemy,OverChar.LoadImage("ABC.png"),4));
-			//System.out.println(OverChar.playerX);
+				
+				//System.out.println(OverChar.playerX);
 				/*if(e.isShiftDown()){
 					speed = (int)(OverChar.playerSpeed/1600.0*MainMenu.width);
 					 back = speed*-1;

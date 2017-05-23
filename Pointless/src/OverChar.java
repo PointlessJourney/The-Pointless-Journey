@@ -16,6 +16,8 @@ public abstract class OverChar
 		this.id = id;
 		this.map = map;
 		this.size = size;
+		imageX = map.getWidth()/1280.0*MainMenu.width*500;
+		imageY = map.getHeight()/1280.0*MainMenu.width*500;
 		//l
 	}
     protected int x, y;
@@ -26,6 +28,8 @@ public abstract class OverChar
 	public static int playerY=0;
 	public double size;
 	public BufferedImage map;
+	public int health;
+	public static int playerDamage = 2;
 	public abstract void tick();
 	public void render(Graphics g) {
 		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
@@ -37,9 +41,16 @@ public abstract class OverChar
 		
 		
 	}
-	
+
+	public double imageX;
+	public double imageY;
 	public boolean Overlap(int x, int y){
-		//if(this.x+map.getWidth()/2>x>this.x-map.getWidth()/2)
+		System.out.println(health);
+		if(this.x+imageX>x&&x>this.x-imageX&&this.y+imageY>y&&y>this.y-imageY){
+			health = health-playerDamage;
+			return true;
+		}
+		return false;
 	}
     
     

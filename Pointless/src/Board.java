@@ -78,7 +78,9 @@ public class Board{
 				//  System.out.println("gone"+(Math.sqrt((tmpB.getX()-OverChar.playerX)*(tmpB.getX()-OverChar.playerX)+(tmpB.getY()-OverChar.playerY)*(tmpB.getY()-OverChar.playerY))));//add range
 				tmpBs.remove(i);
 			}
-
+			for(int j = 2;j<Handler.object.size();j++){
+				if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
+			}
 		}
 
 		// check if shooting
