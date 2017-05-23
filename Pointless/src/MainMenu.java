@@ -434,7 +434,7 @@ public class MainMenu extends JFrame {
 		BufferedImage cursorImg = LoadImage("crosshair.png");
 		// Create a new blank cursor.
 		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-		    cursorImg, new Point(0, 0), "blank cursor");
+		cursorImg, new Point(0,0), "blank cursor");
 		contentPane.setCursor(blankCursor);
 		
 		label_2.setIcon(new ImageIcon(new ImageIcon("ezgif.com-crop.gif").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
@@ -443,8 +443,6 @@ public class MainMenu extends JFrame {
 		panel_3.add(label_2);
 		over = new OverworldEngine();
 		contentPane.add(over);
-		
-
 	
 	}
 	

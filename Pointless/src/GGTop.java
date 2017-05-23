@@ -21,15 +21,6 @@ public class GGTop extends OverChar {
 	int delay=0;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
-	
-	
-	
-	
-//****************************************************************************
-
-
-
-
 	//****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
@@ -66,10 +57,7 @@ public class GGTop extends OverChar {
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+			
 			return;
 		}
 		if (mapState == STATE.Base)
@@ -112,8 +100,7 @@ public class GGTop extends OverChar {
 			System.out.println("delay" + delay);
 			
 			if(delay==0)
-			{
-				
+			{	
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
 				//for (int w = 0; w > 10; w++)
@@ -123,13 +110,12 @@ public class GGTop extends OverChar {
 				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
 				System.out.println("Spawned" + ranX + ranY);
 				//}
-
 			}
 			else
 			{
 				delay--;
 			}
-		}
+		
 
 
 		if (x <= 8164/1600.0*MainMenu.width && x >= 8300/1600.0*MainMenu.width && y >= 2654/1600.0*MainMenu.width && y <= 2324/1600.0*MainMenu.width)	// returning to the main area
@@ -155,22 +141,17 @@ public class GGTop extends OverChar {
 			OverChar.playerY=0;
 
 			//}
-
-
-
+			}
 		}
-    
-
+		
+		if (playerX <= maxX) playerX = maxX;
+		if (playerX >= maxNegX) playerX = maxNegX;
+		if (playerY <= maxY) playerY = maxY;
+		if (playerY >= maxNegY) playerY = maxNegY;
 	}
 
 
 	//System.out.println(velX + "   " + velY);
-
-
-
-
-
-
 
 	public void render(Graphics g) {	// enter character picture and information here
 
