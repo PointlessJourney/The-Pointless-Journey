@@ -70,6 +70,16 @@ public class GGTop extends OverChar {
 			if (playerX >= maxNegX) playerX = maxNegX;
 			if (playerY <= maxY) playerY = maxY;
 			if (playerY >= maxNegY) playerY = maxNegY;
+			for(int i = 2;i<Handler.object.size();i++){
+				OverChar check = Handler.object.get(i);
+				if(check.id==ID.Enemy&&check.Overlap(playerX, playerY)){
+					playerHealth -= check.collisionDamage;
+				}
+			}
+			if(playerHealth<=0){
+				System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
+				
+			}
 			return;
 		}
 		if (mapState == STATE.Base)
