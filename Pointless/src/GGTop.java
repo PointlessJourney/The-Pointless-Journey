@@ -78,13 +78,13 @@ public class GGTop extends OverChar {
 			}
 			if(playerHealth<=0){
 				System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
-				
+				System.exit(0);
 			}
 			return;
 		}
 		if (mapState == STATE.Base)
 		{
-			if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
+			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
 				//*****************************************************************************
@@ -114,7 +114,7 @@ public class GGTop extends OverChar {
 
 
 			}
-			
+			*/
 
 		}
 		else if (mapState == STATE.Field)

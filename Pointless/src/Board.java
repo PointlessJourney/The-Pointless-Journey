@@ -79,7 +79,9 @@ public class Board{
 				tmpBs.remove(i);
 			}
 			for(int j = 2;j<Handler.object.size();j++){
+				try{
 				if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
+				}catch(Exception e){System.out.println("bullet broke");}
 			}
 		}
 
