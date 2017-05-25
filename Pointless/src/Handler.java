@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Handler {
 
-	static LinkedList<OverChar> object = new LinkedList<OverChar>();
+	protected static LinkedList<OverChar> object = new LinkedList<OverChar>();
 	
 	public static void tick()
 	{
@@ -27,11 +27,11 @@ public class Handler {
 		object.get(0).render(g);
 		Board.paint(g);
 	}
-	public static void addObject(OverChar object)
+	public static synchronized void addObject(OverChar object)
 	{
 		Handler.object.add(object);
 	}
-	public static void removeObject(OverChar object)
+	public static synchronized void removeObject(OverChar object)
 	{
 		Handler.object.remove(object);
 	}

@@ -16,18 +16,25 @@ public abstract class OverChar
 		this.id = id;
 		this.map = map;
 		this.size = size;
+		imageX = map.getWidth()*size/1280.0*MainMenu.width*500;
+		imageY = map.getHeight()*size/1280.0*MainMenu.width*500;
+		//l
 	}
-    protected int x, y;
-    protected static int velX, velY; 
-    protected static double playerSpeed=10.0;
-    protected ID id;
+    protected int x, y;//location of a given instance
+    protected static int velX, velY; //player move amounts? correct if wrong
+    protected static double playerSpeed;
+    protected ID id;//to differentiate different characters
 	public static int playerX=0;//static references to player location allowing all OverChar objects to access this information for rendering and other purposes
 	public static int playerY=0;
-	public double size;
-	public BufferedImage map;
+	public double size;//scaling
+	public BufferedImage map;//imagerendered
+	public int health=0, collisionDamage=0;//health and damage used by energy, 0 by default
+	public static int playerDamage = 2;//player stats, all static
+	public static int playerHealth = 100;
+	public static int maxPlayerHealth = 100;
 	public abstract void tick();
 	public void render(Graphics g) {
-		AffineTransform at = AffineTransform.getTranslateInstance(x - playerX, y-playerY);
+		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
 		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
 		Graphics2D g2d = (Graphics2D) g;
 		try{
@@ -35,6 +42,17 @@ public abstract class OverChar
 		}catch(Exception e){}
 		
 		
+	}
+
+	public double imageX;
+	public double imageY;
+	public boolean Overlap(int x, int y){
+		//System.out.println(health);
+		if(this.x+imageX>x&&x>this.x-imageX&&this.y+imageY>y&&y>this.y-imageY){
+			health = health-playerDamage;
+			return true;
+		}
+		return false;
 	}
     
     
