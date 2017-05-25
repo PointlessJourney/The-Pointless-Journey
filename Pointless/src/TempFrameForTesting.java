@@ -12,6 +12,7 @@ public class TempFrameForTesting extends JFrame {
 	
 	
 
+
 	/**
 	 * Launch the application.
 	 */
