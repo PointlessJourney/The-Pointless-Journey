@@ -21,15 +21,6 @@ public class GGTop extends OverChar {
 	int delay=0;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
-	
-	
-	
-	
-//****************************************************************************
-
-
-
-
 	//****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
@@ -82,6 +73,7 @@ public class GGTop extends OverChar {
 			}
 			return;
 		}
+		
 		if (mapState == STATE.Base)
 		{
 			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
@@ -90,7 +82,6 @@ public class GGTop extends OverChar {
 				//*****************************************************************************
 
 				mapState = STATE.Field;
-
 				//if (second)
 				//{
 				x = (int)(30000.0/1360*MainMenu.width);
@@ -119,11 +110,10 @@ public class GGTop extends OverChar {
 		}
 		else if (mapState == STATE.Field)
 		{		
-			System.out.println("delay" + delay);
+			//System.out.println("delay" + delay);
 			
-			if(delay==0)
-			{
-				
+			/*if(delay==0)
+			{	
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
 				//for (int w = 0; w > 10; w++)
@@ -133,13 +123,25 @@ public class GGTop extends OverChar {
 				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
 				System.out.println("Spawned" + ranX + ranY);
 				//}
-
 			}
 			else
 			{
 				delay--;
+			}*/
+			int shiftX = 556;
+			int shiftY = 284;
+			if (first)
+			{
+			Handler.addObject(new Spawner(shiftX + 400, shiftY + -939, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 463, shiftY + 276, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 328, shiftY + 2535, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 3322, shiftY + -958, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 7111, shiftY + -1003, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 6357, shiftY + 2736, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 5453, shiftY + 542, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+
+			first = false;
 			}
-		}
 
 
 		if (x <= 8164000/1600.0*MainMenu.width && x >= 8300000/1600.0*MainMenu.width && y >= 2654000/1600.0*MainMenu.width && y <= 2324000/1600.0*MainMenu.width)	// returning to the main area
@@ -165,22 +167,17 @@ public class GGTop extends OverChar {
 			OverChar.playerY=0;
 
 			//}
-
-
-
+			}
 		}
-    
-
+		
+		if (playerX <= maxX) playerX = maxX;
+		if (playerX >= maxNegX) playerX = maxNegX;
+		if (playerY <= maxY) playerY = maxY;
+		if (playerY >= maxNegY) playerY = maxNegY;
 	}
 
 
 	//System.out.println(velX + "   " + velY);
-
-
-
-
-
-
 
 	public void render(Graphics g) {	// enter character picture and information here
 
@@ -189,8 +186,10 @@ public class GGTop extends OverChar {
 
 //*************************************************************
 
+
 				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
+
 			at.scale(size,size);
 
 			//at.scale(25, 25);
@@ -199,7 +198,8 @@ public class GGTop extends OverChar {
 			g2d.drawImage(map, at, null);		// draws it
 
 		}
-
+		
+		
 		else if (id == ID.Player) // creates the player
 		{
 			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
