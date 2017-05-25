@@ -111,8 +111,8 @@ public class GGTop extends OverChar {
 		else if (mapState == STATE.Field)
 		{		
 			//System.out.println("delay" + delay);
-			
-			/*if(delay==0)
+			//Random Minion AI start
+			if(delay==0)
 			{	
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
@@ -120,14 +120,15 @@ public class GGTop extends OverChar {
 				//{
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-				Handler.addObject(new RandomSpawner(ranX,ranY,ID.RandomEnemy,LoadImage("bad guy clone.gif") ,96.0));
+				Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("bad guy clone.gif") ,2.0));
 				System.out.println("Spawned" + ranX + ranY);
 				//}
 			}
 			else
 			{
 				delay--;
-			}*/
+			}
+			//Random Minion AI end
 			int shiftX = 556;
 			int shiftY = 284;
 			if (first)
