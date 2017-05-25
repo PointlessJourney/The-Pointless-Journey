@@ -19,12 +19,12 @@ public class Handler {
 	{
 		g.setColor(new Color(0x05040b));
 		g.fillRect(-100,-100,MainMenu.width*2,MainMenu.width*2);
-		object.get(1).render(g);
+		object.get(1).render(g, 0);
 		for(int z = object.size()-1; z > 1; z--)
 		{
-			object.get(z).render(g);
+			object.get(z).render(g,0);
 		}
-		object.get(0).render(g);
+		object.get(0).render(g,0);
 		Board.paint(g);
 	}
 	public static synchronized void addObject(OverChar object)

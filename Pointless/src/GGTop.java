@@ -68,8 +68,8 @@ public class GGTop extends OverChar {
 				}
 			}
 			if(playerHealth<=0){
-				System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
-				System.exit(0);
+				//System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
+				//System.exit(0);
 			}
 			return;
 		}
@@ -179,7 +179,7 @@ public class GGTop extends OverChar {
 
 	//System.out.println(velX + "   " + velY);
 
-	public void render(Graphics g) {	// enter character picture and information here
+	public void render(Graphics g, double angle) {	// enter character picture and information here
 
 		if(id == ID.Map)		//creates the map
 		{
@@ -210,7 +210,7 @@ public class GGTop extends OverChar {
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
-			double angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
+			angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
