@@ -33,6 +33,10 @@ public class KeyIn extends KeyAdapter {
 				if (key==KeyEvent.VK_8)Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-200000,ID.Enemy,OverChar.LoadImage("BGtop.png"),3.5));
 				
 				//System.out.println(OverChar.playerX);
+
+				if (key == KeyEvent.VK_B)Handler.addObject(new Spawner(OverChar.playerX + 556, OverChar.playerY + 284, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+
+
 				/*if(e.isShiftDown()){
 					speed = (int)(OverChar.playerSpeed/1600.0*MainMenu.width);
 					 back = speed*-1;
