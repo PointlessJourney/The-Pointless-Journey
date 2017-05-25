@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 public class Handler {
@@ -14,6 +15,9 @@ public class Handler {
 			temp.tick();
 		}
 		Board.play();
+		//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+		//Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.2,0.0));
+		
 	}
 	public static void render(Graphics g)
 	{

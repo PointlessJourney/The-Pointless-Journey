@@ -69,7 +69,7 @@ public class GGTop extends OverChar {
 			}
 			if(playerHealth<=0){
 				//System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
-				//System.exit(0);
+				System.exit(0);
 			}
 			return;
 		}
