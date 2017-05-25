@@ -10,6 +10,7 @@ public class Boss1Minion extends OverChar{
 	public Boss1Minion(int x, int y, ID id, BufferedImage map, double size) {
 		super(x, y, id, map, size);
 		speed = Math.random()*3000+2500;
+		
 		health = 10;
 		collisionDamage = 2;
 		range[0]=Math.random()*200000+100000;

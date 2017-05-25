@@ -1,10 +1,17 @@
 import java.awt.image.BufferedImage;
 
 public class RandomSpawner extends OverChar{
-
+	private double[] range=new double[2],rotate=new double[2];
+	private double speed;
+	private int stage = 0;
+	private int direction1,direction2;
+	private boolean seeking = false;
 	public RandomSpawner(int x, int y, ID id, BufferedImage map, double size) {
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
+		speed = 10000;
+		health = 15;
+		collisionDamage = 4;
 	}
 
 	@Override
@@ -15,20 +22,9 @@ public class RandomSpawner extends OverChar{
 
 }
 /*
-import java.awt.image.BufferedImage;
-
-public class Boss1Minion extends OverChar{
-
-	private double[] range=new double[2],rotate=new double[2];
-	private double speed;
-	private int stage = 0;
-	private int direction1,direction2;
-	private boolean seeking = false;
-	public Boss1Minion(int x, int y, ID id, BufferedImage map, double size) {
-		super(x, y, id, map, size);
-		speed = Math.random()*3000+2500;
-		health = 10;
-		collisionDamage = 2;
+		
+		
+		
 		range[0]=Math.random()*200000+100000;
 		range[1]=Math.random()*50000+50000;
 		rotate[0]=Math.random()*Math.PI*2-Math.PI;
