@@ -57,10 +57,12 @@ public class GGTop extends OverChar {
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
 			}
+			
 			if (playerX <= maxX) playerX = maxX;
 			if (playerX >= maxNegX) playerX = maxNegX;
 			if (playerY <= maxY) playerY = maxY;
 			if (playerY >= maxNegY) playerY = maxNegY;
+			
 			for(int i = 2;i<Handler.object.size();i++){
 				OverChar check = Handler.object.get(i);
 				if(check.id==ID.Enemy&&check.Overlap(playerX, playerY)){
@@ -73,7 +75,8 @@ public class GGTop extends OverChar {
 			}
 			return;
 		}
-		
+		if (id == ID.Map)
+		{
 		if (mapState == STATE.Base)
 		{
 			if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
@@ -128,23 +131,23 @@ public class GGTop extends OverChar {
 			{
 				delay--;
 			}*/
-			int shiftX = 556;
-			int shiftY = 284;
+			int shiftX = 556000;
+			int shiftY = 284000;
 			
 			if (first)
 			{
-			Handler.addObject(new Spawner(shiftX + 400, shiftY + -939, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 463, shiftY + 276, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 328, shiftY + 2535, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 3322, shiftY + -958, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 7111, shiftY + -1003, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 6357, shiftY + 2736, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 5453, shiftY + 542, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 400000, shiftY + -939000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 463000, shiftY + 276000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 328000, shiftY + 2535000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 3322000, shiftY + -958000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 7111000, shiftY + -1003000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 6357000, shiftY + 2736000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+			Handler.addObject(new Spawner(shiftX + 5453000, shiftY + 542000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 			first = false;
 			}
 
 
-		if (x <= 8164000/1600.0*MainMenu.width && x >= 8300000/1600.0*MainMenu.width && y >= 2654000/1600.0*MainMenu.width && y <= 2324000/1600.0*MainMenu.width)	// returning to the main area
+		if (playerX <= 8164000/1600.0*MainMenu.width && playerX >= 8300000/1600.0*MainMenu.width && playerY >= 2654000/1600.0*MainMenu.width && playerY <= 2324000/1600.0*MainMenu.width)	// returning to the main area
 		{
 			//****************************************************************************
 
@@ -174,6 +177,7 @@ public class GGTop extends OverChar {
 		if (playerX >= maxNegX) playerX = maxNegX;
 		if (playerY <= maxY) playerY = maxY;
 		if (playerY >= maxNegY) playerY = maxNegY;
+		}
 	}
 
 
