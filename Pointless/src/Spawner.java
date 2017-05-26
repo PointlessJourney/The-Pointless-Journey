@@ -6,7 +6,6 @@ public class Spawner extends OverChar{
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub

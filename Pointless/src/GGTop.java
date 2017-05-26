@@ -76,7 +76,7 @@ public class GGTop extends OverChar {
 		
 		if (mapState == STATE.Base)
 		{
-			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
+			if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
 				//*****************************************************************************
@@ -105,7 +105,7 @@ public class GGTop extends OverChar {
 
 
 			}
-			*/
+			
 
 		}
 		else if (mapState == STATE.Field)
@@ -130,6 +130,7 @@ public class GGTop extends OverChar {
 			}*/
 			int shiftX = 556;
 			int shiftY = 284;
+			
 			if (first)
 			{
 			Handler.addObject(new Spawner(shiftX + 400, shiftY + -939, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
@@ -139,7 +140,6 @@ public class GGTop extends OverChar {
 			Handler.addObject(new Spawner(shiftX + 7111, shiftY + -1003, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 			Handler.addObject(new Spawner(shiftX + 6357, shiftY + 2736, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 			Handler.addObject(new Spawner(shiftX + 5453, shiftY + 542, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-
 			first = false;
 			}
 
@@ -186,8 +186,6 @@ public class GGTop extends OverChar {
 
 //*************************************************************
 
-
-				
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
 
 			at.scale(size,size);
