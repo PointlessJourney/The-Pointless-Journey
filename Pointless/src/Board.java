@@ -141,6 +141,14 @@ public class Board{
 			}
 
 		}
+		
+		public static ArrayList<Bullet> getBullets(){
+			return bullets;
+		}
+		
+		public static void removeBullet(int index){
+			bullets.remove(index);
+		}
 	}
 
 

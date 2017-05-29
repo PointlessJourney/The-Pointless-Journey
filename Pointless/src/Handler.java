@@ -30,6 +30,7 @@ public class Handler {
 		{
 			object.get(z).render(g,0);
 		}
+		for(int z = 0;z<eBullet.size();z++)eBullet.get(z).render(g, 0);
 		object.get(0).render(g,0);
 		Board.paint(g);
 	}
