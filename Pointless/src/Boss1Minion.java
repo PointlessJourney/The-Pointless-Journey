@@ -13,8 +13,8 @@ public class Boss1Minion extends OverChar{
 		speed = (Math.random()*2500+3500-2000*percent)/1360.0*MainMenu.width;
 		health = 8;
 		collisionDamage = 2;
-		range[0]=Math.random()*400000+300000;
-		range[1]=Math.random()*200000+100000;
+		range[0]=(Math.random()*400000+300000)/1360.0*MainMenu.width;
+		range[1]=(Math.random()*200000+100000)/1360.0*MainMenu.width;
 		rotate[0]=Math.random()*Math.PI*2-Math.PI;
 		rotate[1]=Math.random()*Math.PI*2-Math.PI;
 		if(Math.random()>0.5){

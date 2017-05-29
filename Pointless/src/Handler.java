@@ -1,11 +1,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Handler {
 
 	protected static LinkedList<OverChar> object = new LinkedList<OverChar>();
+	protected static ArrayList<EBullet> eBullet = new ArrayList<EBullet>();
 	
 	public static void tick()
 	{
@@ -14,6 +15,7 @@ public class Handler {
 			OverChar temp = object.get(z);	
 			temp.tick();
 		}
+		for(int z = 0; z<eBullet.size();z++)eBullet.get(z).tick();
 		Board.play();
 		//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 		//Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.2,0.0));
@@ -38,5 +40,13 @@ public class Handler {
 	public static synchronized void removeObject(OverChar object)
 	{
 		Handler.object.remove(object);
+	}
+	public static synchronized void addEBullet(EBullet object)
+	{
+		eBullet.add(object);
+	}
+	public static synchronized void removeEBullet(EBullet object)
+	{
+		eBullet.remove(object);
 	}
 }

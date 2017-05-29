@@ -67,6 +67,13 @@ public class GGTop extends OverChar {
 					playerHealth -= check.collisionDamage;
 				}
 			}
+			for(int i = 0;i<Handler.eBullet.size();i++){
+				EBullet check = Handler.eBullet.get(i);
+				if(check.Overlap(playerX,playerY)){
+					playerHealth-=check.collisionDamage;
+					Handler.removeEBullet(check);
+				}
+			}
 			if(playerHealth<=0){
 				//System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
 				System.exit(0);
