@@ -104,7 +104,7 @@ public class GGTop extends OverChar {
 					int shiftX = 1000;
 					int shiftY = 1000;
 
-					if (first = true)
+					/*if (first = true)
 					{
 						Handler.addObject(new Spawner(shiftX + 400000, shiftY + -939000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 						Handler.addObject(new Spawner(shiftX + 463000, shiftY + 276000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
@@ -115,7 +115,7 @@ public class GGTop extends OverChar {
 						Handler.addObject(new Spawner(shiftX + 5453000, shiftY + 542000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 
 						first = false;
-					}
+					}*/
 
 					//}
 
