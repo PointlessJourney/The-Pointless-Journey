@@ -4,7 +4,7 @@ public class Bullet {
 
 	   private double x, y, a; // x,y and angle
 	   private int w, h; //width and height 
-	   public int count = 100;
+	   public int count = 50;
 	   // constructor
 	   public Bullet(double x, double y, double a) {
 
@@ -48,8 +48,8 @@ public class Bullet {
 	   // move toward the angle
 	   // //forward
 	   public void moveForward() {
-	      x += Math.cos(a)*(5000.0/1360.0*MainMenu.width);
-	      y += Math.sin(a)*(5000.0/1360.0*MainMenu.width);
+	      x += Math.cos(a)*(13000.0/1360.0*MainMenu.width);
+	      y += Math.sin(a)*(13000.0/1360.0*MainMenu.width);
 	      count--;
 	   }
 
