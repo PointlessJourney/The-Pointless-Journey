@@ -23,12 +23,12 @@ public class GGTop extends OverChar {
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base
-	};
+	}
 
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Base;
+	public STATE mapState = STATE.Field;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
