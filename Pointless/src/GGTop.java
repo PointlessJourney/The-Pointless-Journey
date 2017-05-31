@@ -100,22 +100,23 @@ public class GGTop extends OverChar {
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
 					OverChar.playerX=0;
 					OverChar.playerY=0;
+					double scale = 1440.0/MainMenu.width;
+					int shiftX = (int)(1000/scale);
+					int shiftY = (int)(1000/scale);
 
-					int shiftX = 1000;
-					int shiftY = 1000;
 
-					/*if (first = true)
+					if (first = true)
 					{
-						Handler.addObject(new Spawner(shiftX + 400000, shiftY + -939000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 463000, shiftY + 276000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 328000, shiftY + 2535000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 3322000, shiftY + -958000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 7111000, shiftY + -1003000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 6357000, shiftY + 2736000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-						Handler.addObject(new Spawner(shiftX + 5453000, shiftY + 542000, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 400000)/scale), (int)((shiftY + -939000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 463000)/scale), (int)((shiftY + 276000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 328000)/scale), (int)((shiftY + 2535000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 3322000)/scale), (int)((shiftY + -958000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 7111000)/scale), (int)((shiftY + -1003000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 6357000)/scale),(int) ((shiftY + 2736000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
+						Handler.addObject(new Spawner((int)((shiftX + 5453000)/scale), (int)((shiftY + 542000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
 
 						first = false;
-					}*/
+					}
 
 					//}
 
