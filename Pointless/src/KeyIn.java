@@ -24,10 +24,10 @@ public class KeyIn extends KeyAdapter {
 
 
 					
-				if (key == KeyEvent.VK_W)OverChar.setVelY(up);
-				if (key == KeyEvent.VK_S)OverChar.setVelY(down);
-				if (key == KeyEvent.VK_A)OverChar.setVelX(left);		
-				if (key == KeyEvent.VK_D)OverChar.setVelX(right);
+				if (key == KeyEvent.VK_W||key == KeyEvent.VK_UP)OverChar.setVelY(up);
+				if (key == KeyEvent.VK_S||key == KeyEvent.VK_DOWN)OverChar.setVelY(down);
+				if (key == KeyEvent.VK_A||key == KeyEvent.VK_LEFT)OverChar.setVelX(left);		
+				if (key == KeyEvent.VK_D||key == KeyEvent.VK_RIGHT)OverChar.setVelX(right);
 				if (key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  "+MouseInfo.getPointerInfo().getLocation().x+"  "+MouseInfo.getPointerInfo().getLocation().y);
 				if (key==KeyEvent.VK_9)Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 				if (key==KeyEvent.VK_8)Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("BGtop.png"),3.5,1.0));
@@ -51,10 +51,10 @@ public class KeyIn extends KeyAdapter {
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
-				if (key == KeyEvent.VK_W&&OverChar.getVelY()==up)OverChar.setVelY(0);
-				if (key == KeyEvent.VK_S&&OverChar.getVelY()==down)OverChar.setVelY(0);
-				if (key == KeyEvent.VK_A&&OverChar.getVelX()==left)OverChar.setVelX(0);		
-				if (key == KeyEvent.VK_D&&OverChar.getVelX()==right)OverChar.setVelX(0);	
+				if (key == KeyEvent.VK_W||key == KeyEvent.VK_UP&&OverChar.getVelY()==up)OverChar.setVelY(0);
+				if (key == KeyEvent.VK_S||key == KeyEvent.VK_DOWN&&OverChar.getVelY()==down)OverChar.setVelY(0);
+				if (key == KeyEvent.VK_A||key == KeyEvent.VK_LEFT&&OverChar.getVelX()==left)OverChar.setVelX(0);		
+				if (key == KeyEvent.VK_D||key == KeyEvent.VK_RIGHT&&OverChar.getVelX()==right)OverChar.setVelX(0);	
 
 			
 						
