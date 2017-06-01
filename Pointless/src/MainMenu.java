@@ -432,13 +432,13 @@ public class MainMenu extends JFrame {
 		lblMessage.setBounds((int)(66.0/832.0*width+offsetx), (int)(166.0/468.0*height+offsety)-24, (int)(700.0/832.0*width), (int)(90.0/468.0*height));
 		lblMessage.setIcon(new ImageIcon(new ImageIcon("Message.png").getImage().getScaledInstance(-1, lblMessage.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel_3.add(lblMessage);
-		
-		BufferedImage cursorImg = LoadImage("crosshair.png");
+		////////////////////////////////////////////////
+		//BufferedImage cursorImg = LoadImage("crosshair.png");
 		// Create a new blank cursor.
-		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-		    cursorImg, new Point(0, 0), "blank cursor");
-		contentPane.setCursor(blankCursor);
-		
+		//Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		//    cursorImg, new Point(0, 0), "blank cursor");
+		//contentPane.setCursor(blankCursor);
+		///////////////////////////////////////////////////
 		label_2.setIcon(new ImageIcon(new ImageIcon("ezgif.com-crop.gif").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));

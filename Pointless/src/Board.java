@@ -28,7 +28,8 @@ public class Board{
 	bHeight;
 	private static int tmpLoad=0;
 	private static boolean moveForward, canForward, canBackward, moveBackward, left,
-	right, fire, special;
+	right, special;
+	public static boolean fire;
 	static double angle, check, tmpAngle, total;
 	// constructor
 
@@ -60,8 +61,12 @@ public class Board{
 			} else {
 				g2d.setColor(Color.MAGENTA);
 			} 
-			g2d.fillRect( (int) ((tmpB.getX()-OverChar.playerX)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.width/2-MainMenu.offsetx, (int) ((tmpB.getY()-OverChar.playerY)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.height/2-MainMenu.offsety, (int)(5.0/1360.0*MainMenu.width),
-					(int)(5.0/1360.0*MainMenu.width));
+			//g2d.fillRect( (int) ((tmpB.getX()-OverChar.playerX)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.width/2-MainMenu.offsetx, (int) ((tmpB.getY()-OverChar.playerY)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.height/2-MainMenu.offsety, (int)(5.0/1360.0*MainMenu.width),
+			//		(int)(5.0/1360.0*MainMenu.width));
+			int x =(int)((tmpB.getX()-OverChar.playerX)/1000)+MainMenu.width/2+MainMenu.offsetx;
+			int y = (int) ((tmpB.getY()-OverChar.playerY)/1000)+MainMenu.height/2+MainMenu.offsety;
+			g2d.drawLine(x, y, (int)(x+10*Math.cos(tmpB.getA()-Math.PI)), (int)(y+10*Math.sin(tmpB.getA()-Math.PI)));
+			//g2d.drawLine(x, y, MainMenu.width/2+MainMenu.offsetx, MainMenu.height/2+MainMenu.offsety);
 			//System.out.println((tmpB.getX()-OverChar.playerX)/1000-(2.5/1360.0*MainMenu.width)+MainMenu.width-MainMenu.offsetx);
 		}
 
@@ -80,7 +85,7 @@ public class Board{
 			}
 			for(int j = 2;j<Handler.object.size();j++){
 				try{
-				if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
+					if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
 				}catch(Exception e){System.out.println("bullet broke");}
 			}
 		}
@@ -136,8 +141,16 @@ public class Board{
 			}
 
 		}
+
+
+	}
+	public static ArrayList<Bullet> getBullets(){
+		return bullets;
 	}
 
+	public static void removeBullet(int index){
+		bullets.remove(index);
+	}
 
 
 }
