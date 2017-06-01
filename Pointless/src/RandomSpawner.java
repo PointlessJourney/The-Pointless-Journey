@@ -13,14 +13,16 @@ public class RandomSpawner extends OverChar{
 		speed = 12000;
 		health = 1;
 		collisionDamage = 15;
-		if (rage >=10)
+		if (rage >=6)
 		{
-			speed = (speed* (Math.random() * 1000));	
+			speed = (speed + (Math.random() * 1000));
+			//System.out.print("Speed is up" + speed);
 		}
-		if (rage >=20)
+		if (rage >=14)
 		{
-			//speed = (speed* (Math.random() * 1000));
+			speed = (speed + ((OverChar.playerHealth) * 100));
 			health = 4;
+			//System.out.print("Health is up" + health);
 		}
 	}
 

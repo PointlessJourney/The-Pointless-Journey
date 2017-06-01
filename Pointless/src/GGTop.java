@@ -122,15 +122,15 @@ public class GGTop extends OverChar {
 				//{
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-				if (RandomSpawner.rage <=19)
+				if (RandomSpawner.rage <=9)
 				{
 					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,2.0));
 					System.out.println("Spawned 0");
 				}
-				else if (RandomSpawner.rage >=20)
+				else if (RandomSpawner.rage >=14)
 				{
 					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,2.0));
-					System.out.println("Spawned 20");
+					System.out.println("Spawned 10");
 				}
 
 
