@@ -82,6 +82,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
+		int frames = 0;
 		while(running)
 		{
 			long now = System.nanoTime();
@@ -94,11 +95,13 @@ public class OverworldEngine extends Canvas implements Runnable {
 			}
 			if(running)
 				render();
+			frames++;
 
 			if(System.currentTimeMillis() - timer > 1000)
 			{
 				timer += 1000;
-				//System.out.println("FPS: "+ frames);
+				System.out.println("FPS: "+ frames);
+				frames = 0;
 			}
 		}
 		stop();
