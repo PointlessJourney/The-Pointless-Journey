@@ -55,7 +55,7 @@ public class KeyIn extends KeyAdapter {
 				if (key == KeyEvent.VK_S&&OverChar.getVelY()==down)OverChar.setVelY(0);
 				if (key == KeyEvent.VK_A&&OverChar.getVelX()==left)OverChar.setVelX(0);		
 				if (key == KeyEvent.VK_D&&OverChar.getVelX()==right)OverChar.setVelX(0);	
-				//if (key==KeyEvent.VK_R)Board.fire=false;
+
 			
 						
 	}

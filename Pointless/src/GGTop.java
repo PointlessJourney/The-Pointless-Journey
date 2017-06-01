@@ -57,10 +57,9 @@ public class GGTop extends OverChar {
 				OverChar.playerX += velX;
 				OverChar.playerY += velY;
 			}
-			if (playerX <= maxX) playerX = maxX;
-			if (playerX >= maxNegX) playerX = maxNegX;
-			if (playerY <= maxY) playerY = maxY;
-			if (playerY >= maxNegY) playerY = maxNegY;
+
+
+
 			for(int i = 2;i<Handler.object.size();i++){
 				OverChar check = Handler.object.get(i);
 				if(check.id==ID.Enemy&&check.Overlap(playerX, playerY)){
@@ -80,46 +79,68 @@ public class GGTop extends OverChar {
 			}
 			return;
 		}
-		
-		if (mapState == STATE.Base)
+		if (id == ID.Map)
 		{
-			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
-
+			if (playerX <= maxX) playerX = maxX;
+			if (playerX >= maxNegX) playerX = maxNegX;
+			if (playerY <= maxY) playerY = maxY;
+			if (playerY >= maxNegY) playerY = maxNegY;
+			if (mapState == STATE.Base)
 			{
-				//*****************************************************************************
+				if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
-				mapState = STATE.Field;
-				//if (second)
-				//{
-				x = (int)(30000.0/1360*MainMenu.width);
-				y = (int)(-871000.0/1360*MainMenu.width);
-				map = LoadImage("ruckss2.png");
-				//second = false;
-				//first = true;
-				size = 7/1600.0*MainMenu.width;
-				maxX = (int)(-559000/1360.0*MainMenu.width);
-				maxNegX =  (int)(7635000/1360.0*MainMenu.width);
-				maxY =(int)(-1153000/1360.0*MainMenu.width);
-				maxNegY = (int)(3403000/1360.0*MainMenu.width);
-				OverChar.playerX=0;
-				OverChar.playerY=0;
+				{
+					//*****************************************************************************
 
-				//}
+					mapState = STATE.Field;
+					//if (second)
+					//{
+					x = (int)(30000.0/1360*MainMenu.width);
+					y = (int)(-860000.0/1360*MainMenu.width);
+					map = LoadImage("ruckss2.png");
+					//second = false;
+					//first = true;
+					size = 7/1600.0*MainMenu.width;
+					maxX = (int)(56090/1360.0*MainMenu.width);
+					maxNegX =  (int)(6944789/1360.0*MainMenu.width);
+					maxY =(int)(-827293/1360.0*MainMenu.width);
+					maxNegY = (int)(3002948/1360.0*MainMenu.width);
+					OverChar.playerX=0;
+					OverChar.playerY=0;
+					double scale = 1440.0/MainMenu.width;
+					int shiftX = (int)(1000/scale);
+					int shiftY = (int)(1000/scale);
+
+
+					if (first = true)
+					{
+						Handler.addObject(new Spawner((int)((shiftX + 400000)/scale), (int)((shiftY + -939000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 463000)/scale), (int)((shiftY + 276000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 328000)/scale), (int)((shiftY + 2535000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 3322000)/scale), (int)((shiftY + -958000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 7111000)/scale), (int)((shiftY + -1003000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 6357000)/scale),(int) ((shiftY + 2736000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+						Handler.addObject(new Spawner((int)((shiftX + 5453000)/scale), (int)((shiftY + 542000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+
+						first = false;
+					}
+
+					//}
 
 
 
-				//****************************************************************************
+					//****************************************************************************
+
+
+				}
 
 
 			}
-			*/
+			else if (mapState == STATE.Field)
+			{		
+				//System.out.println("delay" + delay);
 
-		}
-		else if (mapState == STATE.Field)
-		{		
-			//System.out.println("delay" + delay);
-			
-			/*if(delay==0)
+				/*if(delay==0)
 			{	
 				delay = (int)(Math.random() * 1200.0);
 				//96x96
@@ -135,52 +156,35 @@ public class GGTop extends OverChar {
 			{
 				delay--;
 			}*/
-			int shiftX = 556;
-			int shiftY = 284;
-			if (first)
-			{
-			Handler.addObject(new Spawner(shiftX + 400, shiftY + -939, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 463, shiftY + 276, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 328, shiftY + 2535, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 3322, shiftY + -958, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 7111, shiftY + -1003, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 6357, shiftY + 2736, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-			Handler.addObject(new Spawner(shiftX + 5453, shiftY + 542, ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3));
-
-			first = false;
-			}
 
 
-		if (x <= 8164000/1600.0*MainMenu.width && x >= 8300000/1600.0*MainMenu.width && y >= 2654000/1600.0*MainMenu.width && y <= 2324000/1600.0*MainMenu.width)	// returning to the main area
-		{
-			//****************************************************************************
 
-			mapState = STATE.Base;
+				if (playerX <= 8164000/1600.0*MainMenu.width && playerX >= 8300000/1600.0*MainMenu.width && playerY >= 2654000/1600.0*MainMenu.width && playerY <= 2324000/1600.0*MainMenu.width)	// returning to the main area
+				{
+					//****************************************************************************
 
-			//if (first)
-			//{
-			x = (int)(30000.0/1360*MainMenu.width);
-			y = (int)(-871000.0/1360*MainMenu.width);
-			map = LoadImage("basemap.png");
-			System.out.println("start");
-			//first = false;
-			//second = true;
-			size = 25/1600.0*MainMenu.width;
-			maxX = (int)(-555000/1360.0*MainMenu.width);
-			maxNegX =  (int)(3554000.0/1360*MainMenu.width);
-			maxY = (int)(-1110000.0/1360*MainMenu.width);
-			maxNegY = (int)(2954000.0/1360*MainMenu.width);
-			OverChar.playerX=0;
-			OverChar.playerY=0;
+					mapState = STATE.Base;
 
-			//}
+					//if (first)
+					//{
+					x = (int)(30000.0/1360*MainMenu.width);
+					y = (int)(-871000.0/1360*MainMenu.width);
+					map = LoadImage("basemap.png");
+					System.out.println("start");
+					//first = false;
+					//second = true;
+					size = 25/1600.0*MainMenu.width;
+					maxX = (int)(-555000/1360.0*MainMenu.width);
+					maxNegX =  (int)(3554000.0/1360*MainMenu.width);
+					maxY = (int)(-1110000.0/1360*MainMenu.width);
+					maxNegY = (int)(2954000.0/1360*MainMenu.width);
+					OverChar.playerX=0;
+					OverChar.playerY=0;
+
+					//}
+				}
 			}
 		}
-		
-		if (playerX <= maxX) playerX = maxX;
-		if (playerX >= maxNegX) playerX = maxNegX;
-		if (playerY <= maxY) playerY = maxY;
-		if (playerY >= maxNegY) playerY = maxNegY;
 	}
 
 
@@ -191,11 +195,9 @@ public class GGTop extends OverChar {
 		if(id == ID.Map)		//creates the map
 		{
 
-//*************************************************************
+			//*************************************************************
 
-
-				
-			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
+			AffineTransform at = AffineTransform.getTranslateInstance((x-playerX)/1000, (y-playerY)/1000);	// moves the picture around
 
 			at.scale(size,size);
 
@@ -205,8 +207,8 @@ public class GGTop extends OverChar {
 			g2d.drawImage(map, at, null);		// draws it
 
 		}
-		
-		
+
+
 		else if (id == ID.Player) // creates the player
 		{
 			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking

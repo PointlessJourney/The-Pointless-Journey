@@ -118,7 +118,7 @@ public abstract class OverChar
 		}
 		catch (IOException e)
 		{
-
+System.out.println("failed image load");
 		}
 		return img;
 	}
