@@ -31,7 +31,7 @@ public class KeyIn extends KeyAdapter {
 				if (key==KeyEvent.VK_C)System.out.println("x:" + OverChar.playerX + "    y:"+OverChar.playerY+"  "+MouseInfo.getPointerInfo().getLocation().x+"  "+MouseInfo.getPointerInfo().getLocation().y);
 				if (key==KeyEvent.VK_9)Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 				if (key==KeyEvent.VK_8)Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("BGtop.png"),3.5,1.0));
-				if (key==KeyEvent.VK_7)Handler.addObject(new BossTwo(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("BGtop.png"),5.0));
+				if (key==KeyEvent.VK_7)Handler.addObject(new BossTwo(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
 				if (key==KeyEvent.VK_R)Board.fire=true;
 				//System.out.println(OverChar.playerX);
 

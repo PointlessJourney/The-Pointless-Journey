@@ -85,7 +85,7 @@ public class Board{
 			}
 			for(int j = 2;j<Handler.object.size();j++){
 				try{
-				if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
+					if(Handler.object.get(j).Overlap((int)tmpB.getX(), (int)tmpB.getY()))tmpBs.remove(i);
 				}catch(Exception e){System.out.println("bullet broke");}
 			}
 		}
@@ -141,16 +141,16 @@ public class Board{
 			}
 
 		}
-		
-		public static ArrayList<Bullet> getBullets(){
-			return bullets;
-		}
-		
-		public static void removeBullet(int index){
-			bullets.remove(index);
-		}
+
+
+	}
+	public static ArrayList<Bullet> getBullets(){
+		return bullets;
 	}
 
+	public static void removeBullet(int index){
+		bullets.remove(index);
+	}
 
 
 }
