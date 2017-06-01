@@ -28,7 +28,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Field;
+	public STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -127,7 +127,7 @@ public class GGTop extends OverChar {
 					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,2.0));
 					System.out.println("Spawned 0");
 				}
-				else if (RandomSpawner.rage >=14)
+				else if (RandomSpawner.rage >=12)
 				{
 					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,2.0));
 					System.out.println("Spawned 10");
