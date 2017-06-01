@@ -10,10 +10,18 @@ public class RandomSpawner extends OverChar{
 	public RandomSpawner(int x, int y, ID id, BufferedImage map, double size) {
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
-		speed = 10000;
+		speed = 12000;
 		health = 1;
 		collisionDamage = 15;
-
+		if (rage >=10)
+		{
+			speed = (speed* (Math.random() * 1000));	
+		}
+		if (rage >=20)
+		{
+			//speed = (speed* (Math.random() * 1000));
+			health = 4;
+		}
 	}
 
 	@Override
@@ -33,16 +41,8 @@ public class RandomSpawner extends OverChar{
 		{
 			Handler.removeObject(this);
 			rage = rage + 1;
-			if (rage >=10)
-			{
-				speed = (speed* (Math.random() * 1000));	
-			}
-			if (rage >=20)
-			{
-				//speed = (speed* (Math.random() * 1000));
-				health = 4;
-			}
+			
 		}
-	}
-}
+	}		
+}	
 
