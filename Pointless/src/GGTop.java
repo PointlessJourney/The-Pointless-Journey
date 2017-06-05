@@ -13,19 +13,21 @@ import javax.imageio.ImageIO;
 public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
-	boolean second = true;
+	boolean second = true, third = true;
 	int maxX;
 	int maxNegX;
 	int maxY;
 	int maxNegY;
 	int delay=0;
+	double scale = 1440.0/MainMenu.width;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
 	//****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
-		Base
+		Base,
+		Cave
 	};
 
 	//******************************************************************************
@@ -85,13 +87,14 @@ public class GGTop extends OverChar {
 			if (playerX >= maxNegX) playerX = maxNegX;
 			if (playerY <= maxY) playerY = maxY;
 			if (playerY >= maxNegY) playerY = maxNegY;
+			
+			
 			if (mapState == STATE.Base)
 			{
 				if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
 				{
 					//*****************************************************************************
-
 					mapState = STATE.Field;
 					//if (second)
 					//{
@@ -107,7 +110,6 @@ public class GGTop extends OverChar {
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
 					OverChar.playerX=0;
 					OverChar.playerY=0;
-					double scale = 1440.0/MainMenu.width;
 					int shiftX = (int)(1000/scale);
 					int shiftY = (int)(1000/scale);
 
@@ -134,6 +136,31 @@ public class GGTop extends OverChar {
 
 				}
 
+				if (playerY >= 3061061/scale && playerX >= 1286000/scale && playerX <= 1400347/scale)
+				{
+					mapState = STATE.Cave;
+					//if (second)
+					//{
+					x = (int)(30000.0/1360*MainMenu.width);
+					y = (int)(-860000.0/1360*MainMenu.width);
+					map = LoadImage("grassss2.jpg");
+					//second = false;
+					//first = true;
+					size = 7/1600.0*MainMenu.width;
+					maxX = (int)(56090/1360.0*MainMenu.width);
+					maxNegX =  (int)(6944789/1360.0*MainMenu.width);
+					maxY =(int)(-827293/1360.0*MainMenu.width);
+					maxNegY = (int)(3002948/1360.0*MainMenu.width);
+					OverChar.playerX=0;
+
+					
+					if (third = true)
+					{
+						Handler.addObject(new Spawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 5/scale));
+						first = false;
+					}
+
+				}
 
 			}
 			else if (mapState == STATE.Field)
@@ -156,8 +183,6 @@ public class GGTop extends OverChar {
 			{
 				delay--;
 			}*/
-
-
 
 				if (playerX <= 8164000/1600.0*MainMenu.width && playerX >= 8300000/1600.0*MainMenu.width && playerY >= 2654000/1600.0*MainMenu.width && playerY <= 2324000/1600.0*MainMenu.width)	// returning to the main area
 				{
