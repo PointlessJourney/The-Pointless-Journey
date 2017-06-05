@@ -11,6 +11,7 @@ import com.pointless.journey.framework.GameObject;
 import com.pointless.journey.framework.KeyInput;
 import com.pointless.journey.framework.ObjectId;
 import com.pointless.journey.window.BufferedImageLoader;
+import com.pointless.journey.window.Game;
 import com.pointless.journey.window.Handler;
 
 public class Player extends GameObject{
@@ -95,19 +96,30 @@ public class Player extends GameObject{
 
 			/////////////////////////////////////////////////////////////////////////////////////
 
-			if(tempObject.getId() == ObjectId.Speed){
+			if(tempObject.getId() == ObjectId.SwitchBlock){
 
 				//right collision
 				if(getBoundsRight().intersects(tempObject.getBounds())){
 
-					speeding = true;
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);
 
 				}
 
 				//left collision
 				if(getBoundsLeft().intersects(tempObject.getBounds())){
 
-					speeding = true;
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);
+					
+				}
+				
+				//top collision
+				if(getBoundsTop().intersects(tempObject.getBounds())){
+
+					
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);               
 
 				}
 
