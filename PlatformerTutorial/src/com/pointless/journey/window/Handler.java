@@ -9,11 +9,11 @@ import com.pointless.journey.objects.Block;
 
 public class Handler {
 	
-	public LinkedList<GameObject> object = new LinkedList<GameObject>();
+	public static LinkedList<GameObject> object = new LinkedList<GameObject>();
 	
-	private GameObject tempObject;
+	private static GameObject tempObject;
 	
-	public void tick(){
+	public static void tick(){
 		
 		for (int i = 0; i < object.size(); i++){
 			
@@ -25,7 +25,7 @@ public class Handler {
 		
 	}
 	
-	public void render(Graphics g){
+	public static void render(Graphics g){
 		
 		for (int i = 0; i < object.size(); i++){
 			
@@ -37,18 +37,18 @@ public class Handler {
 		
 	}
 	
-	public void addObject(GameObject object){
+	public static void addObject(GameObject object){
 		
-		this.object.add(object);
+		Handler.object.add(object);
 		
 	}
-	public void removeObject(GameObject object){
+	public static void removeObject(GameObject object){
 		
-		this.object.remove(object);
+		Handler.object.remove(object);
 		
 	}
 	
-	public void createLevel(){
+	public static void createLevel(){
 		
 		for(int xx = 0; xx < Game.WIDTH*2; xx += 32)
 			addObject(new Block(xx, Game.HEIGHT-32, ObjectId.Block));

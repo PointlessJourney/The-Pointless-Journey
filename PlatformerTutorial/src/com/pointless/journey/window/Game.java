@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable{
 	Random rand = new Random();//object of type Random, use to get Random Numbers
 
 	//Object
-	Handler handler;
+	Handler Handler;
 	GameObject object;
 	Camera cam;
 
@@ -62,20 +62,20 @@ public class Game extends Canvas implements Runnable{
 		//loading level
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.loadImage("/LevelOne.png");//loading the level
-		hud = loader.loadImage("/SideHud.png");
+		hud = loader.loadImage("/SideHud.png");    
 
-		handler = new Handler();
+		Handler = new Handler();
 
 		cam = new Camera(0, 0);//camera for side scroller
 
 		LoadImageLevel(level);
 
 
-		//handler.addObject(new Player(100, 600, handler, ObjectId.Player));
+		//Handler.addObject(new Player(100, 600, Handler, ObjectId.Player));
 
-		//handler.createLevel();
+		//Handler.createLevel();
 
-		this.addKeyListener(new KeyInput(handler));//for key input
+		this.addKeyListener(new KeyInput());//for key input
 
 
 	}
@@ -138,12 +138,12 @@ public class Game extends Canvas implements Runnable{
 
 	public void tick(){
 
-		handler.tick();//this will tick all the objects
+		Handler.tick();//this will tick all the objects
 
-		for (int i = 0; i < handler.object.size(); i++){
+		for (int i = 0; i < Handler.object.size(); i++){
 
-			if(handler.object.get(i).getId() == ObjectId.Player){
-				cam.tick(handler.object.get(i));
+			if(Handler.object.get(i).getId() == ObjectId.Player){
+				cam.tick(Handler.object.get(i));
 			}//if
 
 		}//for
@@ -173,7 +173,7 @@ public class Game extends Canvas implements Runnable{
 
 		g2d.translate(cam.getX(), cam.getY()); //Begin of Cam
 
-		handler.render(g);//render all objects
+		Handler.render(g);//render all objects
 		g2d.drawImage(hud, -(int)cam.getX(), -(int)cam.getY(), null);
 		
 		g2d.setColor(Color.black);
@@ -196,7 +196,7 @@ public class Game extends Canvas implements Runnable{
 		//Player for Mini Map
 		
 		g2d.setColor(Color.red);
-		xOfPlayer = (int) (-cam.getX()+player.getX()/16512.0*105.0+30);//ADJUST 105 TO something Reasonable
+		xOfPlayer = (int) (-cam.getX()+player.getX()/16512.0*165.0+30);//ADJUST 105 TO something Reasonable
 		g2d.fillOval(xOfPlayer, -(int)cam.getY() + 113, 15, 15);
 		//System.out.println(xOfPlayer);
 		g2d.translate(-cam.getX(), -cam.getY()); //End of Cam
@@ -230,9 +230,9 @@ public class Game extends Canvas implements Runnable{
 					green = (pixel >> 8) & 0xff;
 					blue = (pixel) & 0xff;//here
 					//System.out.println(xx +" "+yy+" "+red+" "+green+" "+blue);
-					if(red == 255 && green == 255 && blue == 255) handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
-					if(red == 0 && green == 0 && blue == 255) handler.addObject(player = new Player(xx*32, yy*32, handler, ObjectId.Player));
-					if (red == 255 && green == 255 && blue == 0) handler.addObject(sBlock = new SwitchBlock(xx*32, yy*32, ObjectId.SwitchBlock));
+					if(red == 255 && green == 255 && blue == 255) Handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+					if(red == 0 && green == 0 && blue == 255) Handler.addObject(player = new Player(xx*32, yy*32, ObjectId.Player));
+					if (red == 255 && green == 255 && blue == 0) Handler.addObject(sBlock = new SwitchBlock(xx*32, yy*32, ObjectId.SwitchBlock));
 
 
 				}//for
@@ -256,8 +256,8 @@ public class Game extends Canvas implements Runnable{
 					
 					System.out.println("X = " + xOfPlayer);
 
-					//if(red == 255 && green == 255 && blue == 255) handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
-					//if(red == 0 && green == 0 && blue == 255) handler.addObject(player = new Player(xx*32, yy*32, handler, ObjectId.Player));
+					//if(red == 255 && green == 255 && blue == 255) Handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
+					//if(red == 0 && green == 0 && blue == 255) Handler.addObject(player = new Player(xx*32, yy*32, Handler, ObjectId.Player));
 					//FIX LEVEL SWITCHING
 					
 					
