@@ -45,7 +45,7 @@ public class LoadingScreen extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("loading-animation-bd.gif"));
-		lblNewLabel.setBounds(101, 43, 210, 153);
+		lblNewLabel.setBounds(97, 38, 236, 164);
 		panel.add(lblNewLabel);
 		
 		
