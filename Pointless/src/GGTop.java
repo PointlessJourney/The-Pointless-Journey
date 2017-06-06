@@ -21,6 +21,7 @@ public class GGTop extends OverChar {
 	int delay=0;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
+	int life = 0;
 	//****************************************************************************
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
@@ -184,10 +185,7 @@ public class GGTop extends OverChar {
 		if(id == ID.Map)		//creates the map
 		{
 
-//*************************************************************
-
-
-				
+//*************************************************************			
 			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
 
 			at.scale(size,size);
@@ -196,6 +194,7 @@ public class GGTop extends OverChar {
 
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);		// draws it
+
 
 		}
 		
@@ -207,6 +206,7 @@ public class GGTop extends OverChar {
 
 
 			BufferedImage map = LoadImage("GGtop.png");
+
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
@@ -215,8 +215,22 @@ public class GGTop extends OverChar {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
 
-		}
 
+		}
+		else if (id == ID.HUD) // creates the player
+		{
+			BufferedImage map = OverChar.LoadImage("HUDOveraly.png");
+
+			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
+			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/3300.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/3850.0*MainMenu.width+MainMenu.offsety);
+		//	tat.scale(2.0/1950.0*MainMenu.width, 2.0/1890.0*MainMenu.width);
+			life =  362*(100-OverChar.playerHealth)/95;
+			System.out.println (life);
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.drawImage(map, tat, null);
+			g2d.setColor(Color.black);
+			g2d.fillRect(664, 860, 0+ life, 7);
+		}
 
 	}
 

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -28,28 +29,34 @@ public abstract class OverChar
 	public static int playerY=0;
 	public double size;//scaling
 	public BufferedImage map;//imagerendered
+	public BufferedImage HUD;
 	public int health=0, collisionDamage=0;//health and damage used by energy, 0 by default
 	public static int playerDamage = 2;//player stats, all static
 	public static int playerHealth = 100;
 	public static int maxPlayerHealth = 100;
 	public abstract void tick();
-	/*public void render(Graphics g) {
+	public void render(Graphics g) {
 		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
 		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
 		Graphics2D g2d = (Graphics2D) g;
 		try{
-			g2d.drawImage(map, at, null);	
+			//g2d.drawImage(map, at, null);	
+			g2d.setColor(Color.cyan);
+			g2d.fillRect(780, 700, 10, 100);
 		}catch(Exception e){}
 		
 		
-	}*/
+	}	
+	
 	public void render(Graphics g, double angle) {
 		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
 		at.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);
 		Graphics2D g2d = (Graphics2D) g;
 		try{
-			g2d.drawImage(map, at, null);	
+			g2d.drawImage(map, at, null);
+		
+			
 		}catch(Exception e){}
 		
 		
@@ -122,7 +129,6 @@ public abstract class OverChar
 		}
 		return img;
 	}
-	
 	
 
 }

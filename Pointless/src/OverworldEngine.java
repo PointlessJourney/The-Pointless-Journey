@@ -41,6 +41,8 @@ public class OverworldEngine extends Canvas implements Runnable {
 		OverChar.playerSpeed=10000.0/1360*MainMenu.width;
 		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
 		Handler.addObject(new GGTop((int)(30.0/1360*MainMenu.width),(int)(-871.0/1360*MainMenu.width),ID.Map));
+		Handler.addObject(new GGTop((int)(30.0/1360*MainMenu.width),(int)(-871.0/1360*MainMenu.width),ID.HUD));
+
 		addMouseListener(new Board.Mouse());
 		this.addKeyListener(new KeyIn());
 
