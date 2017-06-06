@@ -74,6 +74,46 @@ public class GGTop extends OverChar {
 		if (mapState == STATE.Base)
 		{
 
+			if(delay==0)
+				//
+			{	
+
+				delay = (int)(Math.random() * 1200.0);
+				System.out.println("delay" + delay);
+				//96x96
+				//for (int w = 0; w > 10; w++)
+				//{
+				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+				if (ExtraAi.anger <=1)
+				{
+					Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("AHHH.png") ,0.5));
+					System.out.println("Spawned 0");
+				}
+				else if (ExtraAi.anger >=2)
+				{
+					for (int i = 0;i<4;i++)
+					{
+						Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("bad guy clone.png") ,1.0));
+						ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+						ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+					}
+					System.out.println("Spawned 10");
+				}
+
+				//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
+				//System.out.println("Spawned");
+			}
+
+
+			//}
+
+			else
+			{
+				delay--;
+			}
+
+
 			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
 			{
