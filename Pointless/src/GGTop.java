@@ -156,8 +156,8 @@ public class GGTop extends OverChar {
 					
 					if (third = true)
 					{
-						Handler.addObject(new Spawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 5/scale));
-						first = false;
+						Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 5/scale));
+						third = false;
 					}
 
 				}
