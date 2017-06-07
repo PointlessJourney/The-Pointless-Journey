@@ -219,17 +219,42 @@ public class GGTop extends OverChar {
 		}
 		else if (id == ID.HUD) // creates the player
 		{
-			BufferedImage map = OverChar.LoadImage("HUDOveraly.png");
+			BufferedImage map = OverChar.LoadImage("OverHudpt1.png");
 
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/3300.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/3850.0*MainMenu.width+MainMenu.offsety);
 		//	tat.scale(2.0/1950.0*MainMenu.width, 2.0/1890.0*MainMenu.width);
-			life =  362*(100-OverChar.playerHealth)/95;
-			System.out.println (life);
+			life =  362*(100-OverChar.playerHealth)/100;
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
 			g2d.setColor(Color.black);
-			g2d.fillRect(664, 860, 0+ life, 7);
+			g2d.fillRect(664, 860, 0+life, 12);
+			g2d.setColor(Color.WHITE);
+			if ((100-OverChar.playerHealth)==0)
+			{
+				g2d.drawString("100 %", 670, 813);
+
+			}
+			else if ((100-OverChar.playerHealth)<=25)
+			{
+				g2d.drawString("Not 100%", 670, 813);
+
+			}
+			else if ((100-OverChar.playerHealth)<=50)
+			{
+				g2d.drawString("You gonna die", 670, 813);
+
+			}
+			else if ((100-OverChar.playerHealth)<=75)
+			{
+				g2d.drawString("You suck", 670, 813);
+
+			}
+			else
+			{
+				g2d.drawString("Just Give Up", 670, 813);
+
+			}
 		}
 
 	}
