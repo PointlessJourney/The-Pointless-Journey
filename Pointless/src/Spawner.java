@@ -34,7 +34,8 @@ public class Spawner extends OverChar{
 		
 		if(health<=0){
 			spawn = false;
-			map = OverChar.LoadImage("SP clone (3).png");			
+			map = OverChar.LoadImage("SP clone (3).png");
+			Handler.removeObject(this);
 		}
 		
 	

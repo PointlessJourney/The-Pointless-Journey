@@ -32,13 +32,14 @@ public class GGTop extends OverChar {
 		Base,
 		Stone,
 		Cave,
+		Realm,
 		Grass
 	};
 
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Stone;
+	public STATE mapState = STATE.Realm;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -166,6 +167,7 @@ public class GGTop extends OverChar {
 					mapState = STATE.Stone;
 					first = true;
 				}
+				
 			}
 			else if (mapState == STATE.Cave)
 			{
@@ -189,7 +191,7 @@ public class GGTop extends OverChar {
 				}
 				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
 				{
-					mapState = STATE.Base;
+					mapState = STATE.Realm;
 					first = true;
 				}
 			}
@@ -229,19 +231,43 @@ public class GGTop extends OverChar {
 					//{
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
-					map = LoadImage("stone.png");
+					map = LoadImage("stoneS2.png");
 					//second = false;
 					//first = true;
 					size = 7/1600.0*MainMenu.width;
-					maxX = (int)(56090/1360.0*MainMenu.width);
-					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
-					maxY =(int)(-827293/1360.0*MainMenu.width);
-					maxNegY = (int)(3002948/1360.0*MainMenu.width);
+					maxX = (int)(-436158/1360.0*MainMenu.width);
+					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
+					maxY =(int)(-956700/1360.0*MainMenu.width);
+					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+					//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 					first = false;
+					
 				}
 				
+				
+			}
+			else if (mapState == STATE.Realm)
+			{
+				if(first)
+				{
+					//if (second)
+					//{
+					x = (int)(100205.0/1440*MainMenu.width);
+					y = (int)(-744879.0/1440*MainMenu.width);
+					map = LoadImage("cardsss2.png");
+					//second = false;
+					//first = true;
+					size = 7/1600.0*MainMenu.width;
+					maxX = (int)(-436158/1360.0*MainMenu.width);
+					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
+					maxY =(int)(-956700/1360.0*MainMenu.width);
+					maxNegY = (int)(3535835/1360.0*MainMenu.width);
+					OverChar.playerX = 0;
+					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
+					first = false;
+					
+				}
 			}
 		}
 	}
