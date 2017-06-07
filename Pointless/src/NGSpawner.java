@@ -2,7 +2,7 @@ import java.awt.image.BufferedImage;
 
 public class NGSpawner extends OverChar{
 
-	boolean spawn = true;
+	public boolean spawn = true;
 	int delay = 0;
 	int ranX;
 	int ranY;
@@ -62,6 +62,7 @@ public class NGSpawner extends OverChar{
 		if(health<= 0){
 			spawn = false;
 			collisionDamage = 0;
+			Handler.removeObject(this);
 			map = OverChar.LoadImage("SP clone (3).png");			
 		}
 		

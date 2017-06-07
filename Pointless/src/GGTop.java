@@ -12,8 +12,10 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class GGTop extends OverChar {
 	static int count = 0;
+	public 
 	boolean first = true;
 	boolean second = true, third = true;
+	public static boolean clear = false;
 	int maxX;
 	int maxNegX;
 	int maxY;
@@ -27,7 +29,8 @@ public class GGTop extends OverChar {
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base,
-		Cave
+		Cave,
+		Grass
 	};
 
 	//******************************************************************************
@@ -120,6 +123,11 @@ public class GGTop extends OverChar {
 					mapState = STATE.Cave;
 					first = true;
 				}
+				if (playerY >= 2954000/scale && playerX >= 2538799/scale && playerX <= 2700299/scale)
+				{
+					mapState = STATE.Grass;
+					first = true;
+				}
 
 			}
 			else if (mapState == STATE.Field)
@@ -141,17 +149,17 @@ public class GGTop extends OverChar {
 					int shiftX = (int)(1000/scale);
 					int shiftY = (int)(1000/scale);
 
-					Handler.addObject(new Spawner((int)((shiftX + 400000)/scale), (int)((shiftY + -939000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 463000)/scale), (int)((shiftY + 276000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 328000)/scale), (int)((shiftY + 2535000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 3322000)/scale), (int)((shiftY + -958000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 7111000)/scale), (int)((shiftY + -1003000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 6357000)/scale),(int) ((shiftY + 2736000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 5453000)/scale), (int)((shiftY + 542000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 400000)/scale), (int)((shiftY + -939000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 463000)/scale), (int)((shiftY + 276000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 328000)/scale), (int)((shiftY + 2535000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 3322000)/scale), (int)((shiftY + -958000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 7111000)/scale), (int)((shiftY + -1003000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 6357000)/scale),(int) ((shiftY + 2736000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					//Handler.addObject(new Spawner((int)((shiftX + 5453000)/scale), (int)((shiftY + 542000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
 					first = false;
 				}
 
-				if (playerX <= 8164000/1600.0*MainMenu.width && playerX >= 8300000/1600.0*MainMenu.width && playerY >= 2654000/1600.0*MainMenu.width && playerY <= 2324000/1600.0*MainMenu.width)	// returning to the main area
+				if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
 				{
 					mapState = STATE.Base;
 					first = true;
@@ -170,12 +178,43 @@ public class GGTop extends OverChar {
 					//first = true;
 					size = 7/1600.0*MainMenu.width;
 					maxX = (int)(56090/1360.0*MainMenu.width);
-					maxNegX =  (int)(6944789/1360.0*MainMenu.width);
+					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
 					maxY =(int)(-827293/1360.0*MainMenu.width);
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
-					OverChar.playerX=0;
-					Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 5/scale));
+					OverChar.playerX = 0;
+					Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
 					first = false;
+				}
+				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
+				{
+					mapState = STATE.Base;
+					first = true;
+				}
+			}
+			else if (mapState == STATE.Grass)
+			{
+				if(first)
+				{
+					//if (second)
+					//{
+					x = (int)(30000.0/1360*MainMenu.width);
+					y = (int)(-860000.0/1360*MainMenu.width);
+					map = LoadImage("muddd2.jpg");
+					//second = false;
+					//first = true;
+					size = 7/1600.0*MainMenu.width;
+					maxX = (int)(56090/1360.0*MainMenu.width);
+					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
+					maxY =(int)(-827293/1360.0*MainMenu.width);
+					maxNegY = (int)(3002948/1360.0*MainMenu.width);
+					OverChar.playerX = 0;
+					//Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
+					first = false;
+				}
+				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 315778/1360.0*MainMenu.width && playerY <= 2070300/1360.0*MainMenu.width)	// returning to the main area
+				{
+					mapState = STATE.Base;
+					first = true;
 				}
 			}
 		}
