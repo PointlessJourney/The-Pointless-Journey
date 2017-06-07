@@ -2,15 +2,6 @@
 /Board.class
 /Boss1Minion.class
 /Boss2Tracking.class
-/BossOne.class
-/BossTwo.class
-/Bullet.class
-/EBullet.class
-/FrameSetup.class
-/GGTop$STATE.class
-/GGTop.class
-/Handler.class
-/ID.class
 /KeyIn.class
 /MainMenu$1.class
 /MainMenu$10.class
@@ -32,3 +23,5 @@
 /ShieldBullet.class
 /Spawner.class
 /Sploder.class
+/TempFrameForTesting$1.class
+/TempFrameForTesting.class
