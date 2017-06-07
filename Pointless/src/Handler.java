@@ -38,6 +38,7 @@ public class Handler {
 	{
 		Handler.object.add(object);
 	}
+	
 	public static synchronized void removeObject(OverChar object)
 	{
 		Handler.object.remove(object);

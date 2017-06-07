@@ -4,6 +4,7 @@ public enum ID {
 	Player(),
 	Enemy(),
 	RandomEnemy(),
-	Bullet();
+	Bullet(),
+	HUD();
 	
 }
