@@ -22,7 +22,7 @@ public class GGTop extends OverChar {
 	int maxY;
 	int maxNegY;
 	int delay=0;
-	double scale = 1440.0/MainMenu.width;
+	double scale = 1360.0/MainMenu.width;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
 	//****************************************************************************
@@ -39,7 +39,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Realm;
+	public static STATE mapState = STATE.Realm;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -149,16 +149,15 @@ public class GGTop extends OverChar {
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
 					OverChar.playerX=0;
 					OverChar.playerY=0;
-					int shiftX = (int)(1000/scale);
-					int shiftY = (int)(1000/scale);
 
-					Handler.addObject(new Spawner((int)((shiftX + 400000)/scale), (int)((shiftY + -939000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 463000)/scale), (int)((shiftY + 276000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 328000)/scale), (int)((shiftY + 2535000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 3322000)/scale), (int)((shiftY + -958000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 7111000)/scale), (int)((shiftY + -1003000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 6357000)/scale),(int) ((shiftY + 2736000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					Handler.addObject(new Spawner((int)((shiftX + 5453000)/scale), (int)((shiftY + 542000)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((445970)/scale), (int)(( 311594)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((377970)/scale), (int)((-827293)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((3134449)/scale), (int)((-835793)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((6724109)/scale), (int)((-915793)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((6003724)/scale), (int)((2647057)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
+					Handler.addObject(new Spawner((int)((308933)/scale),(int) ((2461056)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					Handler.addObject(new Spawner((int)((5151110)/scale), (int)((554649)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
+					
 					first = false;
 				}
 
@@ -240,9 +239,12 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
-					first = false;
-					
+					Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+					first = false;	
+				}
+				if (playerX >= 4031394/scale && playerY >= -956700)
+				{
+					mapState = STATE.Base;
 				}
 				
 				
@@ -264,7 +266,7 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
+					//Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
 					first = false;
 					
 				}

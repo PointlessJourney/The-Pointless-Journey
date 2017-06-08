@@ -2,7 +2,7 @@ import java.awt.image.BufferedImage;
 
 public class Spawner extends OverChar{
 
-	boolean spawn = true;
+	boolean spawn = false;
 	int delay = 1;
 	public Spawner(int x, int y, ID id, BufferedImage map, double size) {
 		super(x, y, id, map, size);
@@ -15,6 +15,10 @@ public class Spawner extends OverChar{
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub
+		if(GGTop.mapState != GGTop.STATE.Field)
+		{
+			Handler.removeObject(this);
+		}
 		if (spawn)
 		{
 			delay--;
@@ -35,7 +39,6 @@ public class Spawner extends OverChar{
 		if(health<=0){
 			spawn = false;
 			map = OverChar.LoadImage("SP clone (3).png");
-			Handler.removeObject(this);
 		}
 		
 	

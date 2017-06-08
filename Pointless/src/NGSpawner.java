@@ -17,55 +17,62 @@ public class NGSpawner extends OverChar{
 
 	@Override
 	public void tick() {
-		
-		if (spawn)
+		if(GGTop.mapState != GGTop.STATE.Cave)
 		{
-			if(delay == 0)
-				//
-			{	
-				delay = (int)(Math.random() * 1200.0);
-				System.out.println("delay" + delay);
-				//96x96
-				//for (int w = 0; w > 10; w++)
-				//{
-				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
-				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-				
-				if (RandomSpawner.rage <=9)
-				{
-					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,2.0));
-					System.out.println("Spawned 0");
-				}
-				else if (RandomSpawner.rage >=12)
-				{
-					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,2.0));
-					System.out.println("Spawned 10");
-				}
-				//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
-				//System.out.println("Spawned");
-				
-			}
-			else
-			{
-				delay--;
-			}
-			//}
-		}		
-		if(health== health/2){
-			map = OverChar.LoadImage("SP clone (1).png");			
-		}
-		
-		if(health==health/4){
-			map = OverChar.LoadImage("SP clone (2).png");			
-		}
-		
-		if(health<= 0){
-			spawn = false;
-			collisionDamage = 0;
 			Handler.removeObject(this);
-			map = OverChar.LoadImage("SP clone (3).png");			
 		}
-		
+		else
+		{
+			if (spawn)
+			{
+				if(delay == 0)
+					//
+				{	
+					delay = (int)(Math.random() * 1200.0);
+					System.out.println("delay" + delay);
+					//96x96
+					//for (int w = 0; w > 10; w++)
+					//{
+					ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+					ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+
+					if (RandomSpawner.rage <=9)
+					{
+						Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,2.0));
+						System.out.println("Spawned 0");
+					}
+					else if (RandomSpawner.rage >=12)
+					{
+						Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,2.0));
+						System.out.println("Spawned 10");
+					}
+					//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
+					//System.out.println("Spawned");
+
+				}
+				else
+				{
+					delay--;
+				}
+				//}
+			}		
+			if(health== health/2){
+				map = OverChar.LoadImage("SP clone (1).png");			
+			}
+
+			if(health==health/4){
+				map = OverChar.LoadImage("SP clone (2).png");			
+			}
+
+			if(health<= 0){
+				spawn = false;
+				collisionDamage = 0;
+				Handler.removeObject(this);
+				map = OverChar.LoadImage("SP clone (3).png");			
+			}
+
+		}
 	}
+
 
 }
