@@ -196,14 +196,11 @@ public class GGTop extends OverChar {
 		if(id == ID.Map)		//creates the map
 		{
 
-<<<<<<< HEAD
+
 			//*************************************************************
 
 			AffineTransform at = AffineTransform.getTranslateInstance((x-playerX)/1000, (y-playerY)/1000);	// moves the picture around
-=======
-//*************************************************************			
-			AffineTransform at = AffineTransform.getTranslateInstance(x-playerX/1000, y-playerY/1000);	// moves the picture around
->>>>>>> refs/heads/Riley
+
 
 			at.scale(size,size);
 
