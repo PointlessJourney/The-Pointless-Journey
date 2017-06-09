@@ -266,7 +266,7 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					//Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
+					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
 					first = false;
 					
 				}
