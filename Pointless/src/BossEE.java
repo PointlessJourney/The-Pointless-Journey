@@ -8,7 +8,7 @@ public class BossEE extends OverChar{
 	private double temp = 1360.0/MainMenu.width;
 	private int direction;
 	private int mod;
-	private int mod2;
+	private double mod2;
 	//static int size = 3;
 	int num;
 
@@ -26,13 +26,14 @@ public class BossEE extends OverChar{
 		collisionDamage=1;
 		imageX = map.getWidth()*size/1280.0*MainMenu.width*150;
 		imageY = map.getHeight()*size/1280.0*MainMenu.width*150;
+		mod2 =(Math.random()*0.4)+0.8;
 	}
 
 	@Override
 	public void tick() {
 		speed = mod+(3500.0/temp-(2000.0/temp*health/HEALTH)+(4.5/temp*(Math.sqrt(((playerX-x)/1000)*((playerX-x)/1000)+((playerY-y)/1000)*((playerY-y)/1000))))/1360.0*MainMenu.width);
-		x += (int)(speed *Math.cos(Math.atan2(playerY-y, playerX-x)+Math.PI/4*direction));
-		y += (int)(speed *Math.sin(Math.atan2(playerY-y, playerX-x)+Math.PI/4*direction));
+		x += (int)(speed *Math.cos(Math.atan2(playerY-y, playerX-x)+Math.PI/4*direction*mod2));
+		y += (int)(speed *Math.sin(Math.atan2(playerY-y, playerX-x)+Math.PI/4*direction*mod2));
 
 		delay--;
 
