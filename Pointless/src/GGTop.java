@@ -39,7 +39,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public static STATE mapState = STATE.Realm;
+	public static STATE mapState = STATE.Stone;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -114,14 +114,14 @@ public class GGTop extends OverChar {
 					OverChar.playerY=0;
 					first = false;
 				}
-				
+
 				if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 				{		//*****************************************************************************
 					mapState = STATE.Field;
 					first = true;
 				}
 
-				if (playerY >= 3061061/scale && playerX >= 1286000/scale && playerX <= 1400347/scale)
+				if (playerY >= 2954000/scale && playerX >= 1222312/scale && playerX <= 1324482/scale)
 				{
 					mapState = STATE.Cave;
 					first = true;
@@ -157,16 +157,19 @@ public class GGTop extends OverChar {
 					Handler.addObject(new Spawner((int)((6003724)/scale), (int)((2647057)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"),1.3/scale));
 					Handler.addObject(new Spawner((int)((308933)/scale),(int) ((2461056)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
 					Handler.addObject(new Spawner((int)((5151110)/scale), (int)((554649)/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 1.3/scale));
-					
+
 					first = false;
 				}
-
-				if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
+				System.out.println(Spawner.amount);
+				if (Spawner.amount == 0)
 				{
-					mapState = STATE.Stone;
-					first = true;
+					if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
+					{
+						mapState = STATE.Stone;
+						first = true;
+					}
 				}
-				
+
 			}
 			else if (mapState == STATE.Cave)
 			{
@@ -188,10 +191,14 @@ public class GGTop extends OverChar {
 					Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
 					first = false;
 				}
-				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
+				System.out.println(NGSpawner.amount);
+				if(NGSpawner.amount == 0)
 				{
-					mapState = STATE.Realm;
-					first = true;
+					if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
+					{
+						mapState = STATE.Realm;
+						first = true;
+					}
 				}
 			}
 			else if (mapState == STATE.Grass)
@@ -206,12 +213,12 @@ public class GGTop extends OverChar {
 					//second = false;
 					//first = true;
 					size = 7/1600.0*MainMenu.width;
-					
+
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
 					maxY =(int)(-827293/1360.0*MainMenu.width);
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
-					
+
 					OverChar.playerX = 0;
 					//Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
 					first = false;
@@ -230,7 +237,7 @@ public class GGTop extends OverChar {
 					//{
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
-					map = LoadImage("stoneS2.png");
+					map = LoadImage("stone.png");
 					//second = false;
 					//first = true;
 					size = 7/1600.0*MainMenu.width;
@@ -239,15 +246,19 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+					//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 					first = false;	
 				}
-				if (playerX >= 4031394/scale && playerY >= -956700)
+				if(BossOne.dead1 == true)
 				{
-					mapState = STATE.Base;
+					if (playerX >= 3514682/scale && playerX <= 4025532/scale && playerY == -965200/scale)
+					{
+						mapState = STATE.Base;
+						first = true;
+					}
 				}
-				
-				
+
+
 			}
 			else if (mapState == STATE.Realm)
 			{
@@ -268,7 +279,7 @@ public class GGTop extends OverChar {
 					OverChar.playerX = 0;
 					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
 					first = false;
-					
+
 				}
 			}
 		}

@@ -1,9 +1,10 @@
 import java.awt.image.BufferedImage;
 
 public class BossOne extends OverChar{
-	final int HEALTH=400;
+	final int HEALTH = 400;
 	private double speed;
 	private int delay = 500;
+	public static boolean dead1 = false;
 	private double temp = 1360.0/MainMenu.width;
 	private boolean phase1=true;
 	public BossOne(int x, int y, ID id, BufferedImage map, double size) {
@@ -46,9 +47,17 @@ public class BossOne extends OverChar{
 				for(int i = 15;i>0;i--)Handler.addObject(new Boss1Minion((int)(Math.random()*1000-500+x),(int)(Math.random()*200-100+y),ID.Enemy,LoadImage("BGtop.png"),3.5,health/HEALTH));
 				phase1=false;
 			}
-			if(health<=0)Handler.removeObject(this);
+			if(health<=0){
+				dead1 = true;
+				Handler.removeObject(this);
+				
+			}
 		}
-		if(health<=0)Handler.removeObject(this);
+		if(health<=0){
+			dead1 = true;
+			Handler.removeObject(this);
+			
+			}
 	}
 
 
