@@ -22,13 +22,14 @@ public class GGTop extends OverChar {
 
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
-		Base
+		Base,
+		Test
 	}
 
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Field;
+	public STATE mapState = STATE.Test;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -71,12 +72,48 @@ public class GGTop extends OverChar {
 			return;
 		}
 
-		if (mapState == STATE.Base)
+		if(mapState == STATE.Test)
 		{
-
+			
 			if(delay==0)
 				//
 			{	
+
+				delay--;
+				//delay = (int)(Math.random() * 1200.0);
+				//System.out.println("delay" + delay);
+				//96x96
+				//for (int w = 0; w > 10; w++)
+				//{
+				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+				
+					Handler.addObject(new BossEE(ranX,ranY,ID.Enemy,LoadImage("Booooo.png"),3.0,2, true, 0));
+				
+				System.out.println("Spawned 10");
+
+				//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
+				//System.out.println("Spawned");		
+
+			}
+
+
+			//}
+
+			else
+			{
+				delay--;
+			}
+
+		}
+		if (mapState == STATE.Base)
+		{
+			//This is the code for the zombie spawneing minions which are used as a distraction
+			//
+			if(delay==0)
+				//
+			{	
+
 
 				delay = (int)(Math.random() * 1200.0);
 				System.out.println("delay" + delay);
@@ -90,13 +127,15 @@ public class GGTop extends OverChar {
 					Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("Booooo.png"),0.5));
 					ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 					ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+					
+
 
 				}
 				System.out.println("Spawned 10");
 
 				//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
 				//System.out.println("Spawned");		
-				
+
 			}
 
 
@@ -107,7 +146,7 @@ public class GGTop extends OverChar {
 				delay--;
 			}
 
-			
+
 
 			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
@@ -138,6 +177,7 @@ public class GGTop extends OverChar {
 
 
 			}
+
 			 */
 
 		}
@@ -145,7 +185,7 @@ public class GGTop extends OverChar {
 		{		
 			//
 			//Random Minion AI start
-
+			//This is the code for the green random spawners which go on the green map
 			if(delay==0)
 				//
 			{	
