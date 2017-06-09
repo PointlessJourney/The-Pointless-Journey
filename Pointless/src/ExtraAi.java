@@ -10,10 +10,21 @@ public static int anger = 0;
 	public ExtraAi(int x, int y, ID id, BufferedImage map, double size) {
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
-		speed = 600;
+		speed = 1000;
 		health = 25;
-		collisionDamage = 2;
-		
+		collisionDamage = 20;
+		if (anger >=15 && anger <=29)
+		{
+			health = 15;
+		}
+		if (anger >= 30 && anger <=64)
+		{
+			health = 10;
+		}
+		if (anger >=65)
+		{
+			health = 5;
+		}
 	}
 
 	@Override

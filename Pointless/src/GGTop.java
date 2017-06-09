@@ -28,7 +28,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Base;
+	public STATE mapState = STATE.Field;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -85,24 +85,18 @@ public class GGTop extends OverChar {
 				//{
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-				if (ExtraAi.anger <=1)
+				for (int i = 0;i<(ExtraAi.anger + 1);i++)
 				{
-					Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("AHHH.png") ,0.5));
-					System.out.println("Spawned 0");
+					Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("Booooo.png"),0.5));
+					ranX = (int) (Math.random() * MainMenu.width -96)*1000;
+					ranY = (int) (Math.random() * MainMenu.height -96)*1000;
+
 				}
-				else if (ExtraAi.anger >=2)
-				{
-					for (int i = 0;i<4;i++)
-					{
-						Handler.addObject(new ExtraAi(ranX,ranY,ID.Enemy,LoadImage("bad guy clone.png") ,1.0));
-						ranX = (int) (Math.random() * MainMenu.width -96)*1000;
-						ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-					}
-					System.out.println("Spawned 10");
-				}
+				System.out.println("Spawned 10");
 
 				//Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("RandomMinion.png") ,2.0));
-				//System.out.println("Spawned");
+				//System.out.println("Spawned");		
+				
 			}
 
 
@@ -113,6 +107,7 @@ public class GGTop extends OverChar {
 				delay--;
 			}
 
+			
 
 			/*if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 
@@ -156,21 +151,65 @@ public class GGTop extends OverChar {
 			{	
 
 				delay = (int)(Math.random() * 1200.0);
+
 				System.out.println("delay" + delay);
 				//96x96
 				//for (int w = 0; w > 10; w++)
 				//{
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
-				if (RandomSpawner.rage <=9)
+				if (RandomSpawner.rage <=4)
 				{
-					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,2.0));
+					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,1.0));
 					System.out.println("Spawned 0");
 				}
-				else if (RandomSpawner.rage >=12)
+				else if (RandomSpawner.rage >=5)
 				{
-					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,2.0));
-					System.out.println("Spawned 10");
+					double randomNum = Math.random();
+					if (randomNum <=0.3 && randomNum >=0)
+					{
+						RandomSpawner.mode = true;
+					}
+					else if (randomNum <=0.6 && randomNum >=0.4)
+					{
+						RandomSpawner.mode1 = true;
+					}
+					else if (randomNum <=1 && randomNum >=0.7)
+					{
+						RandomSpawner.mode2 = true;
+					}
+
+
+
+					if (RandomSpawner.mode == true)
+					{
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/2*1000,playerX-MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/2*1000,playerX-MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/2*1000,playerX+MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/2*1000,playerX+MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
+						RandomSpawner.mode = false;
+					}
+					else if (RandomSpawner.mode1 == true)
+					{
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/2*1000,playerX-MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/2*1000,playerX-MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/2*1000,playerX+MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/2*1000,playerX+MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/4*1000,playerX+MainMenu.height/4*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/4*1000,playerX-MainMenu.height/4*1000,ID.Enemy,LoadImage("NGtopMode1.png") ,0.5));
+						RandomSpawner.mode1 = false;
+					}
+					else if (RandomSpawner.mode2 == true)
+					{
+						Handler.addObject(new RandomSpawner(playerX-MainMenu.width/2*1000,playerX+MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode2.png") ,4.0));
+						Handler.addObject(new RandomSpawner(playerX+MainMenu.width/2*1000,playerX-MainMenu.height/2*1000,ID.Enemy,LoadImage("NGtopMode2.png") ,4.0));						
+						RandomSpawner.mode2 = false;
+					}
+					else 
+					{
+						Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
+						System.out.println("Spawned 10");
+					}
 				}
 
 
