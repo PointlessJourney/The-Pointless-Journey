@@ -22,6 +22,7 @@ public class GGTop extends OverChar {
 	int maxY;
 	int maxNegY;
 	int delay=0;
+	int level = 1;
 	double scale = 1360.0/MainMenu.width;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
@@ -39,7 +40,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public static STATE mapState = STATE.Stone;
+	public static STATE mapState = STATE.Base;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -114,22 +115,32 @@ public class GGTop extends OverChar {
 					OverChar.playerY=0;
 					first = false;
 				}
-
+				if (level >= 1)
+				{
 				if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 				{		//*****************************************************************************
 					mapState = STATE.Field;
+					level++;
 					first = true;
 				}
-
+				}
+				else if(level >=2)
+				{
 				if (playerY >= 2954000/scale && playerX >= 1222312/scale && playerX <= 1324482/scale)
 				{
 					mapState = STATE.Cave;
+					level++;
 					first = true;
 				}
+				}
+				else if(level >=3)
+				{
 				if (playerY >= 2954000/scale && playerX >= 2538799/scale && playerX <= 2700299/scale)
 				{
 					mapState = STATE.Grass;
+					level++;
 					first = true;
+				}
 				}
 
 			}
@@ -251,8 +262,9 @@ public class GGTop extends OverChar {
 				}
 				if(BossOne.dead1 == true)
 				{
-					if (playerX >= 3514682/scale && playerX <= 4025532/scale && playerY == -965200/scale)
+					if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
 					{
+						System.out.println("good");
 						mapState = STATE.Base;
 						first = true;
 					}
@@ -280,6 +292,12 @@ public class GGTop extends OverChar {
 					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
 					first = false;
 
+				}
+				if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
+				{
+					System.out.println("good");
+					mapState = STATE.Base;
+					first = true;
 				}
 			}
 		}

@@ -2,7 +2,7 @@ import java.awt.image.BufferedImage;
 
 public class Spawner extends OverChar{
 
-	boolean spawn = false;
+	boolean spawn = true;
 	int delay = 1;
 	boolean alive = true;
 	public static int amount = 0;
@@ -12,7 +12,6 @@ public class Spawner extends OverChar{
 
 		health = 54;
 		amount++;
-		System.out.println(amount);
 		collisionDamage = 0;
 		imageX = map.getWidth()*size/1280.0*MainMenu.width*150;
 		imageY = map.getHeight()*size/1280.0*MainMenu.width*150;
