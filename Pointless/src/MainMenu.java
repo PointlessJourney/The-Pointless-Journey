@@ -40,6 +40,7 @@ public class MainMenu extends JFrame {
 	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
+	public static boolean imbackbb = false;
 	public static MainMenu frame;
 	public OverworldEngine over;
 
@@ -236,6 +237,7 @@ public class MainMenu extends JFrame {
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				imbackbb = false;
 				over.setVisible(true);
 				over.start();
 				panel.setVisible(false);
@@ -266,6 +268,11 @@ public class MainMenu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Continue game action listener
+				imbackbb = true;
+				over.setVisible(true);
+				over.start();
+				panel.setVisible(false);
+
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

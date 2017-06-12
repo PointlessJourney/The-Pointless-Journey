@@ -13,10 +13,10 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 public class GGTop extends OverChar {
 	static int count = 0;
-	public 
 	boolean first = true;
 	boolean second = true, third = true;
 	public static boolean clear = false;
+	String resume;
 	int maxX;
 	int maxNegX;
 	int maxY;
@@ -24,10 +24,11 @@ public class GGTop extends OverChar {
 	int delay=0;
 	int level = 1;
 	double scale = 1360.0/MainMenu.width;
+	Saves save = new Saves();
+	public static STATE mapState = STATE.Base;
 	int ranX;//for random enemy x
 	int ranY;//for random enemy y
 	//****************************************************************************
-
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base,
@@ -36,18 +37,26 @@ public class GGTop extends OverChar {
 		Realm,
 		Grass
 	};
-
+	
 	//******************************************************************************
-
-
-	public static STATE mapState = STATE.Base;
-
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
 		maxX = (int)(-555000/1360.0*MainMenu.width);
 		maxNegX =  (int)(3554000.0/1360*MainMenu.width);
 		maxY = (int)(-1110000.0/1360*MainMenu.width);
 		maxNegY = (int)(2954000.0/1360*MainMenu.width);
+		
+		if (MainMenu.imbackbb = true)
+		{
+		resume = save.read();
+		if (resume.equals("Base"))mapState = STATE.Base;
+		else if (resume.equals("Field"))mapState = STATE.Field;
+		else if (resume.equals("Stone"))mapState = STATE.Stone;
+		else if (resume.equals("Cave"))mapState = STATE.Cave;
+		else if (resume.equals("Realm"))mapState = STATE.Realm;
+		else if (resume.equals("Grass"))mapState = STATE.Grass;
+		}
+		
 	}
 
 	public void tick() {
@@ -84,6 +93,7 @@ public class GGTop extends OverChar {
 			}
 			if(playerHealth<=0){
 				//System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
+				Saves.print();
 				System.exit(0);
 			}
 			return;
@@ -231,7 +241,7 @@ public class GGTop extends OverChar {
 					maxNegY = (int)(3002948/1360.0*MainMenu.width);
 
 					OverChar.playerX = 0;
-					//Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
+					Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
 					first = false;
 				}
 				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 315778/1360.0*MainMenu.width && playerY <= 2070300/1360.0*MainMenu.width)	// returning to the main area
@@ -257,7 +267,7 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+					Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
 					first = false;	
 				}
 				if(BossOne.dead1 == true)
