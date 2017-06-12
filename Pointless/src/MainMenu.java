@@ -45,8 +45,8 @@ public class MainMenu extends JFrame {
 	public static MainMenu frame;
 	public OverworldEngine over;
 
-	private int team7 = 0;
-	private int mayd = 0;
+	int team7 = 0;
+	
 
 	/**
 	 * Launch the application.
@@ -65,7 +65,7 @@ public class MainMenu extends JFrame {
 			}
 		});
 	}
-	public void SongMM() {
+	public void Song() {
 		try {
 			File file = new File("BeepBox-Song.wav");
 			clip = AudioSystem.getClip();
@@ -81,9 +81,9 @@ public class MainMenu extends JFrame {
 		}
 		return;
 	}
-	public void SongIG() {
+	public void Song2() {
 		try {
-			File file = new File("BeepBox-Song.wav");
+			File file = new File("BeepBox-Song.wav");//song to be changed
 			clip = AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(file));
 			clip.start();
@@ -98,9 +98,10 @@ public class MainMenu extends JFrame {
 		return;
 	}
 
+
 	//Decleration
 	//Panel (Main Menu)
-	JPanel panel = new JPanel();;
+	JPanel panel = new JPanel();
 	JButton btnExit = new JButton("");
 	JButton btnHelp = new JButton("");
 	JButton btnOptions = new JButton("");
@@ -130,7 +131,7 @@ public class MainMenu extends JFrame {
 	public static int offsety = 0;
 
 	public MainMenu() {
-		SongMM();
+		Song();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
 
@@ -317,6 +318,7 @@ public class MainMenu extends JFrame {
 				x++;
 				if (x==10)
 				{
+					
 					EasterEgg.setIcon(new ImageIcon(new ImageIcon("sao_lost_song_logo_2_by_gunsli.png").getImage().getScaledInstance(-1, EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 					EasterEgg.removeMouseListener(this);
 				}
@@ -464,6 +466,7 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
+		
 		frame.addKeyListener(new KeyListener(){
 			@Override
 			public void keyPressed(KeyEvent e){
@@ -477,7 +480,8 @@ public class MainMenu extends JFrame {
 				}else if(team7 == 2&&key==KeyEvent.VK_M){
 					team7 = 3;
 				}else if(team7 == 3&&key ==KeyEvent.VK_7){
-					MainMenu.EasterEgg.setIcon(new ImageIcon(new ImageIcon("Team7EE.png").getImage().getScaledInstance(-1, MainMenu.EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
+					
+					label.setIcon(new ImageIcon(new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
 				}else{
 					team7 = 0;
 				}
@@ -495,36 +499,7 @@ public class MainMenu extends JFrame {
 
 			}
 		});
-		frame.addKeyListener(new KeyListener(){
-			@Override
-			public void keyPressed(KeyEvent e){
-				int key = e.getKeyCode();
-				if(mayd == 0&&key == KeyEvent.VK_M){
-					mayd = 1;
-				}else if(mayd == 1&&key == KeyEvent.VK_A){
-					mayd = 2;
-				}else if(mayd == 2&&key==KeyEvent.VK_Y){
-					mayd = 3;
-				}else if(mayd == 3&&key ==KeyEvent.VK_D){
-					MainMenu.EasterEgg.setIcon(new ImageIcon(new ImageIcon("EEArm.jpg").getImage().getScaledInstance(-1, MainMenu.EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
-				}else{
-					mayd = 0;
-				}
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		SongIG();
+		Song2();
 		over = new OverworldEngine();		
 		contentPane.add(over);
 

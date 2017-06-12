@@ -23,13 +23,13 @@ public class GGTop extends OverChar {
 	public enum STATE {			// states of map areas (base, field, sidescroller map, etc)
 		Field,
 		Base,
-		Test
+		Test//only for testing ~~ armaan
 	}
 
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Test;
+	public STATE mapState = STATE.Field;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
@@ -42,6 +42,7 @@ public class GGTop extends OverChar {
 	public void tick() {
 
 		//System.out.println(mapState);
+		
 
 		if(id==ID.Player){
 			if(velX!=0&&velY!=0){
@@ -88,7 +89,7 @@ public class GGTop extends OverChar {
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
 				
-					Handler.addObject(new BossEE(ranX,ranY,ID.Enemy,LoadImage("EETest.png"),3.0,2, true, 0));
+					//Handler.addObject(new BossEE(ranX,ranY,ID.Enemy,LoadImage("EETest.png"),3.0,2, true, 0));
 				
 				System.out.println("Spawned 10");
 
@@ -203,6 +204,7 @@ public class GGTop extends OverChar {
 					Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtop clone clone.gif") ,1.0));
 					System.out.println("Spawned 0");
 				}
+								
 				else if (RandomSpawner.rage >=5)
 				{
 					double randomNum = Math.random();
@@ -250,6 +252,7 @@ public class GGTop extends OverChar {
 						Handler.addObject(new RandomSpawner(ranX,ranY,ID.Enemy,LoadImage("NGtopRage.png") ,1.0));
 						System.out.println("Spawned 10");
 					}
+					
 				}
 
 
@@ -344,9 +347,8 @@ public class GGTop extends OverChar {
 			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
 			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
 
-
-			BufferedImage map = LoadImage("GGtop.png");
-			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
+				BufferedImage map = LoadImage("GGtop.png");
+			
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
 			angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
