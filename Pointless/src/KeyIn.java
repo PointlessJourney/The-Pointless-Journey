@@ -2,6 +2,8 @@ import java.awt.MouseInfo;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+
 public class KeyIn extends KeyAdapter {
 	
 	public KeyIn (){	
@@ -12,7 +14,7 @@ public class KeyIn extends KeyAdapter {
 	int down = speed;
 	int up = back;
 	int left = back;
-	int right = speed;
+	int right = speed;//easter egg made by armaan
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
@@ -21,7 +23,7 @@ public class KeyIn extends KeyAdapter {
 			
 					//player movement keys
 
-
+				
 
 					
 				if (key == KeyEvent.VK_W)OverChar.setVelY(up);

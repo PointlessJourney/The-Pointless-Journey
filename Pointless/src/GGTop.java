@@ -88,7 +88,7 @@ public class GGTop extends OverChar {
 				ranX = (int) (Math.random() * MainMenu.width -96)*1000;
 				ranY = (int) (Math.random() * MainMenu.height -96)*1000;
 				
-					Handler.addObject(new BossEE(ranX,ranY,ID.Enemy,LoadImage("Booooo.png"),3.0,2, true, 0));
+					Handler.addObject(new BossEE(ranX,ranY,ID.Enemy,LoadImage("EETest.png"),3.0,2, true, 0));
 				
 				System.out.println("Spawned 10");
 

@@ -43,12 +43,15 @@ public class BossEE extends OverChar{
 			size = size/2;
 			Handler.removeObject(this);
 			boolean direction = true;
-			for (int x =0; x<num;x++)
+			if(size >0.4)
 			{
-				direction = !direction;
-			Handler.addObject(new BossEE(this.x,y,ID.Enemy,LoadImage("Booooo.png"),size,num,direction,(int)(Math.random()*3000)));
+				for (int x =0; x<num;x++)
+				{
+					direction = !direction;
+					Handler.addObject(new BossEE(this.x,y,ID.Enemy,LoadImage("EETest.png"),size,num,direction,(int)(Math.random()*3000)));
+				}
 			}
-			
+
 		}
 	}
 
