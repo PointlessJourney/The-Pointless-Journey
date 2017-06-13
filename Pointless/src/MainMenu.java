@@ -43,6 +43,10 @@ public class MainMenu extends JFrame {
 	/**
 	 * 
 	 */
+	//These are some easter eggs which are added
+	//typing mkuv will spawn a doodle bob minion!
+	//typing team7 will change to a naruto background* inprogess!
+	
 	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
