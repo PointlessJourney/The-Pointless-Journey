@@ -16,6 +16,7 @@ public class Saves {
             else if (GGTop.mapState == GGTop.STATE.Grass)output.println("Grass");
             else if (GGTop.mapState == GGTop.STATE.Cave)output.println("Cave");
             else if (GGTop.mapState == GGTop.STATE.Stone)output.println("Stone");
+            else if (GGTop.mapState == GGTop.STATE.Space)output.println("Space");
             else if (GGTop.mapState == GGTop.STATE.Realm)output.println("Realm");
             output.close();     	
             

@@ -35,12 +35,13 @@ public class GGTop extends OverChar {
 		Stone,
 		Cave,
 		Realm,
+		Space,
 		Grass
 	};
 	
 	//******************************************************************************
 	public GGTop(int x, int y, ID player) {
-		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);
+		super(x, y, player, LoadImage("map.png"),25/1600.0*MainMenu.width);
 		maxX = (int)(-555000/1360.0*MainMenu.width);
 		maxNegX =  (int)(3554000.0/1360*MainMenu.width);
 		maxY = (int)(-1110000.0/1360*MainMenu.width);
@@ -55,6 +56,8 @@ public class GGTop extends OverChar {
 		else if (resume.equals("Cave"))mapState = STATE.Cave;
 		else if (resume.equals("Realm"))mapState = STATE.Realm;
 		else if (resume.equals("Grass"))mapState = STATE.Grass;
+		else if (resume.equals("Space"))mapState = STATE.Space;
+
 		}
 		
 	}
@@ -92,7 +95,6 @@ public class GGTop extends OverChar {
 				}
 			}
 			if(playerHealth<=0){
-				//System.out.println("You died");//put actual death code here<<<<<<<<<<<<<<<<<<<<<<<<<<DEATH
 				Saves.print();
 				System.exit(0);
 			}
@@ -112,10 +114,8 @@ public class GGTop extends OverChar {
 				{
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
-					map = LoadImage("basemap.png");
+					map = LoadImage("map.png");
 					System.out.println("start");
-					//first = false;
-					//second = true;
 					size = 25/1600.0*MainMenu.width;
 					maxX = (int)(-555000/1360.0*MainMenu.width);
 					maxNegX =  (int)(3554000.0/1360*MainMenu.width);
@@ -161,8 +161,6 @@ public class GGTop extends OverChar {
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("ruckss2.png");
-					//second = false;
-					//first = true;
 					size = 7/1600.0*MainMenu.width;
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6944789/1360.0*MainMenu.width);
@@ -196,13 +194,9 @@ public class GGTop extends OverChar {
 			{
 				if(first)
 				{
-					//if (second)
-					//{
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("grassss2.jpg");
-					//second = false;
-					//first = true;
 					size = 7/1600.0*MainMenu.width;
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
@@ -246,7 +240,7 @@ public class GGTop extends OverChar {
 				}
 				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 315778/1360.0*MainMenu.width && playerY <= 2070300/1360.0*MainMenu.width)	// returning to the main area
 				{
-					mapState = STATE.Base;
+					mapState = STATE.Space;
 					first = true;
 				}
 			}
@@ -254,13 +248,9 @@ public class GGTop extends OverChar {
 			{
 				if(first)
 				{
-					//if (second)
-					//{
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
 					map = LoadImage("stone.png");
-					//second = false;
-					//first = true;
 					size = 7/1600.0*MainMenu.width;
 					maxX = (int)(-436158/1360.0*MainMenu.width);
 					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
@@ -286,13 +276,9 @@ public class GGTop extends OverChar {
 			{
 				if(first)
 				{
-					//if (second)
-					//{
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
 					map = LoadImage("cardsss2.png");
-					//second = false;
-					//first = true;
 					size = 7/1600.0*MainMenu.width;
 					maxX = (int)(-436158/1360.0*MainMenu.width);
 					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
@@ -310,11 +296,29 @@ public class GGTop extends OverChar {
 					first = true;
 				}
 			}
+			
+			else if (mapState == STATE.Space)
+			{
+				if(first)
+				{
+					x = (int)(100205.0/1440*MainMenu.width);
+					y = (int)(-744879.0/1440*MainMenu.width);
+					map = LoadImage("space.jpg");
+					size = 7/1600.0*MainMenu.width;
+					maxX = (int)(-436158/1360.0*MainMenu.width);
+					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
+					maxY =(int)(-956700/1360.0*MainMenu.width);
+					maxNegY = (int)(3535835/1360.0*MainMenu.width);
+					OverChar.playerX = 0;
+					//Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
+					first = false;
+				}
+				
+			}
 		}
 	}
 
 
-	//System.out.println(velX + "   " + velY);
 
 	public void render(Graphics g, double angle) {	// enter character picture and information here
 
@@ -327,7 +331,6 @@ public class GGTop extends OverChar {
 
 			at.scale(size,size);
 
-			//at.scale(25, 25);
 
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, at, null);		// draws it
@@ -342,7 +345,6 @@ public class GGTop extends OverChar {
 
 
 			BufferedImage map = LoadImage("GGtop.png");
-			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
 			angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
