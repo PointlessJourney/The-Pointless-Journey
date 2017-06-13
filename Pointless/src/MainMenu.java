@@ -5,6 +5,8 @@
 // http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -33,6 +35,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.KeyAdapter;
 
 public class MainMenu extends JFrame {
 
@@ -44,9 +47,42 @@ public class MainMenu extends JFrame {
 	public Clip clip;
 	public static MainMenu frame;
 	public OverworldEngine over;
+	private KeyListener k = new KeyListener(){
+		@Override
+		public void keyPressed(KeyEvent e){
+			int key = e.getKeyCode();
+			if(MainMenu.team7 == 0&&key == KeyEvent.VK_T){
+				MainMenu.team7 = 1;
+			}else if(MainMenu.team7 == 1&&key == KeyEvent.VK_E){
+				MainMenu.team7 = 2;
+			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_E){
+				MainMenu.team7 = 3;
+			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_M){
+				MainMenu.team7 = 3;
+			}else if(MainMenu.team7 == 3&&key ==KeyEvent.VK_7){
+				System.out.println("here");
+				MainMenu.label.setIcon(new ImageIcon(new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
+			}else{
+				MainMenu.team7 = 0;
+			}
+			System.out.println(MainMenu.team7);
+		}
 
-	int team7 = 0;
-	
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+	};
+
+	public static int team7 = 0;
+
 
 	/**
 	 * Launch the application.
@@ -115,7 +151,7 @@ public class MainMenu extends JFrame {
 	//Panel 1 (option button)	
 	JPanel panel_1 = new JPanel();
 	JButton btnMainMenu = new JButton("");
-	JLabel label = new JLabel("New label");
+	static JLabel label = new JLabel("New label");
 	//Panel 2 (help button)	
 	JPanel panel_2 = new JPanel();
 	JButton button = new JButton("");
@@ -131,6 +167,11 @@ public class MainMenu extends JFrame {
 	public static int offsety = 0;
 
 	public MainMenu() {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+		});
 		Song();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
@@ -318,7 +359,7 @@ public class MainMenu extends JFrame {
 				x++;
 				if (x==10)
 				{
-					
+
 					EasterEgg.setIcon(new ImageIcon(new ImageIcon("sao_lost_song_logo_2_by_gunsli.png").getImage().getScaledInstance(-1, EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 					EasterEgg.removeMouseListener(this);
 				}
@@ -466,43 +507,13 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
-		
-		frame.addKeyListener(new KeyListener(){
-			@Override
-			public void keyPressed(KeyEvent e){
-				int key = e.getKeyCode();
-				if(team7 == 0&&key == KeyEvent.VK_T){
-					team7 = 1;
-				}else if(team7 == 1&&key == KeyEvent.VK_E){
-					team7 = 2;
-				}else if(team7 == 2&&key==KeyEvent.VK_E){
-					team7 = 3;
-				}else if(team7 == 2&&key==KeyEvent.VK_M){
-					team7 = 3;
-				}else if(team7 == 3&&key ==KeyEvent.VK_7){
-					
-					label.setIcon(new ImageIcon(new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
-				}else{
-					team7 = 0;
-				}
-			}
 
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
 
-			}
 
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 		Song2();
 		over = new OverworldEngine();		
 		contentPane.add(over);
-
+		addk(this);
 
 
 	}
@@ -519,5 +530,18 @@ public class MainMenu extends JFrame {
 
 		}
 		return img;
+	}
+
+	void addk(Container o){
+
+		for(int i = 0;i<o.getComponentCount();i++){
+			Component oo=o.getComponent(i);
+			oo.addKeyListener(k);
+			if(Container.class.isAssignableFrom(oo.getClass())){
+				addk((Container) oo);
+			}
+
+		}
+
 	}
 }
