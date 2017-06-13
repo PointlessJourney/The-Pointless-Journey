@@ -28,6 +28,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,17 +52,18 @@ public class MainMenu extends JFrame {
 		@Override
 		public void keyPressed(KeyEvent e){
 			int key = e.getKeyCode();
+			
 			if(MainMenu.team7 == 0&&key == KeyEvent.VK_T){
 				MainMenu.team7 = 1;
 			}else if(MainMenu.team7 == 1&&key == KeyEvent.VK_E){
 				MainMenu.team7 = 2;
-			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_E){
+			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_A){
 				MainMenu.team7 = 3;
 			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_M){
 				MainMenu.team7 = 3;
 			}else if(MainMenu.team7 == 3&&key ==KeyEvent.VK_7){
 				System.out.println("here");
-				MainMenu.label.setIcon(new ImageIcon(new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
+				MainMenu.label.setIcon((Icon) new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT));
 			}else{
 				MainMenu.team7 = 0;
 			}
@@ -81,7 +83,7 @@ public class MainMenu extends JFrame {
 		}
 	};
 
-	public static int team7 = 0;
+	
 
 
 	/**
@@ -137,6 +139,7 @@ public class MainMenu extends JFrame {
 
 	//Decleration
 	//Panel (Main Menu)
+	public static int team7 = 0;
 	JPanel panel = new JPanel();
 	JButton btnExit = new JButton("");
 	JButton btnHelp = new JButton("");

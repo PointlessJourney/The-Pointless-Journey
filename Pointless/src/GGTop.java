@@ -29,7 +29,7 @@ public class GGTop extends OverChar {
 	//******************************************************************************
 
 
-	public STATE mapState = STATE.Field;
+	public STATE mapState = STATE.Test;
 
 	public GGTop(int x, int y, ID player) {
 		super(x, y, player, LoadImage("basemap.png"),25/1600.0*MainMenu.width);

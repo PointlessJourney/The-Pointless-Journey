@@ -29,9 +29,10 @@ public class KeyIn extends KeyAdapter {
 			}else if(mkuv == 2&&key==KeyEvent.VK_U){
 				mkuv = 3;
 			}else if(mkuv == 3&&key ==KeyEvent.VK_V){
-				EEChar = 1;//This is to change the character image
+				//EEChar = 1;//This is to change the character image
 				//use this image ("SBEE.png);
-				
+				Handler.addObject(new EEDoodleBob(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("SBEE.png") ,0.5));
+				mkuv=0;
 			}else{
 				mkuv = 0;
 				
