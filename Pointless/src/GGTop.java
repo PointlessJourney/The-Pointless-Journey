@@ -47,7 +47,7 @@ public class GGTop extends OverChar {
 		maxY = (int)(-1110000.0/1360*MainMenu.width);
 		maxNegY = (int)(2954000.0/1360*MainMenu.width);
 		
-		if (MainMenu.imbackbb = true)
+		if (MainMenu.imbackbb)
 		{
 		resume = save.read();
 		if (resume.equals("Base"))mapState = STATE.Base;
@@ -265,6 +265,7 @@ public class GGTop extends OverChar {
 					if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
 					{
 						System.out.println("good");
+						level++;
 						mapState = STATE.Base;
 						first = true;
 					}
@@ -285,15 +286,19 @@ public class GGTop extends OverChar {
 					maxY =(int)(-956700/1360.0*MainMenu.width);
 					maxNegY = (int)(3535835/1360.0*MainMenu.width);
 					OverChar.playerX = 0;
-					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.5));
+					Handler.addObject(new BossTwo(1797618/1360*MainMenu.width,1289567/1360*MainMenu.width,ID.Enemy,OverChar.LoadImage("SecondBossFinished.png"),0.5));
 					first = false;
 
 				}
+				if(!BossTwo.dead)
+				{
 				if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
 				{
 					System.out.println("good");
 					mapState = STATE.Base;
+					level++;
 					first = true;
+				}
 				}
 			}
 			

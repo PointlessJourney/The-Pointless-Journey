@@ -18,6 +18,12 @@ public class Saves {
             else if (GGTop.mapState == GGTop.STATE.Stone)output.println("Stone");
             else if (GGTop.mapState == GGTop.STATE.Space)output.println("Space");
             else if (GGTop.mapState == GGTop.STATE.Realm)output.println("Realm");
+            
+            for (int x = 0; x < 5; x++)
+            {
+            	output.println("");
+            }
+            output.println("// Base -> Field -> Stone -> Cave -> Realm -> Grass -> Space");
             output.close();     	
             
 		}catch(Exception e){}

@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 
 public class BossTwo extends OverChar{
 	private boolean phase1 = true;
+	public static boolean dead = false;
 	private int shotDelay = 200;
 	private final int HEALTH = 600;
 	public int shield=5;
@@ -48,6 +49,13 @@ public class BossTwo extends OverChar{
 			if(phase1&&shield<=0){
 				phase1=false;
 				health = HEALTH;//	
+			}
+			if(health <= 0 && !phase1)
+			{
+				Handler.removeObject(this);
+				dead = true;
+				
+				
 			}
 		}
 	}
