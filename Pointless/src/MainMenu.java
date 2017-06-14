@@ -63,11 +63,14 @@ public class MainMenu extends JFrame {
 				MainMenu.team7 = 2;
 			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_A){
 				MainMenu.team7 = 3;
-			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_M){
-				MainMenu.team7 = 3;
-			}else if(MainMenu.team7 == 3&&key ==KeyEvent.VK_7){
+			}else if(MainMenu.team7 == 3&&key==KeyEvent.VK_M){
+				MainMenu.team7 = 4;
+			}else if(MainMenu.team7 == 4&&key ==KeyEvent.VK_7){
 				System.out.println("here");
-				MainMenu.label.setIcon((Icon) new ImageIcon("Team7EESized.png").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT));
+				//"Team7EESized.png"
+				EasterEgg.setVisible(false);
+				Background.setIcon(new ImageIcon(new ImageIcon("Team7Final.jpg").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
+				//EasterEgg.setIcon(new ImageIcon(new ImageIcon("Team7EE1.png").getImage().getScaledInstance(-1, EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 			}else{
 				MainMenu.team7 = 0;
 			}
@@ -517,7 +520,7 @@ public class MainMenu extends JFrame {
 
 
 
-		Song2();
+		
 		over = new OverworldEngine();		
 		contentPane.add(over);
 		addk(this);
