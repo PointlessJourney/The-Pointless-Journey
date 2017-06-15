@@ -79,7 +79,10 @@ public class MainMenu extends JFrame {
 
 	//Decleration
 	//Panel (Main Menu)
-	JPanel panel = new JPanel();;
+
+	
+
+	JPanel panel = new JPanel();
 	JButton btnExit = new JButton("");
 	JButton btnHelp = new JButton("");
 	JButton btnOptions = new JButton("");
@@ -94,10 +97,14 @@ public class MainMenu extends JFrame {
 	JPanel panel_1 = new JPanel();
 	JButton btnMainMenu = new JButton("");
 	JLabel label = new JLabel("New label");
+	JLabel label1 = new JLabel("New label");
+
 	//Panel 2 (help button)	
 	JPanel panel_2 = new JPanel();
 	JButton button = new JButton("");
 	JLabel label_1 = new JLabel("New label");
+	JButton btnC = new JButton ("");
+
 	//Panel 3	
 	JPanel panel_3 = new JPanel();
 	JButton button_1 = new JButton("");
@@ -181,10 +188,12 @@ public class MainMenu extends JFrame {
 				//help action listener
 				panel_2.setVisible(true);
 				panel.setVisible(false);
+
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				btnHelp.setIcon(new ImageIcon(new ImageIcon("Help1.png").getImage().getScaledInstance(-1, btnHelp.getHeight(), java.awt.Image.SCALE_DEFAULT)));
+
 				//btnHelp.setForeground(Color.CYAN);
 			}
 			@Override
@@ -203,6 +212,16 @@ public class MainMenu extends JFrame {
 		btnHelp.setBounds((int)(800.0/1360.0*width+offsetx), (int)(670.0/765.0*height+offsety)-24, (int)(80.0/1360.0*width), (int)(40.0/765.0*height));
 		btnHelp.setIcon(new ImageIcon(new ImageIcon("Help0.png").getImage().getScaledInstance(-1, btnHelp.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel.add(btnHelp);
+		btnC.setOpaque(false);
+		btnC.setFocusable(false);
+		btnC.setBounds((int)(350.0/1360.0*width+offsetx), (int)(100.0/765.0*height+offsety)-24, (int)(600.0/1360.0*width), (int)(500.0/765.0*height));
+
+		btnC.setIcon(new ImageIcon(new ImageIcon("Controls17.png").getImage()));
+		btnC.setContentAreaFilled(false);
+		btnC.setEnabled(false);
+		btnC.setBorderPainted(false);
+         panel_2.add (btnC);
+         btnC.setVisible(true);
 		
 		btnOptions.addMouseListener(new MouseAdapter() {
 			@Override
