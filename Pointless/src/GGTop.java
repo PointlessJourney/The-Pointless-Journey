@@ -226,6 +226,7 @@ public class GGTop extends OverChar {
 						
 						Window.paused=true;
 						Puzzles2.Begin();
+						Window.paused=true;
 						Game.Begin("Level2.png");
 						mapState = STATE.Realm;
 						first = true;

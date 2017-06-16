@@ -196,7 +196,7 @@ public class MainMenu extends JFrame {
 		//Window.paused = true;
 		//Game.Begin("LevelOne.png");
 
-		Game.Begin("Level2.png");
+		//Game.Begin("Level2.png");
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		if(screenSize.getWidth()/16.0<=screenSize.getHeight()/9.0){
 			width = (int)(screenSize.getWidth()/16.0)*16;
