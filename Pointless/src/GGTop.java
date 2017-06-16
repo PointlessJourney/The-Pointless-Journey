@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import com.pointless.journey.window.Game;
+import com.pointless.journey.window.Window;
 public class GGTop extends OverChar {
 	static int count = 0;
 	boolean first = true;
@@ -179,10 +182,12 @@ public class GGTop extends OverChar {
 					first = false;
 				}
 				//System.out.println(Spawner.amount);
-				if (Spawner.amount == 0)
+				if (!(Spawner.amount == 0))
 				{
 					if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
 					{
+						//Window.paused = true;
+						//Game.Begin("LevelOne.png");
 						mapState = STATE.Stone;
 						first = true;
 					}

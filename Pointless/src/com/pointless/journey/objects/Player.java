@@ -13,6 +13,7 @@ import com.pointless.journey.framework.ObjectId;
 import com.pointless.journey.window.BufferedImageLoader;
 import com.pointless.journey.window.Game;
 import com.pointless.journey.window.Handler;
+import com.pointless.journey.window.Window;
 
 public class Player extends GameObject{
 
@@ -99,16 +100,17 @@ public class Player extends GameObject{
 				//right collision
 				if(getBoundsRight().intersects(tempObject.getBounds())){
 
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);
+					Window.paused=false;
+					Window.frame.setVisible(false);
 
 				}
 
 				//left collision
 				if(getBoundsLeft().intersects(tempObject.getBounds())){
 
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);
+
+					Window.paused=false;
+					Window.frame.setVisible(false);
 					
 				}
 				
@@ -116,8 +118,9 @@ public class Player extends GameObject{
 				if(getBoundsTop().intersects(tempObject.getBounds())){
 
 					
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);               
+
+					Window.paused=false;   
+					Window.frame.setVisible(false);          
 
 				}
 
@@ -141,7 +144,7 @@ public class Player extends GameObject{
 		Graphics2D g2d = (Graphics2D) g;
 		g.setColor(Color.red);
 		
-		player = playerIcon.loadImage("/MainHero.gif");//loading the level
+		player = playerIcon.loadImage("MainHero.gif");//loading the level
 		
 		g2d.drawImage(player, (int)x, (int)y, (int)width, (int)height, null);
 		

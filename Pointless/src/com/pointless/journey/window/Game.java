@@ -61,8 +61,8 @@ public class Game extends Canvas implements Runnable{
 
 		//loading level
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.loadImage("/LevelOne.png");//loading the level
-		hud = loader.loadImage("/SideHud.png");    
+		level = loader.loadImage(levelset);//loading the level
+		hud = loader.loadImage("SideHud.png");    
 
 		Handler = new Handler();
 
@@ -102,7 +102,7 @@ public class Game extends Canvas implements Runnable{
 		System.out.println("Thread has begun");
 
 		long lastTime = System.nanoTime();
-		double amountOfTicks = 60.0;
+		double amountOfTicks = 30.0;
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
@@ -271,11 +271,12 @@ public class Game extends Canvas implements Runnable{
 
 
 
-	
+	private static String levelset;
 
-	public static void main (String args[]){
+	public static void Begin (String level){
 
 		new Window(1280, 720, "PointlessJourney", new Game());
+		levelset = level;
 
 	}
 

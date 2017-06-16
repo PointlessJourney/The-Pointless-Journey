@@ -25,6 +25,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import com.pointless.journey.window.Game;
+
 public class OverworldEngine extends Canvas implements Runnable {
 
 	/**
@@ -114,6 +116,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 	
 	private void tick()
 	{
+		
 		Handler.tick();
 	}
 	

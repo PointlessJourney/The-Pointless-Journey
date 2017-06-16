@@ -3,23 +3,28 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.pointless.journey.window.Game;
+import com.pointless.journey.window.Window;
+
 public class Handler {
 
 	protected static LinkedList<OverChar> object = new LinkedList<OverChar>();
 	protected static ArrayList<EBullet> eBullet = new ArrayList<EBullet>();
-	
+
 	public static void tick()
 	{
-		for(int z = object.size()-1; z > -1; z--)
-		{
-			OverChar temp = object.get(z);	
-			temp.tick();
+		if(!Window.paused){
+			for(int z = object.size()-1; z > -1; z--)
+
+			{
+				OverChar temp = object.get(z);	
+				temp.tick();
+			}
+			for(int z = 0; z<eBullet.size();z++)eBullet.get(z).tick();
+			Board.play();
+			//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
+			//Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.2,0.0));
 		}
-		for(int z = 0; z<eBullet.size();z++)eBullet.get(z).tick();
-		Board.play();
-		//Handler.addObject(new BossOne(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Boss1-1.png"),4));
-		//Handler.addObject(new Boss1Minion(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("Sp clone.png"),0.2,0.0));
-		
 	}
 	public static void render(Graphics g)
 	{
@@ -38,7 +43,7 @@ public class Handler {
 	{
 		Handler.object.add(object);
 	}
-	
+
 	public static synchronized void removeObject(OverChar object)
 	{
 		Handler.object.remove(object);

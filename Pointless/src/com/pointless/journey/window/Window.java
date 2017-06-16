@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Window {
-
+public static boolean paused;
+public static JFrame frame;
 	public Window(int w, int h, String title, Game game){
 		
 		game.setPreferredSize(new Dimension(w, h));
@@ -13,7 +14,7 @@ public class Window {
 		game.setMinimumSize(new Dimension(w, h));
 		
 		//configure frame
-		JFrame frame = new JFrame(title);
+		frame = new JFrame(title);
 		frame.add(game);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

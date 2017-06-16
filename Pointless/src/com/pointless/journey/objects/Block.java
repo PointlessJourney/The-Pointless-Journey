@@ -19,7 +19,6 @@ public class Block extends GameObject{
 	}
 
 	public void render(Graphics g) {
-		
 		g.setColor(Color.lightGray);
 		g.drawRect((int)x, (int)y, 32, 32);
 		
