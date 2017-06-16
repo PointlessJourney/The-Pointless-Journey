@@ -14,7 +14,7 @@ public class Sploder extends EBullet{
 		delay--;
 		super.tick();
 		if(delay<=0){
-			for(int i = 0;i<200;i++)Handler.addEBullet(new EBullet(x,y,ID.Bullet,LoadImage("Boss1-1.png"),0.3/1360.0*MainMenu.width,(Math.random()*Math.PI*2),(1000+(Math.random()*7000))/1360.0*MainMenu.width,1,10000000));
+			for(int i = 0;i<200;i++)Handler.addEBullet(new EBullet(x,y,ID.Bullet,LoadImage("projectile.png"),0.3/1360.0*MainMenu.width,(Math.random()*Math.PI*2),(1000+(Math.random()*7000))/1360.0*MainMenu.width,1,10000000));
 			Handler.removeEBullet(this);
 		}
 		if(health<=0){

@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class ShieldBullet extends EBullet{
@@ -23,5 +24,12 @@ public class ShieldBullet extends EBullet{
 		angle = Math.atan2(oy-y, ox-x)+direction*Math.PI/4;
 		super.tick();
 	}
-
+	@Override
+	public void render(Graphics g,double angle){
+		//this.angle=this.angle-Math.PI/4;
+		if(direction==-1){
+			this.angle += Math.PI/4;
+		}else this.angle+= 3*Math.PI/4;
+		super.render(g, this.angle);
+	}
 }

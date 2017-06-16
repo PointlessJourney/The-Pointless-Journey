@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Boss1Minion extends OverChar{
@@ -7,6 +8,7 @@ public class Boss1Minion extends OverChar{
 	private int stage = 0, delay = 0;
 	private int[] direction= new int[2];
 	private boolean seeking = false;
+	private double angle;
 	public Boss1Minion(int x, int y, ID id, BufferedImage map, double size, double percent) {
 		super(x, y, id, map, size);
 		this.percent=percent;
@@ -28,7 +30,7 @@ public class Boss1Minion extends OverChar{
 
 	@Override
 	public void tick() {
-		double angle = Math.atan2(playerY-y, playerX-x);
+		angle = Math.atan2(playerY-y, playerX-x);
 		if(seeking||Math.sqrt(((playerX-x)/1000)*((playerX-x)/1000)+((playerY-y)/1000)*((playerY-y)/1000))*1000>range[stage]){
 			//System.out.println("here");
 			x += (int)(speed *Math.cos(angle));
@@ -51,8 +53,12 @@ public class Boss1Minion extends OverChar{
 				stage = 0;
 			}
 		}
+		
 	}
 	
-	
+	@Override
+		public void render(Graphics g,double angle){
+			super.render(g, this.angle);
+		}
 
 }

@@ -39,12 +39,12 @@ public class BossOne extends OverChar{
 			if(delay ==0){
 				delay = 350+(int)(1000.0*health/HEALTH);
 				System.out.println("Health: "+health);
-				for(int i = 10-(int)(6.0*health/HEALTH);i>0;i--)Handler.addObject(new Boss1Minion((int)(Math.random()*1000-500+x),(int)(Math.random()*200-100+y),ID.Enemy,LoadImage("BGtop.png"),3.5,health/HEALTH));
+				for(int i = 10-(int)(6.0*health/HEALTH);i>0;i--)Handler.addObject(new Boss1Minion((int)(Math.random()*1000-500+x),(int)(Math.random()*200-100+y),ID.Enemy,LoadImage("BGtop clone.png"),3.5,health/HEALTH));
 			}
 			delay--;
 			if(health==150&&phase1){
 				map = OverChar.LoadImage("Boss1-2.png");
-				for(int i = 15;i>0;i--)Handler.addObject(new Boss1Minion((int)(Math.random()*1000-500+x),(int)(Math.random()*200-100+y),ID.Enemy,LoadImage("BGtop.png"),3.5,health/HEALTH));
+				for(int i = 15;i>0;i--)Handler.addObject(new Boss1Minion((int)(Math.random()*1000-500+x),(int)(Math.random()*200-100+y),ID.Enemy,LoadImage("BGTop clone.png"),3.5,health/HEALTH));
 				phase1=false;
 			}
 			if(health<=0){
