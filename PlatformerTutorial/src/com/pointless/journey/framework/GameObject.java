@@ -6,9 +6,11 @@ import java.util.LinkedList;
 
 public abstract class GameObject {
 
-	protected float x, y;
+	public float x;
+	public float y;
 	protected ObjectId id;
-	protected float velX = 0, velY = 0;
+	public float velX = 0;
+	public float velY = 0;
 	protected boolean falling = true;
 	protected boolean jumping = false;
 	protected boolean speeding = false;

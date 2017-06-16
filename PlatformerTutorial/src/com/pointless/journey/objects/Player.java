@@ -19,6 +19,8 @@ public class Player extends GameObject{
 	private float width = 64, height = 64;
 	private float gravity = 0.5f;
 	private final float MAX_SPEED = 10;
+	
+	
 
 	private KeyInput keyIn = new KeyInput();
 	private BufferedImage player = null;//use to load level
@@ -99,16 +101,17 @@ public class Player extends GameObject{
 				//right collision
 				if(getBoundsRight().intersects(tempObject.getBounds())){
 
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);
+					Game.levelSwitch = true;
+					Game.level= "/Level2.png";
+					
 
 				}
 
 				//left collision
 				if(getBoundsLeft().intersects(tempObject.getBounds())){
 
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);
+					Game.levelSwitch = true;
+					Game.level= "/Level2.png";
 					
 				}
 				
@@ -116,13 +119,46 @@ public class Player extends GameObject{
 				if(getBoundsTop().intersects(tempObject.getBounds())){
 
 					
-					if (Game.life <= 280) Game.life += 1;
-					if (Game.life == 280) System.exit(1);               
+					Game.levelSwitch = true;    
+					Game.level= "/Level2.png";
 
 				}
 
 
 			}
+			
+			if(tempObject.getId() == ObjectId.Health){
+
+				//right collision
+				if(getBoundsRight().intersects(tempObject.getBounds())){
+
+					if (Game.life >= 1)Game.life = 0;
+
+				}
+
+				//left collision
+				if(getBoundsLeft().intersects(tempObject.getBounds())){
+
+					if (Game.life >= 1)Game.life = 0;
+					
+				}
+				
+				//top collision
+				if(getBoundsTop().intersects(tempObject.getBounds())){
+
+					if (Game.life >= 1)Game.life = 0;               
+
+				}
+				//bottom collision
+				if(getBounds().intersects(tempObject.getBounds())){
+
+					if (Game.life >= 1)Game.life = 0;
+
+				}
+
+
+			}
+			
 			else {
 
 

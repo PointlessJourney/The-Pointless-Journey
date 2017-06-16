@@ -6,6 +6,7 @@ public enum ObjectId {
 	Block(),
 	Speed(),
 	SwitchBlock(),
-	Enemy();
+	Enemy(),
+	Health();
 	
 }

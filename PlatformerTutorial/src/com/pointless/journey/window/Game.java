@@ -19,6 +19,8 @@ import com.pointless.journey.framework.ObjectId;
 import com.pointless.journey.objects.Block;
 import com.pointless.journey.objects.Player;
 import com.pointless.journey.objects.SwitchBlock;
+import com.pointless.journey.objects.healthPower;
+import com.pointless.journey.objects.randomAI;
 
 public class Game extends Canvas implements Runnable{
 
@@ -32,11 +34,16 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread; //instantiate new Thread
 
 	public static int WIDTH, HEIGHT;
+	
+	public static boolean levelSwitch = false;
+	public static String level = "/LevelOne.png";
 
-	private BufferedImage level = null;//use to load level
+	public static BufferedImage level1 = null;//use to load level
+	private BufferedImage level2 = null;//use to load level
 	private BufferedImage hud = null;
 	private SwitchBlock sBlock;
-	private Player player;
+	public static Player player;
+	public static randomAI boss;
 	
 	public static int red;
 	public static int green;
@@ -51,7 +58,10 @@ public class Game extends Canvas implements Runnable{
 	Handler Handler;
 	GameObject object;
 	Camera cam;
-
+	public void levelSwap(){
+		BufferedImageLoader loader = new BufferedImageLoader();
+		level1 = loader.loadImage(level);//loading the level
+	}
 	//initializer
 	private void init(){
 
@@ -61,15 +71,27 @@ public class Game extends Canvas implements Runnable{
 
 		//loading level
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.loadImage("/LevelOne.png");//loading the level
+		level1 = loader.loadImage(level);//loading the level
+		//level2 = loader.loadImage("/Level2.png");
 		hud = loader.loadImage("/SideHud.png");    
 
 		Handler = new Handler();
 
 		cam = new Camera(0, 0);//camera for side scroller
 
-		LoadImageLevel(level);
-
+		if (!levelSwitch){
+			LoadImageLevel(level1);
+		}
+		else if (levelSwitch){
+			
+			Handler.removeObject(player);
+			LoadImageLevel(level2);
+			initLevel = true;
+			
+		}
+		
+		
+		
 
 		//Handler.addObject(new Player(100, 600, Handler, ObjectId.Player));
 
@@ -209,6 +231,7 @@ public class Game extends Canvas implements Runnable{
 	}
 
 
+	@SuppressWarnings("static-access")
 	private void LoadImageLevel(BufferedImage image){
 
 		int w = image.getWidth();
@@ -233,7 +256,11 @@ public class Game extends Canvas implements Runnable{
 					if(red == 255 && green == 255 && blue == 255) Handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
 					if(red == 0 && green == 0 && blue == 255) Handler.addObject(player = new Player(xx*32, yy*32, ObjectId.Player));
 					if (red == 255 && green == 255 && blue == 0) Handler.addObject(sBlock = new SwitchBlock(xx*32, yy*32, ObjectId.SwitchBlock));
-
+					if(red == 0 && green == 255 && blue == 0) Handler.addObject(boss = new randomAI(xx*32, yy*32, ObjectId.Enemy));
+						
+					
+					
+					
 
 				}//for
 
@@ -253,12 +280,18 @@ public class Game extends Canvas implements Runnable{
 					red = (pixel >> 16) & 0xff;
 					green = (pixel >> 8) & 0xff;
 					blue = (pixel) & 0xff;
-					
 					System.out.println("X = " + xOfPlayer);
+					
 
-					//if(red == 255 && green == 255 && blue == 255) Handler.addObject(new Block(xx*32, yy*32, ObjectId.Block));
-					//if(red == 0 && green == 0 && blue == 255) Handler.addObject(player = new Player(xx*32, yy*32, Handler, ObjectId.Player));
-					//FIX LEVEL SWITCHING
+					if(red == 255 && green == 0 && blue == 255) Handler.addObject(new healthPower(xx*32, yy*32, ObjectId.Health));
+					
+					if (levelSwitch){
+						
+						Handler.removeObject(player);
+						LoadImageLevel(level2);
+						initLevel = true;
+						
+					}
 					
 					
 					}

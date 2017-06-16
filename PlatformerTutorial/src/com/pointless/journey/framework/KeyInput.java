@@ -29,7 +29,7 @@ public class KeyInput extends KeyAdapter{
 
 				if(tempObject.speeding){
 					d = 12;
-					a = -12;//ENDED HERE MAKE SURE POWERUP SHOW UP
+					a = -12;
 					
 					if(key == KeyEvent.VK_D) tempObject.setVelX(d);
 					if(key == KeyEvent.VK_A) tempObject.setVelX(a);
