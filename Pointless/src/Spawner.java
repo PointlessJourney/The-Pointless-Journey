@@ -30,7 +30,7 @@ public class Spawner extends OverChar{
 				delay--;
 				if (delay == 0)
 				{
-					Handler.addObject(new Boss1Minion(x,y,ID.Enemy,LoadImage("BGtop.png"),3.5,1.0));
+					Handler.addObject(new Boss1Minion(x,y,ID.Enemy,LoadImage("BGTop clone.png"),3.5,1.0));
 					delay = 400;
 				}
 			}		

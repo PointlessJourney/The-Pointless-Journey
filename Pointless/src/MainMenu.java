@@ -37,6 +37,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.pointless.journey.window.Game;
 import com.pointless.journey.window.Window;
 
 import java.awt.event.KeyAdapter;
@@ -192,7 +193,10 @@ public class MainMenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
+		//Window.paused = true;
+		//Game.Begin("LevelOne.png");
 
+		Game.Begin("Level2.png");
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		if(screenSize.getWidth()/16.0<=screenSize.getHeight()/9.0){
 			width = (int)(screenSize.getWidth()/16.0)*16;

@@ -191,8 +191,8 @@ public class GGTop extends OverChar {
 				{
 					if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
 					{
-						//Window.paused = true;
-						//Game.Begin("LevelOne.png");
+						Window.paused = true;
+						Game.Begin("LevelOne.png");
 						Window.paused=true;
 						Puzzles.Begin();
 						mapState = STATE.Stone;
@@ -223,8 +223,10 @@ public class GGTop extends OverChar {
 				{
 					if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
 					{
+						
 						Window.paused=true;
 						Puzzles2.Begin();
+						Game.Begin("Level2.png");
 						mapState = STATE.Realm;
 						first = true;
 						OverChar.playerHealth=OverChar.maxPlayerHealth;
