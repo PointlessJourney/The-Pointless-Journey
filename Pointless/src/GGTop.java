@@ -25,7 +25,7 @@ public class GGTop extends OverChar {
 	int maxY;
 	int maxNegY;
 	int delay=0;
-	int level = 2;
+	int level = 1;
 	double scale = 1360.0/MainMenu.width;
 	Saves save = new Saves();
 	public static STATE mapState = STATE.Base;
