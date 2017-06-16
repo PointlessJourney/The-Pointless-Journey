@@ -31,7 +31,7 @@ public static int amount = 0;
 				if(delay == 0)
 					//
 				{	
-					delay = (int)(Math.random() * 1200.0);
+					delay = (int)(Math.random() * 600.0);
 					System.out.println("delay" + delay);
 					//96x96
 					//for (int w = 0; w > 10; w++)
