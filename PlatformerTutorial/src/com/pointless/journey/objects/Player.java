@@ -11,6 +11,7 @@ import com.pointless.journey.framework.GameObject;
 import com.pointless.journey.framework.KeyInput;
 import com.pointless.journey.framework.ObjectId;
 import com.pointless.journey.window.BufferedImageLoader;
+import com.pointless.journey.window.Game;
 import com.pointless.journey.window.Handler;
 
 public class Player extends GameObject{
@@ -19,15 +20,13 @@ public class Player extends GameObject{
 	private float gravity = 0.5f;
 	private final float MAX_SPEED = 10;
 
-	private Handler handler;
-	private KeyInput keyIn = new KeyInput(handler);
+	private KeyInput keyIn = new KeyInput();
 	private BufferedImage player = null;//use to load level
 	
 	BufferedImageLoader playerIcon = new BufferedImageLoader();
 
-	public Player(float x, float y, Handler handler, ObjectId id) {
+	public Player(float x, float y, ObjectId id) {
 		super(x, y, id);
-		this.handler = handler;
 	}
 
 	public void tick(LinkedList<GameObject> object) {
@@ -51,9 +50,9 @@ public class Player extends GameObject{
 
 	private void Collision(LinkedList<GameObject> object){
 
-		for(int i = 0; i < handler.object.size(); i++){
+		for(int i = 0; i < Handler.object.size(); i++){
 
-			GameObject tempObject = handler.object.get(i);
+			GameObject tempObject = Handler.object.get(i);
 
 			if (tempObject.getId() == ObjectId.Block){
 
@@ -95,19 +94,30 @@ public class Player extends GameObject{
 
 			/////////////////////////////////////////////////////////////////////////////////////
 
-			if(tempObject.getId() == ObjectId.Speed){
+			if(tempObject.getId() == ObjectId.SwitchBlock){
 
 				//right collision
 				if(getBoundsRight().intersects(tempObject.getBounds())){
 
-					speeding = true;
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);
 
 				}
 
 				//left collision
 				if(getBoundsLeft().intersects(tempObject.getBounds())){
 
-					speeding = true;
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);
+					
+				}
+				
+				//top collision
+				if(getBoundsTop().intersects(tempObject.getBounds())){
+
+					
+					if (Game.life <= 280) Game.life += 1;
+					if (Game.life == 280) System.exit(1);               
 
 				}
 

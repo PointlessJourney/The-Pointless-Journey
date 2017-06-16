@@ -7,14 +7,13 @@ import com.pointless.journey.window.Handler;
 
 public class KeyInput extends KeyAdapter{
 
-	Handler handler;
+	Handler Handler;
 	public int d = 7;
 	public int a = -7;
 	int clock;
 
-	public KeyInput(Handler handler){
+	public KeyInput(){
 
-		this.handler = handler;
 
 	}
 
@@ -22,9 +21,9 @@ public class KeyInput extends KeyAdapter{
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 
-		for (int i = 0; i < handler.object.size(); i++){
+		for (int i = 0; i < Handler.object.size(); i++){
 
-			GameObject tempObject = handler.object.get(i);
+			GameObject tempObject = Handler.object.get(i);
 
 			if(tempObject.getId() == ObjectId.Player){
 
@@ -93,9 +92,9 @@ public class KeyInput extends KeyAdapter{
 
 		int key = e.getKeyCode();
 
-		for (int i = 0; i < handler.object.size(); i++){
+		for (int i = 0; i < Handler.object.size(); i++){
 
-			GameObject tempObject = handler.object.get(i);
+			GameObject tempObject = Handler.object.get(i);
 
 			if(tempObject.getId() == ObjectId.Player){
 

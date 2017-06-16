@@ -4,6 +4,8 @@ public enum ObjectId {
 
 	Player(),
 	Block(),
-	Speed();
+	Speed(),
+	SwitchBlock(),
+	Enemy();
 	
 }
