@@ -170,6 +170,7 @@ public class MainMenu extends JFrame {
 	//Panel 3	
 	JPanel panel_3 = new JPanel();
 	JButton button_1 = new JButton("");
+	JButton btnC = new JButton("");
 	JLabel label_2 = new JLabel("New label");
 	JLabel lblMessage = new JLabel("");
 	public static int width;

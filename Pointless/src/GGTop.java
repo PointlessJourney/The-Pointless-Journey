@@ -42,7 +42,7 @@ public class GGTop extends OverChar {
 
 	//******************************************************************************
 	public GGTop(int x, int y, ID player) {
-		super(x, y, player, LoadImage("map.png"),25/1600.0*MainMenu.width);
+		super(x, y, player, LoadImage("map.png"),25/1520.0*MainMenu.width);
 		maxX = (int)(-555000/1360.0*MainMenu.width);
 		maxNegX =  (int)(3554000.0/1360*MainMenu.width);
 		maxY = (int)(-1110000.0/1360*MainMenu.width);
@@ -97,7 +97,7 @@ public class GGTop extends OverChar {
 			}
 			if(playerHealth<=0){
 				Saves.print();
-				System.exit(0);
+				//System.exit(0);
 			}
 			return;
 		}
@@ -115,7 +115,7 @@ public class GGTop extends OverChar {
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("map.png");
 					System.out.println("start");
-					size = 25/1600.0*MainMenu.width;
+					size = 25/1520.0*MainMenu.width;
 					maxX = (int)(-555000/1360.0*MainMenu.width);
 					maxNegX =  (int)(3554000.0/1360*MainMenu.width);
 					maxY = (int)(-1110000.0/1360*MainMenu.width);
@@ -160,7 +160,7 @@ public class GGTop extends OverChar {
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("ruckss2.png");
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6944789/1360.0*MainMenu.width);
 					maxY =(int)(-827293/1360.0*MainMenu.width);
@@ -178,7 +178,7 @@ public class GGTop extends OverChar {
 
 					first = false;
 				}
-				System.out.println(Spawner.amount);
+				//System.out.println(Spawner.amount);
 				if (Spawner.amount == 0)
 				{
 					if (playerX >= 6944788/1360.0*MainMenu.width && playerY >= 1046653/1360.0*MainMenu.width && playerY <= 1335653/1360.0*MainMenu.width)	// returning to the main area
@@ -196,7 +196,7 @@ public class GGTop extends OverChar {
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("grassss2.jpg");
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
 					maxY =(int)(-827293/1360.0*MainMenu.width);
@@ -226,7 +226,7 @@ public class GGTop extends OverChar {
 					map = LoadImage("muddd2.jpg");
 					//second = false;
 					//first = true;
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 
 					maxX = (int)(56090/1360.0*MainMenu.width);
 					maxNegX =  (int)(6910788/1360.0*MainMenu.width);
@@ -250,7 +250,7 @@ public class GGTop extends OverChar {
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
 					map = LoadImage("stone.png");
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 					maxX = (int)(-436158/1360.0*MainMenu.width);
 					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
 					maxY =(int)(-956700/1360.0*MainMenu.width);
@@ -279,7 +279,7 @@ public class GGTop extends OverChar {
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
 					map = LoadImage("cardsss2.png");
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 					maxX = (int)(-436158/1360.0*MainMenu.width);
 					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
 					maxY =(int)(-956700/1360.0*MainMenu.width);
@@ -308,7 +308,7 @@ public class GGTop extends OverChar {
 					x = (int)(100205.0/1440*MainMenu.width);
 					y = (int)(-744879.0/1440*MainMenu.width);
 					map = LoadImage("space.jpg");
-					size = 7/1600.0*MainMenu.width;
+					size = 7/1520.0*MainMenu.width;
 					maxX = (int)(-436158/1360.0*MainMenu.width);
 					maxNegX =  (int)(4031394/1360.0*MainMenu.width);
 					maxY =(int)(-956700/1360.0*MainMenu.width);
@@ -354,8 +354,8 @@ public class GGTop extends OverChar {
 			BufferedImage map = LoadImage("GGtop.png");
 
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
-			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1600.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1600.0*MainMenu.width+MainMenu.offsety);
-			tat.scale(2.0/1600.0*MainMenu.width, 2.0/1600.0*MainMenu.width);
+			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/1520.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/1520.0*MainMenu.width+MainMenu.offsety);
+			tat.scale(2.0/1520.0*MainMenu.width, 2.0/1520.0*MainMenu.width);
 			angle = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
 			tat.rotate(angle, map.getWidth()/2, map.getHeight()/2);
 			Graphics2D g2d = (Graphics2D) g;
@@ -369,36 +369,36 @@ public class GGTop extends OverChar {
 
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/3300.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/3850.0*MainMenu.width+MainMenu.offsety);
-		//	tat.scale(2.0/1950.0*MainMenu.width, 2.0/1890.0*MainMenu.width);
-			life =  362*(100-OverChar.playerHealth)/100;
+			tat.scale(1.0/1520.0*MainMenu.width, 1.0/1520.0*MainMenu.width);
+			life =  (int)(362*(100-OverChar.playerHealth)/100/1520.0*MainMenu.width);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
 			g2d.setColor(Color.black);
-			g2d.fillRect(664, 860, 0+life, 12);
+			g2d.fillRect((int)(664/1520.0*MainMenu.width), (int)(860/1520.0*MainMenu.width), 0+life, (int)(12/1520.0*MainMenu.width));
 			g2d.setColor(Color.WHITE);
 			if ((100-OverChar.playerHealth)==0)
 			{
-				g2d.drawString("100 %", 670, 813);
+				g2d.drawString("100 %", (int)(670/1520.0*MainMenu.width), (int)(813/1520.0*MainMenu.width));
 
 			}
 			else if ((100-OverChar.playerHealth)<=25)
 			{
-				g2d.drawString("Not 100%", 670, 813);
+				g2d.drawString("Not 100%", (int)(670/1520.0*MainMenu.width), (int)(813/1520.0*MainMenu.width));
 
 			}
 			else if ((100-OverChar.playerHealth)<=50)
 			{
-				g2d.drawString("You gonna die", 670, 813);
+				g2d.drawString("You gonna die", (int)(670/1520.0*MainMenu.width), (int)(813/1520.0*MainMenu.width));
 
 			}
 			else if ((100-OverChar.playerHealth)<=75)
 			{
-				g2d.drawString("You suck", 670, 813);
+				g2d.drawString("You suck", (int)(670/1520.0*MainMenu.width), (int)(813/1520.0*MainMenu.width));
 
 			}
 			else
 			{
-				g2d.drawString("Just Give Up", 670, 813);
+				g2d.drawString("Just Give Up", (int)(670/1520.0*MainMenu.width), (int)(813/1520.0*MainMenu.width));
 
 			}
 		}

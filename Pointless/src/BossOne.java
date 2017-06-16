@@ -1,7 +1,7 @@
 import java.awt.image.BufferedImage;
 
 public class BossOne extends OverChar{
-	final int HEALTH = 400;
+	final int HEALTH = 300;
 	private double speed;
 	private int delay = 500;
 	public static boolean dead1 = false;
@@ -11,7 +11,7 @@ public class BossOne extends OverChar{
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
 		//System.out.println(x + " "+ y);
-		health = 400;
+		health = 300;
 		collisionDamage=5;
 		imageX = map.getWidth()*size/1280.0*MainMenu.width*150;
 		imageY = map.getHeight()*size/1280.0*MainMenu.width*150;

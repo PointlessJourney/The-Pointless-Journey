@@ -12,7 +12,7 @@ public class Spawner extends OverChar{
 
 		health = 54;
 		amount++;
-		collisionDamage = 0;
+		collisionDamage = 1;
 		imageX = map.getWidth()*size/1280.0*MainMenu.width*150;
 		imageY = map.getHeight()*size/1280.0*MainMenu.width*150;
 	}

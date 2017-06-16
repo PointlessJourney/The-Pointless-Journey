@@ -12,7 +12,7 @@ public static int amount = 0;
 		super(x, y, id, map, size);
 		// TODO Auto-generated constructor stub
 		health = 100;
-		collisionDamage = 0;
+		collisionDamage = 1;
 		amount++;
 		imageX = map.getWidth()*size/1280.0*MainMenu.width*150;
 		imageY = map.getHeight()*size/1280.0*MainMenu.width*150;
