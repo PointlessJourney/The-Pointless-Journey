@@ -35,6 +35,7 @@ public abstract class OverChar
 	public static int playerHealth = 100;
 	public static int maxPlayerHealth = 100;
 	public abstract void tick();
+	public static boolean godMode=false;
 	/*public void render(Graphics g) {
 		AffineTransform at = AffineTransform.getTranslateInstance((x - playerX)/1000+MainMenu.width/2-map.getWidth()/2.0*size/1280.0*MainMenu.width+MainMenu.offsetx, (y-playerY)/1000+ MainMenu.height/2-map.getHeight()/2.0*size/1280.0*MainMenu.width+MainMenu.offsety);
 		at.scale(size/1280.0*MainMenu.width,size/1280.0*MainMenu.width);

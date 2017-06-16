@@ -36,6 +36,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import com.pointless.journey.window.Window;
+
 import java.awt.event.KeyAdapter;
 
 public class MainMenu extends JFrame {
@@ -68,7 +71,7 @@ public class MainMenu extends JFrame {
 			}else if(MainMenu.team7 == 3&&key==KeyEvent.VK_M){
 				MainMenu.team7 = 4;
 			}else if(MainMenu.team7 == 4&&key ==KeyEvent.VK_7){
-				System.out.println("here");
+				//System.out.println("here");
 				//"Team7EESized.png"
 				EasterEgg.setVisible(false);
 				Background.setIcon(new ImageIcon(new ImageIcon("Team7Final.jpg").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
@@ -76,7 +79,7 @@ public class MainMenu extends JFrame {
 			}else{
 				MainMenu.team7 = 0;
 			}
-			System.out.println(MainMenu.team7);
+			//System.out.println(MainMenu.team7);
 		}
 
 		@Override
@@ -187,6 +190,7 @@ public class MainMenu extends JFrame {
 		});
 		Song();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -201,7 +205,7 @@ public class MainMenu extends JFrame {
 			offsetx = (int)((screenSize.getWidth()-width)/2);
 			offsety = (int)((screenSize.getHeight()-height)/2);
 		}
-		System.out.println("Width: "+width+"\nHeight: "+height);
+		//System.out.println("Width: "+width+"\nHeight: "+height);
 		//pack();
 		//setSize(width,height);
 
@@ -322,6 +326,8 @@ public class MainMenu extends JFrame {
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Window.paused=true;
+				LoadingScreen.Begin();
 				imbackbb = false;
 				over.setVisible(true);
 				over.start();

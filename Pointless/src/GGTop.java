@@ -25,7 +25,7 @@ public class GGTop extends OverChar {
 	int maxY;
 	int maxNegY;
 	int delay=0;
-	int level = 1;
+	int level = 2;
 	double scale = 1360.0/MainMenu.width;
 	Saves save = new Saves();
 	public static STATE mapState = STATE.Base;
@@ -100,7 +100,9 @@ public class GGTop extends OverChar {
 			}
 			if(playerHealth<=0){
 				Saves.print();
-				//System.exit(0);
+				if(!OverChar.godMode){
+					System.exit(0);
+				}
 			}
 			return;
 		}
@@ -117,7 +119,7 @@ public class GGTop extends OverChar {
 					x = (int)(30000.0/1360*MainMenu.width);
 					y = (int)(-860000.0/1360*MainMenu.width);
 					map = LoadImage("map.png");
-					System.out.println("start");
+					//System.out.println("start");
 					size = 25/1520.0*MainMenu.width;
 					maxX = (int)(-555000/1360.0*MainMenu.width);
 					maxNegX =  (int)(3554000.0/1360*MainMenu.width);
@@ -127,31 +129,34 @@ public class GGTop extends OverChar {
 					OverChar.playerY=0;
 					first = false;
 				}
-				if (level >= 1)
+				if (level == 1)
 				{
 				if (playerX >= 3544000.0/1360.0*MainMenu.width && playerY >= 2375000.0/1360.0*MainMenu.width && playerY<= 2500000.0/1360.0*MainMenu.width)	// entering the battle field area
 				{		//*****************************************************************************
 					mapState = STATE.Field;
 					level++;
 					first = true;
+					OverChar.playerHealth=OverChar.maxPlayerHealth;
 				}
 				}
-				else if(level >=2)
+				else if(level ==2)
 				{
 				if (playerY >= 2954000/scale && playerX >= 1222312/scale && playerX <= 1324482/scale)
 				{
 					mapState = STATE.Cave;
 					level++;
 					first = true;
+					OverChar.playerHealth=OverChar.maxPlayerHealth;
 				}
 				}
-				else if(level >=3)
+				else if(level ==3)
 				{
 				if (playerY >= 2954000/scale && playerX >= 2538799/scale && playerX <= 2700299/scale)
 				{
 					mapState = STATE.Grass;
 					level++;
 					first = true;
+					OverChar.playerHealth=OverChar.maxPlayerHealth;
 				}
 				}
 
@@ -188,8 +193,11 @@ public class GGTop extends OverChar {
 					{
 						//Window.paused = true;
 						//Game.Begin("LevelOne.png");
+						Window.paused=true;
+						Puzzles.Begin();
 						mapState = STATE.Stone;
 						first = true;
+						OverChar.playerHealth=OverChar.maxPlayerHealth;
 					}
 				}
 
@@ -210,13 +218,16 @@ public class GGTop extends OverChar {
 					Handler.addObject(new NGSpawner((int)(3706347/scale), (int)(1151818/scale), ID.Enemy,OverChar.LoadImage("Sp clone.png"), 3/scale));
 					first = false;
 				}
-				System.out.println(NGSpawner.amount);
+				//System.out.println(NGSpawner.amount);
 				if(NGSpawner.amount == 0)
 				{
 					if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 880406/1360.0*MainMenu.width && playerY <= 1135406/1360.0*MainMenu.width)	// returning to the main area
 					{
+						Window.paused=true;
+						Puzzles2.Begin();
 						mapState = STATE.Realm;
 						first = true;
+						OverChar.playerHealth=OverChar.maxPlayerHealth;
 					}
 				}
 			}
@@ -244,8 +255,11 @@ public class GGTop extends OverChar {
 				}
 				if (playerX >= 6910788/1360.0*MainMenu.width && playerY >= 315778/1360.0*MainMenu.width && playerY <= 2070300/1360.0*MainMenu.width)	// returning to the main area
 				{
+					Window.paused=true;
+					Puzzles3.Begin();
 					mapState = STATE.Space;
 					first = true;
+					OverChar.playerHealth=OverChar.maxPlayerHealth;
 				}
 			}
 			else if (mapState == STATE.Stone)
@@ -268,10 +282,13 @@ public class GGTop extends OverChar {
 				{
 					if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
 					{
-						System.out.println("good");
+						Window.paused=true;
+						Puzzles4.Begin();
+						//System.out.println("good");
 						level++;
 						mapState = STATE.Base;
 						first = true;
+						OverChar.playerHealth=OverChar.maxPlayerHealth;
 					}
 				}
 
@@ -298,10 +315,11 @@ public class GGTop extends OverChar {
 				{
 				if (playerX >= 3502409/1360*MainMenu.width && playerX <= 4031394/1360*MainMenu.width && playerY <= -931200/1360*MainMenu.width)
 				{
-					System.out.println("good");
+					//System.out.println("good");
 					mapState = STATE.Base;
 					level++;
 					first = true;
+					OverChar.playerHealth=OverChar.maxPlayerHealth;
 				}
 				}
 			}
@@ -371,15 +389,15 @@ public class GGTop extends OverChar {
 		else if (id == ID.HUD) // creates the player
 		{
 			BufferedImage map = OverChar.LoadImage("OverHudpt1.png");
-
 			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
 			AffineTransform tat = AffineTransform.getTranslateInstance((MainMenu.width/2-map.getWidth()/3300.0*MainMenu.width+MainMenu.offsetx), MainMenu.height/2-map.getHeight()/3850.0*MainMenu.width+MainMenu.offsety);
 			tat.scale(1.0/1520.0*MainMenu.width, 1.0/1520.0*MainMenu.width);
-			life =  (int)(362*(100-OverChar.playerHealth)/100/1520.0*MainMenu.width);
+			life =  (int)(362.0*(100.0-OverChar.playerHealth)/100.0/1520.0*MainMenu.width);
+			//System.out.println(362.0*(100.0-OverChar.playerHealth)/100.0/1520.0*MainMenu.width);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.drawImage(map, tat, null);
-			g2d.setColor(Color.black);
-			g2d.fillRect((int)(664/1520.0*MainMenu.width), (int)(860/1520.0*MainMenu.width), 0+life, (int)(12/1520.0*MainMenu.width));
+			g2d.setColor(Color.BLACK);
+			g2d.fillRect((int)(664/1520.0*MainMenu.width), (int)(860/1520.0*MainMenu.width), 8000+life, (int)(1200.0/1520.0*MainMenu.width));
 			g2d.setColor(Color.WHITE);
 			if ((100-OverChar.playerHealth)==0)
 			{
