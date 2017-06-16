@@ -39,9 +39,8 @@ public class OverworldEngine extends Canvas implements Runnable {
 	{
 		
 		OverChar.playerSpeed=10000.0/1360*MainMenu.width;
-		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
-		Handler.addObject(new GGTop((int)(30000.0/1360*MainMenu.width),(int)(-871000.0/1360*MainMenu.width),ID.Map));
-		Handler.addObject(new GGTop((int)(30000.0/1360*MainMenu.width),(int)(-871000.0/1360*MainMenu.width),ID.HUD));
+		
+
 		addMouseListener(new Board.Mouse());
 		this.addKeyListener(new KeyIn());
 
@@ -54,10 +53,14 @@ public class OverworldEngine extends Canvas implements Runnable {
 
  	public synchronized void start()
 	{
-		thread = new Thread(this);
+ 		Handler.addObject(new GGTop(MainMenu.width/2+MainMenu.offsetx,MainMenu.height/2+MainMenu.offsety,ID.Player));
+		Handler.addObject(new GGTop((int)(30000.0/1360*MainMenu.width),(int)(-871000.0/1360*MainMenu.width),ID.Map));
+		Handler.addObject(new GGTop((int)(30000.0/1360*MainMenu.width),(int)(-871000.0/1360*MainMenu.width),ID.HUD));
+ 		thread = new Thread(this);
 		thread.start();
 		running = true;
 		this.requestFocus();
+		
 
 	}
 
@@ -101,7 +104,7 @@ public class OverworldEngine extends Canvas implements Runnable {
 			if(System.currentTimeMillis() - timer > 1000)
 			{
 				timer += 1000;
-				System.out.println("FPS: "+ frames);
+				//System.out.println("FPS: "+ frames);
 				frames = 0;
 			}
 		}

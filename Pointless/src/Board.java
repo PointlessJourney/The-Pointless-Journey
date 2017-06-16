@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -56,16 +57,25 @@ public class Board{
 		for (int i = 0; i < bullets.size(); i++) {
 			Bullet tmpB = (Bullet) bullets.get(i);
 			//playing with bullet colors
-			if (i % 2 == 0) {
+			/*if (i % 2 == 0) {
 				g2d.setColor(Color.BLUE);
 			} else {
 				g2d.setColor(Color.MAGENTA);
-			} 
+			} */
 			//g2d.fillRect( (int) ((tmpB.getX()-OverChar.playerX)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.width/2-MainMenu.offsetx, (int) ((tmpB.getY()-OverChar.playerY)/1000-(2.5/1360.0*MainMenu.width))+MainMenu.height/2-MainMenu.offsety, (int)(5.0/1360.0*MainMenu.width),
 			//		(int)(5.0/1360.0*MainMenu.width));
-			int x =(int)((tmpB.getX()-OverChar.playerX)/1000)+MainMenu.width/2+MainMenu.offsetx;
-			int y = (int) ((tmpB.getY()-OverChar.playerY)/1000)+MainMenu.height/2+MainMenu.offsety;
-			g2d.drawLine(x, y, (int)(x+10*Math.cos(tmpB.getA()-Math.PI)), (int)(y+10*Math.sin(tmpB.getA()-Math.PI)));
+			BufferedImage map = OverChar.LoadImage("projectile.png");
+			//AffineTransform tat = AffineTransform.getTranslateInstance(0,0);
+			int x =(int) (((tmpB.getX()-OverChar.playerX)/1000) +659);
+			int y = (int) (((tmpB.getY()-OverChar.playerY)/1000)+360);		
+			int mouseY = MouseInfo.getPointerInfo().getLocation().y;		// mouse tracking
+			int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+			AffineTransform tat = AffineTransform.getTranslateInstance(x,y);
+			double angled = Math.atan2(MainMenu.height/2.0 - mouseY+MainMenu.offsety, MainMenu.width/2.0 - mouseX+MainMenu.offsetx) - Math.PI/2;
+			tat.rotate(angled, map.getWidth()/2, map.getHeight()/2);
+			g2d.drawImage(map, tat, null);
+			
+			//g2d.drawLine(x, y, (int)(x+10*Math.cos(tmpB.getA()-Math.PI)), (int)(y+10*Math.sin(tmpB.getA()-Math.PI)));
 			//g2d.drawLine(x, y, MainMenu.width/2+MainMenu.offsetx, MainMenu.height/2+MainMenu.offsety);
 			//System.out.println((tmpB.getX()-OverChar.playerX)/1000-(2.5/1360.0*MainMenu.width)+MainMenu.width-MainMenu.offsetx);
 		}
