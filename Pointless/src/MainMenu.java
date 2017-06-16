@@ -277,6 +277,16 @@ public class MainMenu extends JFrame {
 		btnHelp.setBounds((int)(800.0/1360.0*width+offsetx), (int)(670.0/765.0*height+offsety)-24, (int)(80.0/1360.0*width), (int)(40.0/765.0*height));
 		btnHelp.setIcon(new ImageIcon(new ImageIcon("Help0.png").getImage().getScaledInstance(-1, btnHelp.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel.add(btnHelp);
+		btnC.setOpaque(false);
+		btnC.setFocusable(false);
+		btnC.setBounds((int)(350.0/1360.0*width+offsetx), (int)(100.0/765.0*height+offsety)-24, (int)(600.0/1360.0*width), (int)(500.0/765.0*height));
+
+		btnC.setIcon(new ImageIcon(new ImageIcon("Controls17.png").getImage()));
+		btnC.setContentAreaFilled(false);
+		btnC.setEnabled(false);
+		btnC.setBorderPainted(false);
+         panel_2.add (btnC);
+         btnC.setVisible(true);
 
 		btnOptions.addMouseListener(new MouseAdapter() {
 			@Override
