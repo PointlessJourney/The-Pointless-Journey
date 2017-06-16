@@ -5,6 +5,8 @@
 // http://www.beepbox.co/#5s0kbl00e03t7a7g0fj7i0r1w1111f0000d1112c0000h0000v0000o3210b4O8i8h8x4y4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4h4p21Dxj713g5Cf0EsAd5CjmlBk79zwrqaqwQRk1HOGOWJClCpBpBplxOqqrcCIHaEei2hj7i31xxidgqxw8kNQwQ6I18Fyg6Yd8qqagQxF00
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -13,6 +15,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -24,6 +28,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,17 +36,62 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.KeyAdapter;
 
 public class MainMenu extends JFrame {
 
 	/**
 	 * 
 	 */
+	//These are some easter eggs which are added
+	//typing mkuv will spawn a doodle bob minion!
+	//typing team7 will change to a naruto background* inprogess!
+	
 	private static final long serialVersionUID = 5776825164765599157L;
 	private JPanel contentPane;
 	public Clip clip;
 	public static MainMenu frame;
 	public OverworldEngine over;
+	private KeyListener k = new KeyListener(){
+		@Override
+		public void keyPressed(KeyEvent e){
+			int key = e.getKeyCode();
+			
+			if(MainMenu.team7 == 0&&key == KeyEvent.VK_T){
+				MainMenu.team7 = 1;
+			}else if(MainMenu.team7 == 1&&key == KeyEvent.VK_E){
+				MainMenu.team7 = 2;
+			}else if(MainMenu.team7 == 2&&key==KeyEvent.VK_A){
+				MainMenu.team7 = 3;
+			}else if(MainMenu.team7 == 3&&key==KeyEvent.VK_M){
+				MainMenu.team7 = 4;
+			}else if(MainMenu.team7 == 4&&key ==KeyEvent.VK_7){
+				System.out.println("here");
+				//"Team7EESized.png"
+				EasterEgg.setVisible(false);
+				Background.setIcon(new ImageIcon(new ImageIcon("Team7Final.jpg").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
+				//EasterEgg.setIcon(new ImageIcon(new ImageIcon("Team7EE1.png").getImage().getScaledInstance(-1, EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
+			}else{
+				MainMenu.team7 = 0;
+			}
+			System.out.println(MainMenu.team7);
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+	};
+
+	
+
 
 	/**
 	 * Launch the application.
@@ -49,11 +99,11 @@ public class MainMenu extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				
+
 				try {
 					frame = new MainMenu();
 					frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,39 +111,57 @@ public class MainMenu extends JFrame {
 		});
 	}
 	public void Song() {
-		  try {
-		   File file = new File("BeepBox-Song.wav");
-		   clip = AudioSystem.getClip();
-		   clip.open(AudioSystem.getAudioInputStream(file));
-		   clip.start();
-		   clip.addLineListener(new LineListener(){
-			   public void update(LineEvent update){
-				   if(update.getType().equals(LineEvent.Type.CLOSE))clip.start();
-			   }
-		   });
-		  } catch (Exception e) {
-		   System.err.println(e.getMessage());
-		  }
-		  return;
-		 }
+		try {
+			File file = new File("BeepBox-Song.wav");
+			clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(file));
+			clip.start();
+			clip.addLineListener(new LineListener(){
+				public void update(LineEvent update){
+					if(update.getType().equals(LineEvent.Type.CLOSE))clip.start();
+				}
+			});
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return;
+	}
+	public void Song2() {
+		try {
+			File file = new File("BeepBox-Song.wav");//song to be changed
+			clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(file));
+			clip.start();
+			clip.addLineListener(new LineListener(){
+				public void update(LineEvent update){
+					if(update.getType().equals(LineEvent.Type.CLOSE))clip.start();
+				}
+			});
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return;
+	}
+
 
 	//Decleration
 	//Panel (Main Menu)
-	JPanel panel = new JPanel();;
+	public static int team7 = 0;
+	JPanel panel = new JPanel();
 	JButton btnExit = new JButton("");
 	JButton btnHelp = new JButton("");
 	JButton btnOptions = new JButton("");
 	JButton btnNewGame = new JButton("");
 	JButton btnContinue = new JButton("");
 	JLabel Background = new JLabel("");//Background image
-	JLabel EasterEgg = new JLabel("");//ea
+	static JLabel EasterEgg = new JLabel("");//ea
 	JLabel Title = new JLabel("");//title
 	int x = 0;//ee counter
 	JLabel lblNewLabel_2 = new JLabel("");
 	//Panel 1 (option button)	
 	JPanel panel_1 = new JPanel();
 	JButton btnMainMenu = new JButton("");
-	JLabel label = new JLabel("New label");
+	static JLabel label = new JLabel("New label");
 	//Panel 2 (help button)	
 	JPanel panel_2 = new JPanel();
 	JButton button = new JButton("");
@@ -107,8 +175,13 @@ public class MainMenu extends JFrame {
 	public static int height;//these three are used for resizing
 	public static int offsetx = 0;
 	public static int offsety = 0;
-	
+
 	public MainMenu() {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+			}
+		});
 		Song();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setSize(832,468);//for design purposes, simply comment out the resizing code to design something, then bring it back and introduce the percentages
@@ -140,7 +213,7 @@ public class MainMenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		
+
 		contentPane.add(panel, "name_21515824946450");
 		panel.setLayout(null);
 		panel.setBackground(new Color(0x05040b));
@@ -174,7 +247,7 @@ public class MainMenu extends JFrame {
 		btnExit.setIcon(new ImageIcon(new ImageIcon("Exit0.png").getImage().getScaledInstance(-1, btnExit.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		//System.out.println(btnA.getBounds());
 		panel.add(btnExit);
-		
+
 		btnHelp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -203,7 +276,7 @@ public class MainMenu extends JFrame {
 		btnHelp.setBounds((int)(800.0/1360.0*width+offsetx), (int)(670.0/765.0*height+offsety)-24, (int)(80.0/1360.0*width), (int)(40.0/765.0*height));
 		btnHelp.setIcon(new ImageIcon(new ImageIcon("Help0.png").getImage().getScaledInstance(-1, btnHelp.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel.add(btnHelp);
-		
+
 		btnOptions.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -232,7 +305,7 @@ public class MainMenu extends JFrame {
 		btnOptions.setBounds((int)(600.0/1360.0*width+offsetx), (int)(670.0/765.0*height+offsety)-24, (int)(120.0/1360.0*width), (int)(40.0/765.0*height));
 		btnOptions.setIcon(new ImageIcon(new ImageIcon("Options0.png").getImage().getScaledInstance(-1, btnOptions.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel.add(btnOptions);
-		
+
 		btnNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -261,7 +334,7 @@ public class MainMenu extends JFrame {
 		btnNewGame.setBounds((int)(400.0/1360.0*width+offsetx), (int)(670.0/765.0*height+offsety)-24, (int)(140.0/1360.0*width), (int)(40.0/765.0*height));
 		btnNewGame.setIcon(new ImageIcon(new ImageIcon("New-Game0.png").getImage().getScaledInstance(-1, btnNewGame.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel.add(btnNewGame);
-		
+
 		btnContinue.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -271,7 +344,7 @@ public class MainMenu extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				//btnContinue.setForeground(Color.CYAN);
 				btnContinue.setIcon(new ImageIcon(new ImageIcon("Continue1.png").getImage().getScaledInstance(-1, btnContinue.getHeight(), java.awt.Image.SCALE_DEFAULT)));
-				
+
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -296,6 +369,7 @@ public class MainMenu extends JFrame {
 				x++;
 				if (x==10)
 				{
+
 					EasterEgg.setIcon(new ImageIcon(new ImageIcon("sao_lost_song_logo_2_by_gunsli.png").getImage().getScaledInstance(-1, EasterEgg.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 					EasterEgg.removeMouseListener(this);
 				}
@@ -305,12 +379,12 @@ public class MainMenu extends JFrame {
 		EasterEgg.setBounds((int)(160.0/1360.0*width+offsetx), (int)(95.0/765.0*height+offsety)-24, (int)(80.0/1360.0*width), (int)(80.0/765.0*height));
 		EasterEgg.setBackground(new Color(0x05040b));
 		panel.add(EasterEgg);
-	
+
 		Title.setIcon(new ImageIcon(new ImageIcon("FinTitle.png").getImage().getScaledInstance(-1, (int)(330.0/765.0*height), java.awt.Image.SCALE_DEFAULT)));
 		//lblNewLabel_1.setBounds(22, -13, 304, 285);
 		Title.setBounds((int)(22.0/832.0*width+offsetx), (int)(11.0/468.0*height+offsety)-24, (int)(304.0/832.0*width), (int)(285.0/468.0*height));
 		panel.add(Title);
-		
+
 		Background.setIcon(new ImageIcon(new ImageIcon("ezgif.com-crop.gif").getImage().getScaledInstance(-1, (int)height, java.awt.Image.SCALE_DEFAULT)));
 		//lblNewLabel.setBounds(0, -15, 1014, 497);
 		Background.setBounds((int)(00.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
@@ -319,7 +393,7 @@ public class MainMenu extends JFrame {
 		contentPane.add(panel_1, "name_1431079614477");
 		panel_1.setLayout(null);
 		panel_1.setBackground(new Color(0x05040b));
-		
+
 		btnMainMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -394,7 +468,7 @@ public class MainMenu extends JFrame {
 		//label_1.setBounds(0, 0, 1014, 497);
 		panel_2.add(label_1);
 		contentPane.add(panel_3, "name_1583552623428");
-		
+
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(0x05040b));
 		button_1.addMouseListener(new MouseAdapter() {
@@ -425,7 +499,7 @@ public class MainMenu extends JFrame {
 		button_1.setBounds((int)(580.0/1360.0*width+offsetx), (int)(470.0/765.0*height+offsety)-24, (int)(200.0/1360.0*width), (int)(80.0/765.0*height));
 		button_1.setIcon(new ImageIcon(new ImageIcon("I-Agree0.png").getImage().getScaledInstance(-1, button_1.getHeight(), java.awt.Image.SCALE_DEFAULT)));
 		panel_3.add(button_1);
-		
+
 		lblMessage.setForeground(Color.WHITE);
 		lblMessage.setFont(new Font("Sakkal Majalla", Font.PLAIN, 65));
 		//lblNewLabel_4.setBounds(184, 166, 502, 90);
@@ -443,13 +517,17 @@ public class MainMenu extends JFrame {
 		//label_2.setBounds(0, 0, 1014, 497);
 		label_2.setBounds((int)(0.0/832.0*width+offsetx), (int)(0.0/468.0*height+offsety)-24, (int)(1014.0/832.0*width), (int)(497.0/468.0*height));
 		panel_3.add(label_2);
-		over = new OverworldEngine();
-		contentPane.add(over);
-		
 
-	
+
+
+		
+		over = new OverworldEngine();		
+		contentPane.add(over);
+		addk(this);
+
+
 	}
-	
+
 	BufferedImage LoadImage(String FileName)
 	{
 		BufferedImage img = null;
@@ -459,8 +537,21 @@ public class MainMenu extends JFrame {
 		}
 		catch (IOException e)
 		{
-			
+
 		}
 		return img;
+	}
+
+	void addk(Container o){
+
+		for(int i = 0;i<o.getComponentCount();i++){
+			Component oo=o.getComponent(i);
+			oo.addKeyListener(k);
+			if(Container.class.isAssignableFrom(oo.getClass())){
+				addk((Container) oo);
+			}
+
+		}
+
 	}
 }

@@ -2,6 +2,8 @@ import java.awt.MouseInfo;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+
 public class KeyIn extends KeyAdapter {
 	
 	public KeyIn (){	
@@ -12,16 +14,33 @@ public class KeyIn extends KeyAdapter {
 	int down = speed;
 	int up = back;
 	int left = back;
-	int right = speed;
+	int right = speed;//easter egg made by armaan
+	public static int mkuv = 0;
+	public static int EEChar = 0;
 	public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
 		
 
-			
+		
+			if(mkuv == 0&&key == KeyEvent.VK_M){
+				mkuv = 1;
+			}else if(mkuv == 1&&key == KeyEvent.VK_K){
+				mkuv = 2;
+			}else if(mkuv == 2&&key==KeyEvent.VK_U){
+				mkuv = 3;
+			}else if(mkuv == 3&&key ==KeyEvent.VK_V){
+				//EEChar = 1;//This is to change the character image
+				//use this image ("SBEE.png);
+				Handler.addObject(new EEDoodleBob(OverChar.playerX,OverChar.playerY-500000,ID.Enemy,OverChar.LoadImage("SBEE.png") ,0.5));
+				mkuv=0;
+			}else{
+				mkuv = 0;
+				
+			}
 			
 					//player movement keys
 
-
+				
 
 					
 				if (key == KeyEvent.VK_W||key == KeyEvent.VK_UP)OverChar.setVelY(up);
