@@ -58,7 +58,7 @@ public class Boss1Minion extends OverChar{
 	
 	@Override
 		public void render(Graphics g,double angle){
-		this.angle -= Math.PI/2;
+		this.angle += Math.PI/2;
 			super.render(g, this.angle);
 		}
 
